@@ -1,0 +1,45 @@
+Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,Rev Growth (YoY),ROIC,Net Debt/EBITDA,Interest Coverage
+TSM,Foundry,Taiwan Semiconductor Manufactur,-0.07,17.5,58.1,61.9,35.1,25.2,-0.8,230.88
+UMC,Foundry,United Microelectronics Corpora,0.17,14.3,18.5,29.6,5.5,8.7,-0.56,68.02
+NVDA,Fabless,NVIDIA Corporation,99.77,18.3,65.6,74.1,85.2,66.8,-0.24,639.05
+AMD,Fabless,"Advanced Micro Devices, Inc.",117.38,19.2,14.4,53.1,37.8,4.4,-1.14,56.72
+QCOM,Fabless,QUALCOMM Incorporated,21.39,21.6,22.1,54.8,-3.5,27.2,0.42,19.58
+AVGO,Fabless,Broadcom Inc.,65.48,36.1,49.0,76.3,47.9,14.1,1.08,13.11
+MRVL,Fabless,"Marvell Technology, Inc.",103.54,26.0,14.5,51.5,27.6,6.2,0.53,13.39
+MPWR,Fabless,"Monolithic Power Systems, Inc.",128.48,16.6,30.0,55.2,26.1,16.7,-1.57,
+MCHP,Fabless,Microchip Technology Incorporat,46.55,24.2,17.1,57.7,35.1,3.7,4.43,5.66
+QRVO,Fabless,"Qorvo, Inc.",15.54,15.1,16.0,46.2,-7.0,8.6,0.48,11.13
+SWKS,Fabless,"Skyworks Solutions, Inc.",14.53,17.0,7.7,41.1,-1.0,7.0,-0.26,33.55
+ARM,Fabless,Arm Holdings plc,471.57,15.3,29.5,97.5,20.1,8.6,-2.92,
+SLAB,Fabless,"Silicon Laboratories, Inc.",440.18,1.9,-8.0,59.3,20.1,-3.9,,-21.33
+ALGM,Fabless,"Allegro MicroSystems, Inc.",72.84,16.8,10.4,46.5,26.1,2.0,1.29,4.79
+MTSI,Fabless,MACOM Technology Solutions Hold,342.41,7.6,17.6,55.7,22.5,5.6,-1.07,42.6
+CRUS,Fabless,"Cirrus Logic, Inc.",13.12,25.3,20.1,52.8,5.7,18.0,-1.47,570.91
+SIMO,Fabless,Silicon Motion Technology Corpo,,-11.8,15.3,48.1,105.5,9.8,-0.81,
+MXL,Fabless,"MaxLinear, Inc",385.65,4.5,-12.2,57.2,43.0,-17.3,,-3.69
+RMBS,Fabless,"Rambus, Inc.",46.61,34.6,34.3,80.4,8.1,15.6,-2.52,220.15
+ASML,Equipment,ASML Holding N.V. - New York Re,83.22,24.5,36.0,52.6,13.2,38.7,-0.45,107.39
+LRCX,Equipment,Lam Research Corporation,108.69,20.1,35.0,50.0,23.8,37.0,-0.13,44.04
+KLAC,Equipment,KLA Corporation,112.79,22.1,41.2,61.4,11.5,41.5,0.2,19.36
+AMAT,Equipment,"Applied Materials, Inc.",163.37,10.5,31.9,49.0,11.4,23.7,-0.1,34.48
+ENTG,Equipment,"Entegris, Inc.",62.69,13.8,17.9,44.8,5.0,11.2,3.76,4.41
+MKSI,Equipment,MKS Inc.,61.34,12.0,16.0,46.6,15.2,8.0,3.96,4.11
+ACLS,Equipment,"Axcelis Technologies, Inc.",102.38,5.8,4.0,43.6,3.3,10.0,-2.74,20.16
+UCTT,Equipment,"Ultra Clean Holdings, Inc.",,-1.8,2.1,15.6,2.9,2.9,3.86,3.09
+ICHR,Equipment,Ichor Holdings,140.76,2.5,1.1,12.0,4.7,-4.1,2.57,4.09
+COHU,Equipment,"Cohu, Inc.",41.42,14.4,-8.3,43.5,29.3,-4.4,,-0.58
+FORM,Equipment,"FormFactor, Inc.",,-0.1,17.7,42.2,32.0,4.7,-1.98,263.71
+ONTO,Equipment,Onto Innovation Inc.,78.37,19.1,16.8,54.2,9.5,6.1,-2.45,
+NVMI,Equipment,Nova Ltd.,124.51,13.6,30.1,57.3,10.3,10.6,-1.05,
+CAMT,Equipment,Camtek Ltd.,,,22.4,51.0,2.5,10.9,-1.32,83.65
+INTC,IDM,Intel Corporation,,-15.4,6.9,37.2,7.2,-0.0,0.86,12.99
+TXN,IDM,Texas Instruments Incorporated,251.54,5.8,37.8,57.3,18.6,17.7,1.03,15.96
+NXPI,IDM,NXP Semiconductors N.V.,28.59,21.6,27.7,55.6,12.2,10.9,1.93,8.93
+STM,IDM,STMicroelectronics N.V.,,-2.9,3.7,34.0,23.0,1.3,-0.72,45.27
+ADI,IDM,"Analog Devices, Inc.",50.07,30.4,38.1,64.5,37.2,5.9,0.86,19.36
+ON,IDM,ON Semiconductor Corporation,28.17,21.1,18.2,42.7,4.7,6.6,0.41,28.88
+MU,IDM,"Micron Technology, Inc.",164.83,8.5,80.4,72.6,345.7,13.2,-0.29,143.02
+WOLF,IDM,"Wolfspeed, Inc.",39.81,10.8,-72.0,-17.4,-19.0,,,
+MU,Memory,"Micron Technology, Inc.",164.83,8.5,80.4,72.6,345.7,13.2,-0.29,143.02
+WDC,Memory,Western Digital Corporation,96.69,17.6,37.0,45.4,45.5,16.8,-0.39,11.0
+STX,Memory,Seagate Technology Holdings PLC,127.21,14.6,35.7,41.6,44.1,40.9,0.86,10.95
