@@ -8,16 +8,19 @@ FABLESS = ["NVDA", "AMD", "QCOM", "AVGO", "MRVL", "MPWR",
            "MTSI", "CRUS", "SIMO", "MXL", "RMBS"]
 EQUIPMENT = ["ASML", "LRCX", "KLAC", "AMAT", "ENTG", "MKSI",
              "ACLS", "UCTT", "ICHR", "COHU", "FORM", "ONTO",
-             "NVMI", "CAMT"]
-IDMS = ["INTC", "TXN", "NXPI", "STM", "ADI", "ON", "MU", "WOLF"]
+             "NVMI", "CAMT", "TER"]
+IDMS = ["INTC", "TXN", "NXPI", "STM", "ADI", "ON", "WOLF"]
 MEMORY = ["MU", "WDC", "STX"]
-
+EDA_IP = ["SNPS", "CDNS" ]
+SUPPLY_CHAIN = ["AVT", "ARW"]
 UNIVERSE = {
     "Foundry": FOUNDRIES,
     "Fabless": FABLESS,
     "Equipment": EQUIPMENT,
     "IDM": IDMS,
     "Memory": MEMORY,
+    "EDA_IP": EDA_IP,
+    "SUPPLY_CHAIN": SUPPLY_CHAIN
 }
 
 # --- Fetcher ---
