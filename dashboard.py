@@ -6,7 +6,7 @@ st.set_page_config(page_title="Semiconductor Screener", layout="wide")
 st.title("Semiconductor Stock Screener")
 
 # Load data
-df = pd.read_csv("data/metrics.csv")
+df = pd.read_csv("data/semis.csv")
 
 # Sidebar filter
 archetypes = df["Archetype"].unique().tolist()

@@ -96,5 +96,5 @@ def run():
         subset = df[df["Archetype"] == archetype].drop(columns=["Archetype"])
         print(subset.to_string(index=False))
 
-    df.to_csv("data/metrics.csv", index=False)
-    print("Saved to data/metrics.csv")
+    df.to_csv("data/semis.csv", index=False)
+    print("Saved to data/semis.csv")
