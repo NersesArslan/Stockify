@@ -1,3 +1,4 @@
-from verticals import semis
+from verticals import semis, cloud
 
 semis.run()
+cloud.run()
