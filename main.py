@@ -1,11 +1,21 @@
 import pandas as pd
 from verticals import semis, cloud, saas, cyber
-from scoring import score_dataframe, score_saas_dataframe
+from scoring import score_dataframe, score_saas_dataframe, score_cloud_dataframe
 
-# semis.run()
-# cloud.run()
-saas.run()
-cyber.run()
+# --- Control flags ---
+FETCH = {
+    "semis": False,
+    "cloud": True,
+    "saas":  False,
+    "cyber": False,
+}
+
+# --- Fetch ---
+if FETCH["semis"]: semis.run()
+if FETCH["cloud"]: cloud.run()
+if FETCH["saas"]:  saas.run()
+if FETCH["cyber"]: cyber.run()
+
 
 # Semis scoring
 df_semis = pd.read_csv("data/semis.csv")
@@ -13,6 +23,13 @@ df_semis = score_dataframe(df_semis)
 df_semis.to_csv("data/semis_scored.csv", index=False)
 print("\nSemis scoring complete.")
 print(df_semis[["Ticker", "Archetype", "Quality Score", "Valuation Score", "Verdict"]].to_string(index=False))
+
+# Cloud scoring
+df_cloud = pd.read_csv("data/cloud.csv")
+df_cloud = score_cloud_dataframe(df_cloud)
+df_cloud.to_csv("data/cloud_scored.csv", index=False)
+print("\nCloud scoring complete.")
+print(df_cloud[["Ticker", "Archetype", "Quality Score", "Valuation Score", "Verdict"]].to_string(index=False))
 
 # SaaS scoring
 df_saas = pd.read_csv("data/saas.csv")

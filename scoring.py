@@ -88,6 +88,24 @@ EV_REVENUE_THRESHOLDS = [
     (40,  float("inf"),  1),
 ]
 
+# --- Cloud thresholds ---
+
+HYPERSCALER_EV_REVENUE_THRESHOLDS = [
+    (-float("inf"), 3,   5),
+    (3,             6,   4),
+    (6,             10,  3),
+    (10,            15,  2),
+    (15,  float("inf"),  1),
+]
+
+CLOUD_DATA_EV_REVENUE_THRESHOLDS = [
+    (-float("inf"), 5,   5),
+    (5,             10,  4),
+    (10,            20,  3),
+    (20,            40,  2),
+    (40,  float("inf"),  1),
+]
+
 # --- Weights ---
 
 SEMI_QUALITY_WEIGHTS = {
@@ -107,6 +125,21 @@ SAAS_QUALITY_WEIGHTS = {
     "Net Debt/EBITDA":   0.10,
 }
 
+HYPERSCALER_QUALITY_WEIGHTS = {
+    "FCF Margin":        0.30,
+    "Op Margin":         0.25,
+    "Gross Margin":      0.20,
+    "Rev Growth (YoY)":  0.15,
+    "Net Debt/EBITDA":   0.10,
+}
+
+CLOUD_DATA_QUALITY_WEIGHTS = {
+    "Rule of 40":        0.30,
+    "FCF Margin":        0.25,
+    "Gross Margin":      0.20,
+    "Rev Growth (YoY)":  0.15,
+    "Net Debt/EBITDA":   0.10,
+}
 # --- Scorers ---
 
 def score_semi_quality(row):
@@ -162,6 +195,55 @@ def score_saas_valuation(row):
         return None
     return round(ev_rev_score * 20, 1)
 
+def score_hyperscaler_quality(row):
+    scores = {
+        "FCF Margin":       score_metric(row.get("FCF Margin"),       FCF_MARGIN_THRESHOLDS),
+        "Op Margin":        score_metric(row.get("Op Margin"),        OP_MARGIN_THRESHOLDS),
+        "Gross Margin":     score_metric(row.get("Gross Margin"),     GROSS_MARGIN_THRESHOLDS),
+        "Rev Growth (YoY)": score_metric(row.get("Rev Growth (YoY)"), REV_GROWTH_THRESHOLDS),
+        "Net Debt/EBITDA":  score_metric(row.get("Net Debt/EBITDA"),  NET_DEBT_EBITDA_THRESHOLDS),
+    }
+
+    total_weight = 0
+    weighted_sum = 0
+    for metric, weight in HYPERSCALER_QUALITY_WEIGHTS.items():
+        if scores[metric] is not None:
+            weighted_sum += scores[metric] * weight
+            total_weight += weight
+
+    return round(weighted_sum / total_weight * 20, 1) if total_weight > 0 else None
+
+def score_cloud_data_quality(row):
+    scores = {
+        "Rule of 40":       score_metric(row.get("Rule of 40"),       RULE_OF_40_THRESHOLDS),
+        "FCF Margin":       score_metric(row.get("FCF Margin"),       FCF_MARGIN_THRESHOLDS),
+        "Gross Margin":     score_metric(row.get("Gross Margin"),     GROSS_MARGIN_THRESHOLDS),
+        "Rev Growth (YoY)": score_metric(row.get("Rev Growth (YoY)"), REV_GROWTH_THRESHOLDS),
+        "Net Debt/EBITDA":  score_metric(row.get("Net Debt/EBITDA"),  NET_DEBT_EBITDA_THRESHOLDS),
+    }
+
+    total_weight = 0
+    weighted_sum = 0
+    for metric, weight in CLOUD_DATA_QUALITY_WEIGHTS.items():
+        if scores[metric] is not None:
+            weighted_sum += scores[metric] * weight
+            total_weight += weight
+
+    return round(weighted_sum / total_weight * 20, 1) if total_weight > 0 else None
+
+def score_cloud_valuation(row):
+    if row.get("Archetype") == "Hyperscaler":
+        score = score_metric(row.get("EV/Revenue"), HYPERSCALER_EV_REVENUE_THRESHOLDS)
+    else:
+        score = score_metric(row.get("EV/Revenue"), CLOUD_DATA_EV_REVENUE_THRESHOLDS)
+    return round(score * 20, 1) if score is not None else None
+
+def score_cloud_quality(row):
+    if row.get("Archetype") == "Hyperscaler":
+        return score_hyperscaler_quality(row)
+    else:
+        return score_cloud_data_quality(row)
+    
 def get_verdict(quality, valuation):
     if quality is None or valuation is None:
         return "Insufficient Data"
@@ -188,6 +270,15 @@ def score_saas_dataframe(df):
     df = df.copy()
     df["Quality Score"]   = df.apply(score_saas_quality, axis=1)
     df["Valuation Score"] = df.apply(score_saas_valuation, axis=1)
+    df["Verdict"]         = df.apply(
+        lambda row: get_verdict(row["Quality Score"], row["Valuation Score"]), axis=1
+    )
+    return df
+
+def score_cloud_dataframe(df):
+    df = df.copy()
+    df["Quality Score"]   = df.apply(score_cloud_quality, axis=1)
+    df["Valuation Score"] = df.apply(score_cloud_valuation, axis=1)
     df["Verdict"]         = df.apply(
         lambda row: get_verdict(row["Quality Score"], row["Valuation Score"]), axis=1
     )
