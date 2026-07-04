@@ -60,7 +60,7 @@ def get_metrics(ticker_symbol, archetype):
             "Op Margin":         op_margin,
             "Gross Margin":      gross_margin,
             "Rev Growth (YoY)":  revenue_growth,
-            "EV_Revenue":              ev_revenue,
+            "EV/Revenue":              ev_revenue,
             "Net Debt/EBITDA":   net_debt_ebitda,
             "Interest Coverage": interest_cov,
         }
