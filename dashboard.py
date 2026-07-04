@@ -6,7 +6,7 @@ st.set_page_config(page_title="Stock Screener", layout="wide")
 st.title("Stock Screener")
 
 # --- Load data ---
-semis = pd.read_csv("data/semis.csv")
+semis = pd.read_csv("data/semis_scored.csv")
 semis["Vertical"] = "Semiconductors"
 
 cloud = pd.read_csv("data/cloud.csv")
@@ -40,7 +40,53 @@ with tab1:
 
     st.subheader("Metrics Table")
     st.dataframe(format_pct(filtered_semis, pct_cols_semis), use_container_width=True)
+    # Scores table
+    st.subheader("Quality & Valuation Scores")
+    scores_df = filtered_semis[["Ticker", "Name", "Archetype", "Quality Score", "Valuation Score", "Verdict"]].copy()
+    st.dataframe(scores_df, use_container_width=True)
 
+    # Verdict distribution
+    st.subheader("Verdict Summary")
+    verdict_counts = filtered_semis["Verdict"].value_counts().reset_index()
+    verdict_counts.columns = ["Verdict", "Count"]
+    color_map = {
+        "Buy":               "#2ecc71",
+        "Watch":             "#f39c12",
+        "Avoid":             "#e67e22",
+        "Pass":              "#e74c3c",
+        "Insufficient Data": "#95a5a6",
+    }
+    fig_verdict = px.bar(
+        verdict_counts,
+        x="Verdict",
+        y="Count",
+        color="Verdict",
+        color_discrete_map=color_map,
+        title="Verdict Distribution"
+    )
+    st.plotly_chart(fig_verdict, use_container_width=True)
+
+    # Quality vs Valuation scatter
+    st.subheader("Quality vs Valuation")
+    scatter_df = filtered_semis.dropna(subset=["Quality Score", "Valuation Score"])
+    fig_scatter = px.scatter(
+        scatter_df,
+        x="Valuation Score",
+        y="Quality Score",
+        color="Verdict",
+        color_discrete_map=color_map,
+        hover_name="Ticker",
+        hover_data=["Archetype", "Name"],
+        title="Quality Score vs Valuation Score",
+        labels={
+            "Valuation Score": "Valuation Score (higher = cheaper)",
+            "Quality Score":   "Quality Score (higher = better business)"
+        }
+    )
+    # Add quadrant lines
+    fig_scatter.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
+    fig_scatter.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
+    st.plotly_chart(fig_scatter, use_container_width=True)
     st.subheader("ROIC by Company")
     roic_df = filtered_semis.dropna(subset=["ROIC"])
     fig1 = px.bar(roic_df, x="Ticker", y="ROIC", color="Archetype", title="ROIC %")
