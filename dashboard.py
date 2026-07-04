@@ -14,10 +14,12 @@ cloud["Vertical"] = "Cloud"
 
 saas = pd.read_csv("data/saas.csv")
 saas["Vertical"] = "SaaS"
+
+cyber = pd.read_csv("data/cyber.csv")
+cyber["Vertical"] = "Cybersecurity"
 # --- Percentage columns per vertical ---
 pct_cols_semis  = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)", "ROIC"]
-pct_cols_cloud  = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)"]
-pct_cols_saas = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)"]
+pct_cols_default = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)"]
 
 def format_pct(df, cols):
     display = df.copy()
@@ -28,7 +30,7 @@ def format_pct(df, cols):
     return display
 
 # --- Tabs ---
-tab1, tab2, tab3 = st.tabs(["Semiconductors", "Cloud", "Enterprise SaaS"])
+tab1, tab2, tab3, tab4 = st.tabs(["Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity"])
 
 with tab1:
     st.sidebar.header("Semiconductors")
@@ -51,7 +53,7 @@ with tab2:
     filtered_cloud   = cloud[cloud["Archetype"].isin(selected_cloud)]
 
     st.subheader("Metrics Table")
-    st.dataframe(format_pct(filtered_cloud, pct_cols_cloud), use_container_width=True)
+    st.dataframe(format_pct(filtered_cloud, pct_cols_default), use_container_width=True)
 
     st.subheader("EV/Revenue by Company")
     ev_df = filtered_cloud.dropna(subset=["EV/Revenue"])
@@ -64,7 +66,7 @@ with tab3:
     filtered_saas   = saas[saas["Archetype"].isin(selected_saas)]
 
     st.subheader("Metrics Table")
-    st.dataframe(format_pct(filtered_saas, pct_cols_saas), use_container_width=True)
+    st.dataframe(format_pct(filtered_saas, pct_cols_default), use_container_width=True)
 
     st.subheader("Rule of 40 by Company")
     r40_df = filtered_saas.dropna(subset=["Rule of 40"])
@@ -75,3 +77,21 @@ with tab3:
     ev_saas_df = filtered_saas.dropna(subset=["EV/Revenue"])
     fig4       = px.bar(ev_saas_df, x="Ticker", y="EV/Revenue", color="Archetype", title="EV/Revenue")
     st.plotly_chart(fig4, use_container_width=True)
+with tab4:
+    st.sidebar.header("Cybersecurity")
+    cyber_archetypes = cyber["Archetype"].unique().tolist()
+    selected_cyber   = st.sidebar.multiselect("Cyber Archetype", cyber_archetypes, default=cyber_archetypes)
+    filtered_cyber   = cyber[cyber["Archetype"].isin(selected_cyber)]
+
+    st.subheader("Metrics Table")
+    st.dataframe(format_pct(filtered_cyber, pct_cols_default), use_container_width=True)
+
+    st.subheader("Rule of 40 by Company")
+    r40_cyber = filtered_cyber.dropna(subset=["Rule of 40"])
+    fig5      = px.bar(r40_cyber, x="Ticker", y="Rule of 40", color="Archetype", title="Rule of 40")
+    st.plotly_chart(fig5, use_container_width=True)
+
+    st.subheader("EV/Revenue by Company")
+    ev_cyber = filtered_cyber.dropna(subset=["EV/Revenue"])
+    fig6     = px.bar(ev_cyber, x="Ticker", y="EV/Revenue", color="Archetype", title="EV/Revenue")
+    st.plotly_chart(fig6, use_container_width=True)
