@@ -12,9 +12,12 @@ semis["Vertical"] = "Semiconductors"
 cloud = pd.read_csv("data/cloud.csv")
 cloud["Vertical"] = "Cloud"
 
+saas = pd.read_csv("data/saas.csv")
+saas["Vertical"] = "SaaS"
 # --- Percentage columns per vertical ---
 pct_cols_semis  = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)", "ROIC"]
 pct_cols_cloud  = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)"]
+pct_cols_saas = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)"]
 
 def format_pct(df, cols):
     display = df.copy()
@@ -25,7 +28,7 @@ def format_pct(df, cols):
     return display
 
 # --- Tabs ---
-tab1, tab2 = st.tabs(["Semiconductors", "Cloud"])
+tab1, tab2, tab3 = st.tabs(["Semiconductors", "Cloud", "Enterprise SaaS"])
 
 with tab1:
     st.sidebar.header("Semiconductors")
@@ -54,3 +57,21 @@ with tab2:
     ev_df = filtered_cloud.dropna(subset=["EV/Revenue"])
     fig2  = px.bar(ev_df, x="Ticker", y="EV/Revenue", color="Archetype", title="EV/Revenue")
     st.plotly_chart(fig2, use_container_width=True)
+with tab3:
+    st.sidebar.header("Enterprise SaaS")
+    saas_archetypes = saas["Archetype"].unique().tolist()
+    selected_saas   = st.sidebar.multiselect("SaaS Archetype", saas_archetypes, default=saas_archetypes)
+    filtered_saas   = saas[saas["Archetype"].isin(selected_saas)]
+
+    st.subheader("Metrics Table")
+    st.dataframe(format_pct(filtered_saas, pct_cols_saas), use_container_width=True)
+
+    st.subheader("Rule of 40 by Company")
+    r40_df = filtered_saas.dropna(subset=["Rule of 40"])
+    fig3   = px.bar(r40_df, x="Ticker", y="Rule of 40", color="Archetype", title="Rule of 40")
+    st.plotly_chart(fig3, use_container_width=True)
+
+    st.subheader("EV/Revenue by Company")
+    ev_saas_df = filtered_saas.dropna(subset=["EV/Revenue"])
+    fig4       = px.bar(ev_saas_df, x="Ticker", y="EV/Revenue", color="Archetype", title="EV/Revenue")
+    st.plotly_chart(fig4, use_container_width=True)
