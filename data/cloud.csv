@@ -1,11 +1,10 @@
-Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,Rev Growth (YoY),EV_Revenue,Net Debt/EBITDA,Interest Coverage
-AMZN,Hyperscaler,"Amazon.com, Inc.",274.55,1.3,13.1,50.6,16.6,3.62,0.59,68.54
-MSFT,Hyperscaler,Microsoft Corporation,78.4,11.6,46.3,68.3,18.3,9.12,0.26,77.34
-GOOGL,Hyperscaler,Alphabet Inc.,156.75,6.6,36.1,60.4,21.8,10.36,-0.19,219.18
-ORCL,Hyperscaler,Oracle Corporation,,-36.4,36.2,65.8,20.6,8.11,4.44,6.63
-SNOW,Cloud_Data,Snowflake Inc.,51.94,34.6,-22.2,67.1,33.5,17.95,,-135.78
-MDB,Cloud_Data,"MongoDB, Inc.",51.27,19.9,-3.6,72.0,25.2,10.2,,-25.61
-DDOG,Cloud_Data,"Datadog, Inc.",96.8,25.5,0.8,79.9,32.2,24.69,-100.28,3.13
-NET,Cloud_Data,"Cloudflare, Inc.",114.95,32.4,-9.7,73.3,33.5,37.27,,-4.14
-CFLT,Cloud_Data,,,,,,,,,
-ESTC,Cloud_Data,Elastic N.V.,11.57,26.5,-3.5,76.2,16.0,3.07,,-1.14
+Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,Rev Growth (YoY),EV/Revenue,Net Debt/EBITDA,Interest Coverage
+AMZN,Hyperscaler,"Amazon.com, Inc.",275.62,1.3,13.1,50.6,16.6,3.64,0.59,68.54
+MSFT,Hyperscaler,Microsoft Corporation,79.65,11.6,46.3,68.3,18.3,9.26,0.26,77.34
+GOOGL,Hyperscaler,Alphabet Inc.,156.18,6.6,36.1,60.4,21.8,10.32,-0.19,219.18
+ORCL,Hyperscaler,Oracle Corporation,,-36.4,36.2,65.8,20.6,8.01,4.44,6.63
+SNOW,Cloud_Data,Snowflake Inc.,51.73,34.6,-22.2,67.1,33.5,17.88,,-135.78
+MDB,Cloud_Data,"MongoDB, Inc.",50.57,19.9,-3.6,72.0,25.2,10.06,,-25.61
+DDOG,Cloud_Data,"Datadog, Inc.",95.23,25.5,0.8,79.9,32.2,24.29,-100.28,3.13
+NET,Cloud_Data,"Cloudflare, Inc.",113.11,32.4,-9.7,73.3,33.5,36.67,,-4.14
+ESTC,Cloud_Data,Elastic N.V.,11.48,26.5,-3.5,76.2,16.0,3.05,,-1.14
