@@ -18,6 +18,13 @@ saas["Vertical"] = "SaaS"
 cyber = pd.read_csv("data/cyber_scored.csv")
 cyber["Vertical"] = "Cybersecurity"
 
+all_df = pd.concat([
+    pd.read_csv("data/semis_scored.csv").assign(Vertical="Semiconductors"),
+    pd.read_csv("data/cloud_scored.csv").assign(Vertical="Cloud"),
+    pd.read_csv("data/saas_scored.csv").assign(Vertical="SaaS"),
+    pd.read_csv("data/cyber_scored.csv").assign(Vertical="Cybersecurity"),
+], ignore_index=True)
+
 # --- Percentage columns per vertical ---
 pct_cols_semis  = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)", "ROIC"]
 pct_cols_default = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)"]
@@ -65,7 +72,7 @@ def verdict_chart(df, title):
                   color_discrete_map=color_map, title=title)
 
 # --- Tabs ---
-tab1, tab2, tab3, tab4 = st.tabs(["Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity", "All Companies"])
 
 with tab1:
     st.sidebar.header("Semiconductors")
@@ -158,3 +165,59 @@ with tab4:
     r40_cyber = filtered_cyber.dropna(subset=["Rule of 40"])
     fig_r40c  = px.bar(r40_cyber, x="Ticker", y="Rule of 40", color="Archetype", title="Rule of 40")
     st.plotly_chart(fig_r40c, use_container_width=True)
+with tab5:
+    st.sidebar.header("All Companies")
+    all_verticals = all_df["Vertical"].unique().tolist()
+    selected_all  = st.sidebar.multiselect("Vertical", all_verticals, default=all_verticals)
+    filtered_all  = all_df[all_df["Vertical"].isin(selected_all)]
+
+    # Summary stats
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Total Companies", len(filtered_all))
+    col2.metric("Buy",   len(filtered_all[filtered_all["Verdict"] == "Buy"]))
+    col3.metric("Watch", len(filtered_all[filtered_all["Verdict"] == "Watch"]))
+    col4.metric("Pass / Avoid", len(filtered_all[filtered_all["Verdict"].isin(["Pass", "Avoid", "Insufficient Data"])]))
+
+    # Cross-vertical scatter plot
+    st.subheader("Quality vs Valuation — All Companies")
+    scatter_all = filtered_all.dropna(subset=["Quality Score", "Valuation Score"])
+    fig_all = px.scatter(
+        scatter_all,
+        x="Valuation Score",
+        y="Quality Score",
+        color="Vertical",
+        symbol="Verdict",
+        hover_name="Ticker",
+        hover_data=["Name", "Archetype", "Vertical", "Verdict"],
+        title="All Companies — Quality vs Valuation",
+        labels={
+            "Valuation Score": "Valuation Score (higher = cheaper)",
+            "Quality Score":   "Quality Score (higher = better business)",
+        },
+        height=600,
+    )
+    fig_all.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
+    fig_all.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
+    st.plotly_chart(fig_all, use_container_width=True)
+
+    # Verdict distribution across all verticals
+    st.subheader("Verdict Distribution — All Companies")
+    verdict_all = filtered_all["Verdict"].value_counts().reset_index()
+    verdict_all.columns = ["Verdict", "Count"]
+    fig_verdict_all = px.bar(
+        verdict_all,
+        x="Verdict",
+        y="Count",
+        color="Verdict",
+        color_discrete_map=color_map,
+        title="Verdict Distribution — All Companies"
+    )
+    st.plotly_chart(fig_verdict_all, use_container_width=True)
+
+    # Top Buy candidates table
+    st.subheader("Top Buy Candidates")
+    buys = filtered_all[filtered_all["Verdict"] == "Buy"].sort_values("Quality Score", ascending=False)
+    st.dataframe(
+        buys[["Ticker", "Name", "Vertical", "Archetype", "Quality Score", "Valuation Score", "Verdict"]],
+        use_container_width=True
+    )
