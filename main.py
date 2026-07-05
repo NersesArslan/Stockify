@@ -4,10 +4,10 @@ from scoring import score_dataframe, score_saas_dataframe, score_cloud_dataframe
 
 # --- Control flags ---
 FETCH = {
-    "semis": False,
+    "semis": True,
     "cloud": True,
-    "saas":  False,
-    "cyber": False,
+    "saas":  True,
+    "cyber": True,
 }
 
 # --- Fetch ---

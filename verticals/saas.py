@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
-
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
 # --- Universe ---
 CRM_SALES = ["CRM", "HUBS"]
 HR_MGMT = ["WDAY", "PAYC", "PCTY"]
@@ -22,70 +23,91 @@ UNIVERSE = {
 
 # --- Fetcher ---
 def get_metrics(ticker_symbol, archetype):
-    try:
-        t = yf.Ticker(ticker_symbol)
-        info = t.info
+    for attempt in range(3):
+        try:
+            t = yf.Ticker(ticker_symbol)
+            info = t.info
 
-        market_cap    = info.get("marketCap", 0) or 0
-        total_debt    = info.get("totalDebt", 0) or 0
-        cash          = info.get("totalCash", 0) or 0
-        ebitda        = info.get("ebitda") or None
-        revenue       = info.get("totalRevenue") or None
-        free_cashflow = info.get("freeCashflow") or None
+            market_cap    = info.get("marketCap", 0) or 0
+            total_debt    = info.get("totalDebt", 0) or 0
+            cash          = info.get("totalCash", 0) or 0
+            ebitda        = info.get("ebitda") or None
+            revenue       = info.get("totalRevenue") or None
+            free_cashflow = info.get("freeCashflow") or None
 
-        income = t.financials
-        balance = t.balance_sheet
+            income = t.financials
+            balance = t.balance_sheet
 
-        ev = market_cap + total_debt - cash
+            ev = market_cap + total_debt - cash
 
-        operating_income = income.loc["Operating Income"].iloc[0] if "Operating Income" in income.index else None
-        tax_rate         = income.loc["Tax Rate For Calcs"].iloc[0] if "Tax Rate For Calcs" in income.index else 0.21
-        interest_exp     = income.loc["Interest Expense Non Operating"].iloc[0] if "Interest Expense Non Operating" in income.index else None
+            operating_income = income.loc["Operating Income"].iloc[0] if "Operating Income" in income.index else None
+            tax_rate         = income.loc["Tax Rate For Calcs"].iloc[0] if "Tax Rate For Calcs" in income.index else 0.21
+            interest_exp     = income.loc["Interest Expense Non Operating"].iloc[0] if "Interest Expense Non Operating" in income.index else None
 
-        ev_fcf          = round(ev / free_cashflow, 2)            if free_cashflow and free_cashflow > 0 else None
-        ev_revenue      = round(ev / revenue, 2)                  if revenue and revenue > 0 else None
-        fcf_margin      = round(free_cashflow / revenue * 100, 1) if free_cashflow and revenue else None
-        op_margin       = round(info.get("operatingMargins") * 100, 1) if info.get("operatingMargins") else None
-        gross_margin    = round(info.get("grossMargins") * 100, 1)     if info.get("grossMargins") else None
-        revenue_growth  = round(info.get("revenueGrowth") * 100, 1)   if info.get("revenueGrowth") else None
-        net_debt        = total_debt - cash
-        net_debt_ebitda = round(net_debt / ebitda, 2)             if ebitda and ebitda > 0 else None
-        interest_cov    = round(ebitda / abs(interest_exp), 2)    if ebitda and interest_exp and interest_exp != 0 else None
-        nrr             = None  # requires manual data from filings
-        rule_of_40      = round(revenue_growth + fcf_margin, 1)   if revenue_growth is not None and fcf_margin is not None else None
+            ev_fcf          = round(ev / free_cashflow, 2)            if free_cashflow and free_cashflow > 0 else None
+            ev_revenue      = round(ev / revenue, 2)                  if revenue and revenue > 0 else None
+            fcf_margin      = round(free_cashflow / revenue * 100, 1) if free_cashflow and revenue else None
+            op_margin       = round(info.get("operatingMargins") * 100, 1) if info.get("operatingMargins") else None
+            gross_margin    = round(info.get("grossMargins") * 100, 1)     if info.get("grossMargins") else None
+            revenue_growth  = round(info.get("revenueGrowth") * 100, 1)   if info.get("revenueGrowth") else None
+            net_debt        = total_debt - cash
+            net_debt_ebitda = round(net_debt / ebitda, 2)             if ebitda and ebitda > 0 else None
+            interest_cov    = round(ebitda / abs(interest_exp), 2)    if ebitda and interest_exp and interest_exp != 0 else None
+            nrr             = None  # requires manual data from filings
+            rule_of_40      = round(revenue_growth + fcf_margin, 1)   if revenue_growth is not None and fcf_margin is not None else None
 
-        return {
-            "Ticker":            ticker_symbol,
-            "Archetype":         archetype,
-            "Name":              info.get("shortName"),
-            "EV/FCF":            ev_fcf,
-            "EV/Revenue":        ev_revenue,
-            "FCF Margin":        fcf_margin,
-            "Op Margin":         op_margin,
-            "Gross Margin":      gross_margin,
-            "Rev Growth (YoY)":  revenue_growth,
-            "Rule of 40":        rule_of_40,
-            "NRR":               nrr,
-            "Net Debt/EBITDA":   net_debt_ebitda,
-            "Interest Coverage": interest_cov,
-        }
+            return {
+                "Ticker":            ticker_symbol,
+                "Archetype":         archetype,
+                "Name":              info.get("shortName"),
+                "EV/FCF":            ev_fcf,
+                "EV/Revenue":        ev_revenue,
+                "FCF Margin":        fcf_margin,
+                "Op Margin":         op_margin,
+                "Gross Margin":      gross_margin,
+                "Rev Growth (YoY)":  revenue_growth,
+                "Rule of 40":        rule_of_40,
+                "NRR":               nrr,
+                "Net Debt/EBITDA":   net_debt_ebitda,
+                "Interest Coverage": interest_cov,
+            }
 
-    except Exception as e:
-        return {
-            "Ticker":    ticker_symbol,
-            "Archetype": archetype,
-            "Error":     str(e)
-        }
+        except Exception as e:
+            if attempt < 2:           # 12 spaces
+                print(f"Retrying...") # 16 spaces
+                time.sleep(2)     
+            else:       
+                return {
+                    "Ticker":    ticker_symbol,
+                    "Archetype": archetype,
+                    "Error":     str(e)
+                }
 
 # --- Run ---
 def run():
+    tasks = [
+        (ticker, archetype)
+        for archetype, tickers in UNIVERSE.items()
+        for ticker in tickers
+    ]
+
     rows = []
-    for archetype, tickers in UNIVERSE.items():
-        for ticker in tickers:
-            print(f"Fetching {ticker}...")
-            rows.append(get_metrics(ticker, archetype))
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        futures = {
+            executor.submit(get_metrics, ticker, archetype): ticker
+            for ticker, archetype in tasks
+        }
+        for future in as_completed(futures):
+            ticker = futures[future]
+            print(f"Fetched {ticker}")
+            rows.append(future.result())
 
     df = pd.DataFrame(rows)
+
+    # Restore original order
+    order = [ticker for tickers in UNIVERSE.values() for ticker in tickers]
+    df["Ticker"] = pd.Categorical(df["Ticker"], categories=order, ordered=True)
+    df = df.sort_values("Ticker").reset_index(drop=True)
 
     for archetype in UNIVERSE.keys():
         print(f"\n{'='*60}")
