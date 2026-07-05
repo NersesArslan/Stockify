@@ -5,7 +5,7 @@ PANW,NETWORK,"Palo Alto Networks, Inc.",78.98,26.65,33.7,-2.5,72.0,31.1,64.8,,-0
 FTNT,NETWORK,"Fortinet, Inc.",61.64,15.72,25.5,31.3,80.3,20.1,45.6,,-1.16,117.48,80.0,60.0,Buy
 CHKP,NETWORK,Check Point Software Technologi,18.37,4.87,26.5,27.7,87.7,4.8,31.3,,-0.91,436.65,68.0,100.0,Buy
 OKTA,IDENTITY,"Okta, Inc.",23.13,7.55,32.6,7.3,77.4,11.2,43.8,,-8.16,66.75,82.0,80.0,Buy
-CYBR,IDENTITY,,,,,,,,,,,,,,Pass
+CYBR,IDENTITY,,,,,,,,,,,,,,Insufficient Data
 ZS,CLOUD_SEC,"Zscaler, Inc.",19.98,6.98,34.9,-3.3,76.7,25.4,60.3,,,-11.63,90.0,80.0,Buy
 QLYS,DATA_SEC,"Qualys, Inc.",20.21,7.0,34.7,35.0,83.2,9.8,44.5,,-1.71,,82.0,80.0,Buy
 VRNT,DATA_SEC,Verint Systems Inc.,13.46,1.7,12.6,2.0,70.9,-1.0,11.6,,2.48,10.91,48.0,100.0,Avoid
