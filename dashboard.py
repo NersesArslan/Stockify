@@ -9,17 +9,26 @@ st.title("Stock Screener")
 semis = pd.read_csv("data/semis_scored.csv")
 semis["Vertical"] = "Semiconductors"
 
-cloud = pd.read_csv("data/cloud.csv")
+cloud = pd.read_csv("data/cloud_scored.csv")
 cloud["Vertical"] = "Cloud"
 
-saas = pd.read_csv("data/saas.csv")
+saas = pd.read_csv("data/saas_scored.csv")
 saas["Vertical"] = "SaaS"
 
-cyber = pd.read_csv("data/cyber.csv")
+cyber = pd.read_csv("data/cyber_scored.csv")
 cyber["Vertical"] = "Cybersecurity"
+
 # --- Percentage columns per vertical ---
 pct_cols_semis  = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)", "ROIC"]
 pct_cols_default = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)"]
+
+color_map = {
+    "Buy":               "#2ecc71",
+    "Watch":             "#f39c12",
+    "Avoid":             "#e67e22",
+    "Pass":              "#e74c3c",
+    "Insufficient Data": "#95a5a6",
+}
 
 def format_pct(df, cols):
     display = df.copy()
@@ -28,6 +37,32 @@ def format_pct(df, cols):
             display[col] = pd.to_numeric(display[col], errors="coerce")
             display[col] = display[col].apply(lambda x: f"{x:.1f}%" if pd.notna(x) else None)
     return display
+
+def scatter_plot(df, title):
+    scatter_df = df.dropna(subset=["Quality Score", "Valuation Score"])
+    fig = px.scatter(
+        scatter_df,
+        x="Valuation Score",
+        y="Quality Score",
+        color="Verdict",
+        color_discrete_map=color_map,
+        hover_name="Ticker",
+        hover_data=["Archetype", "Name"],
+        title=title,
+        labels={
+            "Valuation Score": "Valuation Score (higher = cheaper)",
+            "Quality Score":   "Quality Score (higher = better business)",
+        }
+    )
+    fig.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
+    fig.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
+    return fig
+
+def verdict_chart(df, title):
+    counts = df["Verdict"].value_counts().reset_index()
+    counts.columns = ["Verdict", "Count"]
+    return px.bar(counts, x="Verdict", y="Count", color="Verdict",
+                  color_discrete_map=color_map, title=title)
 
 # --- Tabs ---
 tab1, tab2, tab3, tab4 = st.tabs(["Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity"])
@@ -40,57 +75,20 @@ with tab1:
 
     st.subheader("Metrics Table")
     st.dataframe(format_pct(filtered_semis, pct_cols_semis), use_container_width=True)
-    # Scores table
+
     st.subheader("Quality & Valuation Scores")
-    scores_df = filtered_semis[["Ticker", "Name", "Archetype", "Quality Score", "Valuation Score", "Verdict"]].copy()
-    st.dataframe(scores_df, use_container_width=True)
+    st.dataframe(filtered_semis[["Ticker", "Name", "Archetype", "Quality Score", "Valuation Score", "Verdict"]], use_container_width=True)
 
-    # Verdict distribution
-    st.subheader("Verdict Summary")
-    verdict_counts = filtered_semis["Verdict"].value_counts().reset_index()
-    verdict_counts.columns = ["Verdict", "Count"]
-    color_map = {
-        "Buy":               "#2ecc71",
-        "Watch":             "#f39c12",
-        "Avoid":             "#e67e22",
-        "Pass":              "#e74c3c",
-        "Insufficient Data": "#95a5a6",
-    }
-    fig_verdict = px.bar(
-        verdict_counts,
-        x="Verdict",
-        y="Count",
-        color="Verdict",
-        color_discrete_map=color_map,
-        title="Verdict Distribution"
-    )
-    st.plotly_chart(fig_verdict, use_container_width=True)
-
-    # Quality vs Valuation scatter
     st.subheader("Quality vs Valuation")
-    scatter_df = filtered_semis.dropna(subset=["Quality Score", "Valuation Score"])
-    fig_scatter = px.scatter(
-        scatter_df,
-        x="Valuation Score",
-        y="Quality Score",
-        color="Verdict",
-        color_discrete_map=color_map,
-        hover_name="Ticker",
-        hover_data=["Archetype", "Name"],
-        title="Quality Score vs Valuation Score",
-        labels={
-            "Valuation Score": "Valuation Score (higher = cheaper)",
-            "Quality Score":   "Quality Score (higher = better business)"
-        }
-    )
-    # Add quadrant lines
-    fig_scatter.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
-    fig_scatter.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
-    st.plotly_chart(fig_scatter, use_container_width=True)
+    st.plotly_chart(scatter_plot(filtered_semis, "Semiconductors — Quality vs Valuation"), use_container_width=True)
+
+    st.subheader("Verdict Distribution")
+    st.plotly_chart(verdict_chart(filtered_semis, "Semiconductors — Verdict Distribution"), use_container_width=True)
+
     st.subheader("ROIC by Company")
     roic_df = filtered_semis.dropna(subset=["ROIC"])
-    fig1 = px.bar(roic_df, x="Ticker", y="ROIC", color="Archetype", title="ROIC %")
-    st.plotly_chart(fig1, use_container_width=True)
+    fig_roic = px.bar(roic_df, x="Ticker", y="ROIC", color="Archetype", title="ROIC %")
+    st.plotly_chart(fig_roic, use_container_width=True)
 
 with tab2:
     st.sidebar.header("Cloud")
@@ -101,10 +99,20 @@ with tab2:
     st.subheader("Metrics Table")
     st.dataframe(format_pct(filtered_cloud, pct_cols_default), use_container_width=True)
 
+    st.subheader("Quality & Valuation Scores")
+    st.dataframe(filtered_cloud[["Ticker", "Name", "Archetype", "Quality Score", "Valuation Score", "Verdict"]], use_container_width=True)
+
+    st.subheader("Quality vs Valuation")
+    st.plotly_chart(scatter_plot(filtered_cloud, "Cloud — Quality vs Valuation"), use_container_width=True)
+
+    st.subheader("Verdict Distribution")
+    st.plotly_chart(verdict_chart(filtered_cloud, "Cloud — Verdict Distribution"), use_container_width=True)
+
     st.subheader("EV/Revenue by Company")
     ev_df = filtered_cloud.dropna(subset=["EV/Revenue"])
-    fig2  = px.bar(ev_df, x="Ticker", y="EV/Revenue", color="Archetype", title="EV/Revenue")
-    st.plotly_chart(fig2, use_container_width=True)
+    fig_ev = px.bar(ev_df, x="Ticker", y="EV/Revenue", color="Archetype", title="EV/Revenue")
+    st.plotly_chart(fig_ev, use_container_width=True)
+
 with tab3:
     st.sidebar.header("Enterprise SaaS")
     saas_archetypes = saas["Archetype"].unique().tolist()
@@ -114,15 +122,20 @@ with tab3:
     st.subheader("Metrics Table")
     st.dataframe(format_pct(filtered_saas, pct_cols_default), use_container_width=True)
 
+    st.subheader("Quality & Valuation Scores")
+    st.dataframe(filtered_saas[["Ticker", "Name", "Archetype", "Quality Score", "Valuation Score", "Verdict"]], use_container_width=True)
+
+    st.subheader("Quality vs Valuation")
+    st.plotly_chart(scatter_plot(filtered_saas, "Enterprise SaaS — Quality vs Valuation"), use_container_width=True)
+
+    st.subheader("Verdict Distribution")
+    st.plotly_chart(verdict_chart(filtered_saas, "Enterprise SaaS — Verdict Distribution"), use_container_width=True)
+
     st.subheader("Rule of 40 by Company")
     r40_df = filtered_saas.dropna(subset=["Rule of 40"])
-    fig3   = px.bar(r40_df, x="Ticker", y="Rule of 40", color="Archetype", title="Rule of 40")
-    st.plotly_chart(fig3, use_container_width=True)
+    fig_r40 = px.bar(r40_df, x="Ticker", y="Rule of 40", color="Archetype", title="Rule of 40")
+    st.plotly_chart(fig_r40, use_container_width=True)
 
-    st.subheader("EV/Revenue by Company")
-    ev_saas_df = filtered_saas.dropna(subset=["EV/Revenue"])
-    fig4       = px.bar(ev_saas_df, x="Ticker", y="EV/Revenue", color="Archetype", title="EV/Revenue")
-    st.plotly_chart(fig4, use_container_width=True)
 with tab4:
     st.sidebar.header("Cybersecurity")
     cyber_archetypes = cyber["Archetype"].unique().tolist()
@@ -132,12 +145,16 @@ with tab4:
     st.subheader("Metrics Table")
     st.dataframe(format_pct(filtered_cyber, pct_cols_default), use_container_width=True)
 
+    st.subheader("Quality & Valuation Scores")
+    st.dataframe(filtered_cyber[["Ticker", "Name", "Archetype", "Quality Score", "Valuation Score", "Verdict"]], use_container_width=True)
+
+    st.subheader("Quality vs Valuation")
+    st.plotly_chart(scatter_plot(filtered_cyber, "Cybersecurity — Quality vs Valuation"), use_container_width=True)
+
+    st.subheader("Verdict Distribution")
+    st.plotly_chart(verdict_chart(filtered_cyber, "Cybersecurity — Verdict Distribution"), use_container_width=True)
+
     st.subheader("Rule of 40 by Company")
     r40_cyber = filtered_cyber.dropna(subset=["Rule of 40"])
-    fig5      = px.bar(r40_cyber, x="Ticker", y="Rule of 40", color="Archetype", title="Rule of 40")
-    st.plotly_chart(fig5, use_container_width=True)
-
-    st.subheader("EV/Revenue by Company")
-    ev_cyber = filtered_cyber.dropna(subset=["EV/Revenue"])
-    fig6     = px.bar(ev_cyber, x="Ticker", y="EV/Revenue", color="Archetype", title="EV/Revenue")
-    st.plotly_chart(fig6, use_container_width=True)
+    fig_r40c  = px.bar(r40_cyber, x="Ticker", y="Rule of 40", color="Archetype", title="Rule of 40")
+    st.plotly_chart(fig_r40c, use_container_width=True)
