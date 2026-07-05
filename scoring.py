@@ -1,5 +1,6 @@
-# scoring.py
+import pandas as pd
 
+# --- Universal scoring function ---
 def score_metric(value, thresholds):
     """
     Assigns a score of 1-5 based on thresholds.
@@ -7,10 +8,15 @@ def score_metric(value, thresholds):
     """
     if value is None:
         return None
+    try:
+        value = float(value)
+    except (TypeError, ValueError):
+        return None
     for min_val, max_val, score in thresholds:
         if min_val <= value < max_val:
             return score
     return None
+
 
 # --- Threshold definitions ---
 
@@ -59,7 +65,7 @@ NET_DEBT_EBITDA_THRESHOLDS = [
     (0,             1,   4),
     (1,             2,   3),
     (2,             4,   2),
-    (4,  float("inf"),   1),
+    (4,  float("inf"),  1),
 ]
 
 EV_FCF_THRESHOLDS = [
@@ -70,8 +76,6 @@ EV_FCF_THRESHOLDS = [
     (100, float("inf"),  1),
 ]
 
-# --- SaaS / Cyber thresholds ---
-
 RULE_OF_40_THRESHOLDS = [
     (-float("inf"), 20,  1),
     (20,            35,  2),
@@ -79,16 +83,6 @@ RULE_OF_40_THRESHOLDS = [
     (50,            70,  4),
     (70,  float("inf"),  5),
 ]
-
-EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 5,   5),
-    (5,             10,  4),
-    (10,            20,  3),
-    (20,            40,  2),
-    (40,  float("inf"),  1),
-]
-
-# --- Cloud thresholds ---
 
 HYPERSCALER_EV_REVENUE_THRESHOLDS = [
     (-float("inf"), 3,   5),
@@ -98,7 +92,7 @@ HYPERSCALER_EV_REVENUE_THRESHOLDS = [
     (15,  float("inf"),  1),
 ]
 
-CLOUD_DATA_EV_REVENUE_THRESHOLDS = [
+SAAS_EV_REVENUE_THRESHOLDS = [
     (-float("inf"), 5,   5),
     (5,             10,  4),
     (10,            20,  3),
@@ -106,146 +100,434 @@ CLOUD_DATA_EV_REVENUE_THRESHOLDS = [
     (40,  float("inf"),  1),
 ]
 
-# --- Weights ---
 
-SEMI_QUALITY_WEIGHTS = {
-    "ROIC":              0.25,
-    "FCF Margin":        0.20,
-    "Gross Margin":      0.20,
-    "Op Margin":         0.15,
-    "Rev Growth (YoY)":  0.15,
-    "Net Debt/EBITDA":   0.05,
+# --- Config registry ---
+
+SCORING_CONFIG = {
+
+    # --- Semiconductors ---
+    "Foundry": {
+        "quality_weights": {
+            "ROIC":             0.25,
+            "FCF Margin":       0.20,
+            "Gross Margin":     0.20,
+            "Op Margin":        0.15,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.05,
+        },
+        "quality_thresholds": {
+            "ROIC":             ROIC_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/FCF",
+        "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    "Fabless": {
+        "quality_weights": {
+            "ROIC":             0.25,
+            "FCF Margin":       0.20,
+            "Gross Margin":     0.20,
+            "Op Margin":        0.15,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.05,
+        },
+        "quality_thresholds": {
+            "ROIC":             ROIC_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/FCF",
+        "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    "Equipment": {
+        "quality_weights": {
+            "ROIC":             0.25,
+            "FCF Margin":       0.20,
+            "Gross Margin":     0.20,
+            "Op Margin":        0.15,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.05,
+        },
+        "quality_thresholds": {
+            "ROIC":             ROIC_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/FCF",
+        "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    "IDM": {
+        "quality_weights": {
+            "ROIC":             0.25,
+            "FCF Margin":       0.20,
+            "Gross Margin":     0.20,
+            "Op Margin":        0.15,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.05,
+        },
+        "quality_thresholds": {
+            "ROIC":             ROIC_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/FCF",
+        "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    "Memory": {
+        "quality_weights": {
+            "ROIC":             0.25,
+            "FCF Margin":       0.20,
+            "Gross Margin":     0.20,
+            "Op Margin":        0.15,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.05,
+        },
+        "quality_thresholds": {
+            "ROIC":             ROIC_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/FCF",
+        "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    "EDA_IP": {
+        "quality_weights": {
+            "ROIC":             0.25,
+            "FCF Margin":       0.20,
+            "Gross Margin":     0.20,
+            "Op Margin":        0.15,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.05,
+        },
+        "quality_thresholds": {
+            "ROIC":             ROIC_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/FCF",
+        "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    "SUPPLY_CHAIN": {
+        "quality_weights": {
+            "ROIC":             0.25,
+            "FCF Margin":       0.20,
+            "Gross Margin":     0.20,
+            "Op Margin":        0.15,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.05,
+        },
+        "quality_thresholds": {
+            "ROIC":             ROIC_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/FCF",
+        "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    # --- Cloud ---
+    "Hyperscaler": {
+        "quality_weights": {
+            "FCF Margin":       0.30,
+            "Op Margin":        0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": HYPERSCALER_EV_REVENUE_THRESHOLDS,
+    },
+
+    "Cloud_Data": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.20,
+            "Gross Margin":     0.20,
+            "Op Margin":        0.15,
+            "Rev Growth (YoY)": 0.10,
+            "Net Debt/EBITDA":  0.05,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    # --- SaaS ---
+    "CRM_Sales": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "HR_Mgmt": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "ERP_Finance": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "DevOps": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "Data_Analytics": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "Vertical_SaaS": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "Collaboration": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    # --- Cybersecurity ---
+    "ENDPOINT": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "NETWORK": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "IDENTITY": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "CLOUD_SEC": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
+    "DATA_SEC": {
+        "quality_weights": {
+            "Rule of 40":       0.30,
+            "FCF Margin":       0.25,
+            "Gross Margin":     0.20,
+            "Rev Growth (YoY)": 0.15,
+            "Net Debt/EBITDA":  0.10,
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
 }
 
-SAAS_QUALITY_WEIGHTS = {
-    "Rule of 40":        0.30,
-    "FCF Margin":        0.25,
-    "Gross Margin":      0.20,
-    "Rev Growth (YoY)":  0.15,
-    "Net Debt/EBITDA":   0.10,
-}
 
-HYPERSCALER_QUALITY_WEIGHTS = {
-    "FCF Margin":        0.30,
-    "Op Margin":         0.25,
-    "Gross Margin":      0.20,
-    "Rev Growth (YoY)":  0.15,
-    "Net Debt/EBITDA":   0.10,
-}
+# --- Universal scoring functions ---
 
-CLOUD_DATA_QUALITY_WEIGHTS = {
-    "Rule of 40":        0.30,
-    "FCF Margin":        0.20,
-    "Gross Margin":      0.20,
-    "Op Margin":         0.15,
-    "Rev Growth (YoY)":  0.10,
-    "Net Debt/EBITDA":   0.05,
-}
-# --- Scorers ---
-
-def score_semi_quality(row):
-    scores = {
-        "ROIC":             score_metric(row.get("ROIC"),             ROIC_THRESHOLDS),
-        "FCF Margin":       score_metric(row.get("FCF Margin"),       FCF_MARGIN_THRESHOLDS),
-        "Gross Margin":     score_metric(row.get("Gross Margin"),     GROSS_MARGIN_THRESHOLDS),
-        "Op Margin":        score_metric(row.get("Op Margin"),        OP_MARGIN_THRESHOLDS),
-        "Rev Growth (YoY)": score_metric(row.get("Rev Growth (YoY)"), REV_GROWTH_THRESHOLDS),
-        "Net Debt/EBITDA":  score_metric(row.get("Net Debt/EBITDA"),  NET_DEBT_EBITDA_THRESHOLDS),
-    }
-
-    total_weight = 0
-    weighted_sum = 0
-    for metric, weight in SEMI_QUALITY_WEIGHTS.items():
-        if scores[metric] is not None:
-            weighted_sum += scores[metric] * weight
-            total_weight += weight
-
-    quality = round(weighted_sum / total_weight * 20, 1) if total_weight > 0 else None
-    return quality
-
-
-def score_semi_valuation(row):
-    ev_fcf_score = score_metric(row.get("EV/FCF"), EV_FCF_THRESHOLDS)
-    if ev_fcf_score is None:
-        return None
-    return round(ev_fcf_score * 20, 1)
-
-
-def score_saas_quality(row):
-    scores = {
-        "Rule of 40":       score_metric(row.get("Rule of 40"),      RULE_OF_40_THRESHOLDS),
-        "FCF Margin":       score_metric(row.get("FCF Margin"),       FCF_MARGIN_THRESHOLDS),
-        "Gross Margin":     score_metric(row.get("Gross Margin"),     GROSS_MARGIN_THRESHOLDS),
-        "Rev Growth (YoY)": score_metric(row.get("Rev Growth (YoY)"), REV_GROWTH_THRESHOLDS),
-        "Net Debt/EBITDA":  score_metric(row.get("Net Debt/EBITDA"),  NET_DEBT_EBITDA_THRESHOLDS),
-    }
-
-    total_weight = 0
-    weighted_sum = 0
-    for metric, weight in SAAS_QUALITY_WEIGHTS.items():
-        if scores[metric] is not None:
-            weighted_sum += scores[metric] * weight
-            total_weight += weight
-
-    quality = round(weighted_sum / total_weight * 20, 1) if total_weight > 0 else None
-    return quality
-
-def score_saas_valuation(row):
-    ev_rev_score = score_metric(row.get("EV/Revenue"), EV_REVENUE_THRESHOLDS)
-    if ev_rev_score is None:
-        return None
-    return round(ev_rev_score * 20, 1)
-
-def score_hyperscaler_quality(row):
-    scores = {
-        "FCF Margin":       score_metric(row.get("FCF Margin"),       FCF_MARGIN_THRESHOLDS),
-        "Op Margin":        score_metric(row.get("Op Margin"),        OP_MARGIN_THRESHOLDS),
-        "Gross Margin":     score_metric(row.get("Gross Margin"),     GROSS_MARGIN_THRESHOLDS),
-        "Rev Growth (YoY)": score_metric(row.get("Rev Growth (YoY)"), REV_GROWTH_THRESHOLDS),
-        "Net Debt/EBITDA":  score_metric(row.get("Net Debt/EBITDA"),  NET_DEBT_EBITDA_THRESHOLDS),
-    }
-
-    total_weight = 0
-    weighted_sum = 0
-    for metric, weight in HYPERSCALER_QUALITY_WEIGHTS.items():
-        if scores[metric] is not None:
-            weighted_sum += scores[metric] * weight
-            total_weight += weight
-
-    return round(weighted_sum / total_weight * 20, 1) if total_weight > 0 else None
-
-def score_cloud_data_quality(row):
-    scores = {
-        "Rule of 40":       score_metric(row.get("Rule of 40"),       RULE_OF_40_THRESHOLDS),
-        "FCF Margin":       score_metric(row.get("FCF Margin"),       FCF_MARGIN_THRESHOLDS),
-        "Gross Margin":     score_metric(row.get("Gross Margin"),     GROSS_MARGIN_THRESHOLDS),
-        "Op Margin":        score_metric(row.get("Op Margin"),        OP_MARGIN_THRESHOLDS),
-        "Rev Growth (YoY)": score_metric(row.get("Rev Growth (YoY)"), REV_GROWTH_THRESHOLDS),
-        "Net Debt/EBITDA":  score_metric(row.get("Net Debt/EBITDA"),  NET_DEBT_EBITDA_THRESHOLDS),
-    }
-
-    total_weight = 0
-    weighted_sum = 0
-    for metric, weight in CLOUD_DATA_QUALITY_WEIGHTS.items():
-        if scores[metric] is not None:
-            weighted_sum += scores[metric] * weight
-            total_weight += weight
-
-    return round(weighted_sum / total_weight * 20, 1) if total_weight > 0 else None
-
-def score_cloud_valuation(row):
-    if row.get("Archetype") == "Hyperscaler":
-        score = score_metric(row.get("EV/Revenue"), HYPERSCALER_EV_REVENUE_THRESHOLDS)
-    else:
-        score = score_metric(row.get("EV/Revenue"), CLOUD_DATA_EV_REVENUE_THRESHOLDS)
-    return round(score * 20, 1) if score is not None else None
-
-def score_cloud_quality(row):
-    if row.get("Archetype") == "Hyperscaler":
-        return score_hyperscaler_quality(row)
-    else:
-        return score_cloud_data_quality(row)
-    
 def get_verdict(quality, valuation):
     if quality is None or valuation is None:
         return "Insufficient Data"
@@ -259,29 +541,44 @@ def get_verdict(quality, valuation):
         return "Pass"
 
 
+def score_row(row):
+    archetype = row.get("Archetype")
+    config = SCORING_CONFIG.get(archetype)
+
+    if config is None:
+        return pd.Series({
+            "Quality Score":   None,
+            "Valuation Score": None,
+            "Verdict":         "Insufficient Data",
+        })
+
+    # Quality score
+    total_weight = 0
+    weighted_sum = 0
+    for metric, weight in config["quality_weights"].items():
+        thresholds = config["quality_thresholds"][metric]
+        score = score_metric(row.get(metric), thresholds)
+        if score is not None:
+            weighted_sum += score * weight
+            total_weight += weight
+
+    quality = round(weighted_sum / total_weight * 20, 1) if total_weight > 0 else None
+
+    # Valuation score
+    val_metric     = config["valuation_metric"]
+    val_thresholds = config["valuation_thresholds"]
+    val_score      = score_metric(row.get(val_metric), val_thresholds)
+    valuation      = round(val_score * 20, 1) if val_score is not None else None
+
+    verdict = get_verdict(quality, valuation)
+
+    return pd.Series({
+        "Quality Score":   quality,
+        "Valuation Score": valuation,
+        "Verdict":         verdict,
+    })
+
+
 def score_dataframe(df):
-    df = df.copy()
-    df["Quality Score"] = df.apply(score_semi_quality, axis=1)
-    df["Valuation Score"] = df.apply(score_semi_valuation, axis=1)
-    df["Verdict"] = df.apply(
-        lambda row: get_verdict(row["Quality Score"], row["Valuation Score"]), axis=1
-    )
-    return df
-
-def score_saas_dataframe(df):
-    df = df.copy()
-    df["Quality Score"]   = df.apply(score_saas_quality, axis=1)
-    df["Valuation Score"] = df.apply(score_saas_valuation, axis=1)
-    df["Verdict"]         = df.apply(
-        lambda row: get_verdict(row["Quality Score"], row["Valuation Score"]), axis=1
-    )
-    return df
-
-def score_cloud_dataframe(df):
-    df = df.copy()
-    df["Quality Score"]   = df.apply(score_cloud_quality, axis=1)
-    df["Valuation Score"] = df.apply(score_cloud_valuation, axis=1)
-    df["Verdict"]         = df.apply(
-        lambda row: get_verdict(row["Quality Score"], row["Valuation Score"]), axis=1
-    )
-    return df
+    scores = df.apply(score_row, axis=1)
+    return pd.concat([df, scores], axis=1)
