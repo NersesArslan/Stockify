@@ -52,6 +52,7 @@ def get_metrics(ticker_symbol, archetype):
             net_debt_ebitda = round(net_debt / ebitda, 2)          if ebitda and ebitda > 0 else None
             interest_cov    = round(ebitda / abs(interest_exp), 2) if ebitda and interest_exp and interest_exp != 0 else None
             ev_revenue = round(ev / revenue, 2) if revenue and revenue > 0 else None
+            rule_of_40 = round(revenue_growth + fcf_margin, 1) if revenue_growth is not None and fcf_margin is not None else None
             nrr = None  # requires manual data from filings
 
             return {
@@ -66,6 +67,7 @@ def get_metrics(ticker_symbol, archetype):
                 "EV/Revenue":              ev_revenue,
                 "Net Debt/EBITDA":   net_debt_ebitda,
                 "Interest Coverage": interest_cov,
+                "Rule of 40": rule_of_40,
             }
 
         except Exception as e:

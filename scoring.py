@@ -135,10 +135,11 @@ HYPERSCALER_QUALITY_WEIGHTS = {
 
 CLOUD_DATA_QUALITY_WEIGHTS = {
     "Rule of 40":        0.30,
-    "FCF Margin":        0.25,
+    "FCF Margin":        0.20,
     "Gross Margin":      0.20,
-    "Rev Growth (YoY)":  0.15,
-    "Net Debt/EBITDA":   0.10,
+    "Op Margin":         0.15,
+    "Rev Growth (YoY)":  0.10,
+    "Net Debt/EBITDA":   0.05,
 }
 # --- Scorers ---
 
@@ -218,6 +219,7 @@ def score_cloud_data_quality(row):
         "Rule of 40":       score_metric(row.get("Rule of 40"),       RULE_OF_40_THRESHOLDS),
         "FCF Margin":       score_metric(row.get("FCF Margin"),       FCF_MARGIN_THRESHOLDS),
         "Gross Margin":     score_metric(row.get("Gross Margin"),     GROSS_MARGIN_THRESHOLDS),
+        "Op Margin":        score_metric(row.get("Op Margin"),        OP_MARGIN_THRESHOLDS),
         "Rev Growth (YoY)": score_metric(row.get("Rev Growth (YoY)"), REV_GROWTH_THRESHOLDS),
         "Net Debt/EBITDA":  score_metric(row.get("Net Debt/EBITDA"),  NET_DEBT_EBITDA_THRESHOLDS),
     }
