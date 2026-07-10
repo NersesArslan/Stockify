@@ -71,6 +71,15 @@ def verdict_chart(df, title):
     return px.bar(counts, x="Verdict", y="Count", color="Verdict",
                   color_discrete_map=color_map, title=title)
 
+def show_analysis(df, title="AI Analysis"):
+    analysis_df = df[df["AI Analysis"].notna()].copy()
+    if len(analysis_df) == 0:
+        return
+    st.subheader(title)
+    for _, row in analysis_df.iterrows():
+        verdict_color = color_map.get(row["Verdict"], "#95a5a6")
+        with st.expander(f"{row['Ticker']} — {row['Name']} | {row['Verdict']}"):
+            st.markdown(row["AI Analysis"])
 # --- Tabs ---
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity", "All Companies"])
 
@@ -88,7 +97,7 @@ with tab1:
 
     st.subheader("Quality vs Valuation")
     st.plotly_chart(scatter_plot(filtered_semis, "Semiconductors — Quality vs Valuation"), use_container_width=True)
-
+    show_analysis(filtered_semis, "AI Analysis — Semiconductors")
     st.subheader("Verdict Distribution")
     st.plotly_chart(verdict_chart(filtered_semis, "Semiconductors — Verdict Distribution"), use_container_width=True)
 

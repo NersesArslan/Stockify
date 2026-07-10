@@ -61,7 +61,7 @@ def analyze_row(row):
     try:
         message = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=300,
+            max_tokens=400,
             system=SYSTEM_PROMPT,
             messages=[
                 {"role": "user", "content": build_prompt(row)}
