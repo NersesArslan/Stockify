@@ -40,7 +40,21 @@ def get_metrics(ticker_symbol, archetype):
 
             income = t.financials
             balance = t.balance_sheet
-
+                        # Historical gross margin trend (4 years)
+            try:
+                income_hist = t.financials
+                if "Gross Profit" in income_hist.index and "Total Revenue" in income_hist.index:
+                    gp  = income_hist.loc["Gross Profit"]
+                    rev = income_hist.loc["Total Revenue"]
+                    margins = (gp / rev * 100).dropna()
+                    if len(margins) >= 2:
+                        gm_trend = round(float(margins.iloc[0]) - float(margins.iloc[-1]), 1)
+                    else:
+                        gm_trend = None
+                else:
+                    gm_trend = None
+            except Exception:
+                gm_trend = None
             ev = market_cap + total_debt - cash
 
             operating_income = income.loc["Operating Income"].iloc[0] if "Operating Income" in income.index else None
@@ -67,6 +81,7 @@ def get_metrics(ticker_symbol, archetype):
                 "FCF Margin":        fcf_margin,
                 "Op Margin":         op_margin,
                 "Gross Margin":      gross_margin,
+                "GM Trend (3Y)":     gm_trend,
                 "Rev Growth (YoY)":  revenue_growth,
                 "ROIC":              roic,
                 "Net Debt/EBITDA":   net_debt_ebitda,

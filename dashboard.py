@@ -208,7 +208,7 @@ with tab5:
     fig_all.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
     fig_all.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
     st.plotly_chart(fig_all, use_container_width=True)
-
+    show_analysis(filtered_all, "AI Analysis — All Companies")
     # Verdict distribution across all verticals
     st.subheader("Verdict Distribution — All Companies")
     verdict_all = filtered_all["Verdict"].value_counts().reset_index()
