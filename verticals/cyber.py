@@ -5,7 +5,9 @@ import time
 
 ENDPOINT  = ["CRWD", "S"]
 NETWORK   = ["PANW", "FTNT", "CHKP"]
-IDENTITY  = ["OKTA", "CYBR"]
+IDENTITY  = ["OKTA", 
+             # "CYBR" — removed, being acquired by PANW (deal announced July 2025)
+]
 CLOUD_SEC = ["ZS"]
 DATA_SEC  = ["QLYS", "VRNT"]
 
