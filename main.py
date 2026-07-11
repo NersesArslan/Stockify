@@ -4,10 +4,10 @@ from scoring import score_dataframe
 from analyst import analyze_dataframe
 
 FETCH = {
-    "semis": False,
-    "cloud": False,
-    "saas":  False,
-    "cyber": False,
+    "semis": True,
+    "cloud": True,
+    "saas":  True,
+    "cyber": True,
 }
 
 SCORE = {
@@ -19,9 +19,9 @@ SCORE = {
 
 ANALYZE = {
     "semis": True,
-    "cloud": False,
-    "saas":  False,
-    "cyber": False,
+    "cloud": True,
+    "saas":  True,
+    "cyber": True,
 }
 
 if FETCH["semis"]: semis.run()
@@ -33,7 +33,6 @@ if SCORE["semis"]:
     df_semis = pd.read_csv("data/semis.csv")
     df_semis = score_dataframe(df_semis)
     if ANALYZE["semis"]:
-        print(f"DEBUG: ANALYZE semis is True, starting analysis...")
         df_semis["Vertical"] = "Semiconductors"
         df_semis = analyze_dataframe(df_semis, vertical="Semiconductors")
     df_semis.to_csv("data/semis_scored.csv", index=False)
