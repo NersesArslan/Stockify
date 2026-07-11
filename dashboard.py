@@ -120,7 +120,7 @@ with tab2:
 
     st.subheader("Quality vs Valuation")
     st.plotly_chart(scatter_plot(filtered_cloud, "Cloud — Quality vs Valuation"), use_container_width=True)
-
+    show_analysis(filtered_cloud, "AI Analysis — Cloud")
     st.subheader("Verdict Distribution")
     st.plotly_chart(verdict_chart(filtered_cloud, "Cloud — Verdict Distribution"), use_container_width=True)
 
@@ -143,7 +143,7 @@ with tab3:
 
     st.subheader("Quality vs Valuation")
     st.plotly_chart(scatter_plot(filtered_saas, "Enterprise SaaS — Quality vs Valuation"), use_container_width=True)
-
+    show_analysis(filtered_saas, "AI Analysis — Enterprise SaaS")
     st.subheader("Verdict Distribution")
     st.plotly_chart(verdict_chart(filtered_saas, "Enterprise SaaS — Verdict Distribution"), use_container_width=True)
 
@@ -166,7 +166,7 @@ with tab4:
 
     st.subheader("Quality vs Valuation")
     st.plotly_chart(scatter_plot(filtered_cyber, "Cybersecurity — Quality vs Valuation"), use_container_width=True)
-
+    show_analysis(filtered_cyber, "AI Analysis — Cybersecurity")
     st.subheader("Verdict Distribution")
     st.plotly_chart(verdict_chart(filtered_cyber, "Cybersecurity — Verdict Distribution"), use_container_width=True)
 
