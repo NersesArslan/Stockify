@@ -1,10 +1,10 @@
-Ticker,Archetype,Name,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,Rev Growth (YoY),Rule of 40,NRR,Net Debt/EBITDA,Interest Coverage
-CRWD,ENDPOINT,"CrowdStrike Holdings, Inc.",97.0,36.68,37.8,-2.2,75.1,25.6,63.4,,-62.9,2.12
-S,ENDPOINT,"SentinelOne, Inc.",20.3,5.19,25.6,-28.8,73.2,20.8,46.4,,,
-PANW,NETWORK,"Palo Alto Networks, Inc.",73.93,24.95,33.7,-2.5,72.0,31.1,64.8,,-0.66,780.79
-FTNT,NETWORK,"Fortinet, Inc.",62.14,15.85,25.5,31.3,80.3,20.1,45.6,,-1.16,117.48
-CHKP,NETWORK,Check Point Software Technologi,17.67,4.68,26.5,27.7,87.7,4.8,31.3,,-0.91,436.65
-OKTA,IDENTITY,"Okta, Inc.",22.63,7.39,32.6,7.3,77.4,11.2,43.8,,-8.16,66.75
-ZS,CLOUD_SEC,"Zscaler, Inc.",18.8,6.57,34.9,-3.3,76.7,25.4,60.3,,,-11.63
-QLYS,DATA_SEC,"Qualys, Inc.",20.89,7.24,34.7,35.0,83.2,9.8,44.5,,-1.71,
-VRNT,DATA_SEC,Verint Systems Inc.,13.46,1.7,12.6,2.0,70.9,-1.0,11.6,,2.48,10.91
+Ticker,Archetype,Name,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,Rev Growth (YoY),GM Trend (3Y),Rule of 40,NRR,Net Debt/EBITDA,Interest Coverage
+CRWD,ENDPOINT,"CrowdStrike Holdings, Inc.",97.0,36.68,37.8,-2.2,75.1,25.6,1.5,63.4,,-62.9,2.12
+S,ENDPOINT,"SentinelOne, Inc.",20.3,5.19,25.6,-28.8,73.2,20.8,8.3,46.4,,,
+PANW,NETWORK,"Palo Alto Networks, Inc.",73.93,24.95,33.7,-2.5,72.0,31.1,4.7,64.8,,-0.66,780.79
+FTNT,NETWORK,"Fortinet, Inc.",62.14,15.85,25.5,31.3,80.3,20.1,5.0,45.6,,-1.16,117.48
+CHKP,NETWORK,Check Point Software Technologi,17.67,4.68,26.5,27.7,87.7,4.8,-0.2,31.3,,-0.91,436.65
+OKTA,IDENTITY,"Okta, Inc.",22.63,7.39,32.6,7.3,77.4,11.2,6.7,43.8,,-8.16,66.75
+ZS,CLOUD_SEC,"Zscaler, Inc.",18.8,6.57,34.9,-3.3,76.7,25.4,-0.9,60.3,,,-11.63
+QLYS,DATA_SEC,"Qualys, Inc.",20.89,7.24,34.7,35.0,83.2,9.8,3.8,44.5,,-1.71,
+VRNT,DATA_SEC,Verint Systems Inc.,13.46,1.7,12.6,2.0,70.9,-1.0,5.4,11.6,,2.48,10.91

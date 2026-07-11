@@ -483,17 +483,21 @@ SCORING_CONFIG = {
 
     # --- Cybersecurity ---
     "ENDPOINT": {
-        "quality_weights": {
-            "Rule of 40":       0.30,
-            "FCF Margin":       0.25,
-            "Gross Margin":     0.20,
-            "Rev Growth (YoY)": 0.15,
-            "Net Debt/EBITDA":  0.10,
-        },
+"quality_weights": {
+    "Rule of 40":       0.25,
+    "FCF Margin":       0.20,
+    "Gross Margin":     0.15,
+    "GM Trend (3Y)":    0.10,
+    "Op Margin":        0.15,
+    "Rev Growth (YoY)": 0.10,
+    "Net Debt/EBITDA":  0.05,
+},
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
             "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
@@ -502,18 +506,22 @@ SCORING_CONFIG = {
     },
 
     "NETWORK": {
-        "quality_weights": {
-            "Rule of 40":       0.30,
-            "FCF Margin":       0.25,
-            "Gross Margin":     0.20,
-            "Rev Growth (YoY)": 0.15,
-            "Net Debt/EBITDA":  0.10,
-        },
+"quality_weights": {
+    "Rule of 40":       0.25,
+    "FCF Margin":       0.20,
+    "Gross Margin":     0.15,
+    "GM Trend (3Y)":    0.10,
+    "Op Margin":        0.15,
+    "Rev Growth (YoY)": 0.10,
+    "Net Debt/EBITDA":  0.05,
+},
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -521,17 +529,21 @@ SCORING_CONFIG = {
     },
 
     "IDENTITY": {
-        "quality_weights": {
-            "Rule of 40":       0.30,
-            "FCF Margin":       0.25,
-            "Gross Margin":     0.20,
-            "Rev Growth (YoY)": 0.15,
-            "Net Debt/EBITDA":  0.10,
-        },
+"quality_weights": {
+    "Rule of 40":       0.25,
+    "FCF Margin":       0.20,
+    "Gross Margin":     0.15,
+    "GM Trend (3Y)":    0.10,
+    "Op Margin":        0.15,
+    "Rev Growth (YoY)": 0.10,
+    "Net Debt/EBITDA":  0.05,
+},
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
             "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
@@ -540,17 +552,21 @@ SCORING_CONFIG = {
     },
 
     "CLOUD_SEC": {
-        "quality_weights": {
-            "Rule of 40":       0.30,
-            "FCF Margin":       0.25,
-            "Gross Margin":     0.20,
-            "Rev Growth (YoY)": 0.15,
-            "Net Debt/EBITDA":  0.10,
-        },
+"quality_weights": {
+    "Rule of 40":       0.25,
+    "FCF Margin":       0.20,
+    "Gross Margin":     0.15,
+    "GM Trend (3Y)":    0.10,
+    "Op Margin":        0.15,
+    "Rev Growth (YoY)": 0.10,
+    "Net Debt/EBITDA":  0.05,
+},
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
             "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
@@ -559,17 +575,21 @@ SCORING_CONFIG = {
     },
 
     "DATA_SEC": {
-        "quality_weights": {
-            "Rule of 40":       0.30,
-            "FCF Margin":       0.25,
-            "Gross Margin":     0.20,
-            "Rev Growth (YoY)": 0.15,
-            "Net Debt/EBITDA":  0.10,
-        },
+"quality_weights": {
+    "Rule of 40":       0.25,
+    "FCF Margin":       0.20,
+    "Gross Margin":     0.15,
+    "GM Trend (3Y)":    0.10,
+    "Op Margin":        0.15,
+    "Rev Growth (YoY)": 0.10,
+    "Net Debt/EBITDA":  0.05,
+},
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
             "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
