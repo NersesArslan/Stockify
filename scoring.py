@@ -120,7 +120,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,  # reduced from 0.15
+    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
     "Net Debt/EBITDA":  0.05,
 },
 "quality_thresholds": {
@@ -129,7 +129,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
-    "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
@@ -143,7 +143,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,  # reduced from 0.15
+    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
     "Net Debt/EBITDA":  0.05,
 },
 "quality_thresholds": {
@@ -152,7 +152,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
-    "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
@@ -166,7 +166,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,  # reduced from 0.15
+    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
     "Net Debt/EBITDA":  0.05,
 },
 "quality_thresholds": {
@@ -175,7 +175,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
-    "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
@@ -189,7 +189,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,  # reduced from 0.15
+    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
     "Net Debt/EBITDA":  0.05,
 },
 "quality_thresholds": {
@@ -198,7 +198,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
-    "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
@@ -212,7 +212,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,  # reduced from 0.15
+    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
     "Net Debt/EBITDA":  0.05,
 },
 "quality_thresholds": {
@@ -221,7 +221,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
-    "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
@@ -235,7 +235,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,  # reduced from 0.15
+    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
     "Net Debt/EBITDA":  0.05,
 },
 "quality_thresholds": {
@@ -244,7 +244,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
-    "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
@@ -258,7 +258,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,  # reduced from 0.15
+    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
     "Net Debt/EBITDA":  0.05,
 },
 "quality_thresholds": {
@@ -267,7 +267,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
-    "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
@@ -281,7 +281,7 @@ SCORING_CONFIG = {
     "Op Margin":        0.20,  # reduced from 0.25
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
-    "Rev Growth (YoY)": 0.15,
+    "Rev CAGR (3Y)":    0.15,
     "Net Debt/EBITDA":  0.10,  # unchanged
 },
         "quality_thresholds": {
@@ -289,7 +289,7 @@ SCORING_CONFIG = {
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -303,7 +303,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,  # reduced from 0.20
     "GM Trend (3Y)":    0.10,  # NEW
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,  # reduced from 0.15
+    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -312,7 +312,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -327,7 +327,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -336,7 +336,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -350,7 +350,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -359,7 +359,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -373,7 +373,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -382,7 +382,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -396,7 +396,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -405,7 +405,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -419,7 +419,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -428,7 +428,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -442,7 +442,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -451,7 +451,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -465,7 +465,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -474,7 +474,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -489,7 +489,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -498,7 +498,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -512,14 +512,14 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -535,7 +535,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -544,7 +544,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -558,7 +558,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -567,7 +567,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -581,7 +581,7 @@ SCORING_CONFIG = {
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
     "Op Margin":        0.15,
-    "Rev Growth (YoY)": 0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -590,7 +590,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev Growth (YoY)": REV_GROWTH_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
