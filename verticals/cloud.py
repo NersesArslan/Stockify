@@ -35,12 +35,26 @@ def get_metrics(ticker_symbol, archetype):
             free_cashflow  = info.get("freeCashflow") or None
 
             income = t.financials
+            # Revenue CAGR (3 year)
+            try:
+                if "Total Revenue" in income.index:
+                    rev_hist = income.loc["Total Revenue"].dropna()
+                    if len(rev_hist) >= 4:
+                        recent   = float(rev_hist.iloc[0])
+                        older    = float(rev_hist.iloc[3])
+                        rev_cagr = round(((recent / older) ** (1/3) - 1) * 100, 1)
+                    else:
+                        rev_cagr = None
+                else:
+                    rev_cagr = None
+            except Exception:
+                rev_cagr = None
             balance = t.balance_sheet
             try:
-                income_hist = t.financials
+                income_hist = income
                 if "Gross Profit" in income_hist.index and "Total Revenue" in income_hist.index:
                     gp  = income_hist.loc["Gross Profit"]
-                    rev = income_hist.loc["Total Revenue"]
+                    rev = income.loc["Total Revenue"]
                     margins = (gp / rev * 100).dropna()
                     if len(margins) >= 2:
                         gm_trend = round(float(margins.iloc[0]) - float(margins.iloc[-1]), 1)
@@ -76,6 +90,7 @@ def get_metrics(ticker_symbol, archetype):
                 "FCF Margin":        fcf_margin,
                 "Op Margin":         op_margin,
                 "Gross Margin":      gross_margin,
+                "Rev CAGR (3Y)":     rev_cagr,
                 "Rev Growth (YoY)":  revenue_growth,
                 "GM Trend (3Y)":     gm_trend,
                 "EV/Revenue":              ev_revenue,

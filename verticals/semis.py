@@ -39,6 +39,21 @@ def get_metrics(ticker_symbol, archetype):
             free_cashflow  = info.get("freeCashflow") or None
 
             income = t.financials
+            # Revenue CAGR (3 year)
+# Revenue CAGR (3Y) - reuse existing income variable
+            try:
+                if "Total Revenue" in income.index:
+                    rev_hist = income.loc["Total Revenue"].dropna()
+                    if len(rev_hist) >= 4:
+                        recent   = float(rev_hist.iloc[0])
+                        older    = float(rev_hist.iloc[3])
+                        rev_cagr = round(((recent / older) ** (1/3) - 1) * 100, 1)
+                    else:
+                        rev_cagr = None
+                else:
+                    rev_cagr = None
+            except Exception:
+                rev_cagr = None
             balance = t.balance_sheet
                         # Historical gross margin trend (4 years)
             try:
@@ -82,6 +97,7 @@ def get_metrics(ticker_symbol, archetype):
                 "Op Margin":         op_margin,
                 "Gross Margin":      gross_margin,
                 "GM Trend (3Y)":     gm_trend,
+                "Rev CAGR (3Y)":     rev_cagr,
                 "Rev Growth (YoY)":  revenue_growth,
                 "ROIC":              roic,
                 "Net Debt/EBITDA":   net_debt_ebitda,
