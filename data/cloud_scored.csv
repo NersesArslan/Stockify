@@ -1,10 +1,54 @@
-Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),EV/Revenue,Net Debt/EBITDA,Interest Coverage,Rule of 40,Quality Score,Valuation Score,Verdict
-AMZN,Hyperscaler,"Amazon.com, Inc.",289.1,1.3,13.1,50.6,11.7,16.6,6.5,3.82,0.59,68.54,17.9,62.1,80,Buy
-MSFT,Hyperscaler,Microsoft Corporation,80.68,11.6,46.3,68.3,12.4,18.3,0.4,9.38,0.26,77.34,29.9,76.8,60,Buy
-GOOGL,Hyperscaler,Alphabet Inc.,160.99,6.6,36.1,60.4,12.5,21.8,4.3,10.64,-0.19,219.18,28.4,72.6,40,Watch
-ORCL,Hyperscaler,Oracle Corporation,,-36.4,36.2,65.8,10.5,20.6,-7.0,7.68,4.44,6.63,-15.8,55.8,60,Avoid
-SNOW,Cloud_Data,Snowflake Inc.,54.07,34.6,-22.2,67.1,31.4,33.5,1.9,18.69,,-135.78,68.1,77.9,60,Buy
-MDB,Cloud_Data,"MongoDB, Inc.",47.18,19.9,-3.6,72.0,24.3,25.2,-1.0,9.38,,-25.61,45.1,60.0,80,Buy
-DDOG,Cloud_Data,"Datadog, Inc.",96.79,25.5,0.8,79.9,26.9,32.2,0.7,24.69,-100.28,3.13,57.7,76.0,40,Watch
-NET,Cloud_Data,"Cloudflare, Inc.",127.51,32.4,-9.7,73.3,30.5,33.5,-1.6,41.34,,-4.14,65.9,75.8,20,Watch
-ESTC,Cloud_Data,Elastic N.V.,12.43,26.5,-3.5,76.2,17.6,16.0,3.8,3.3,,-1.14,42.5,68.4,100,Buy
+Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),EV/Revenue,Net Debt/EBITDA,Interest Coverage,Rule of 40,Quality Score,Valuation Score,Verdict,Vertical,AI Analysis
+AMZN,Hyperscaler,"Amazon.com, Inc.",289.1,1.3,13.1,50.6,11.7,16.6,6.5,3.82,0.59,68.54,17.9,62.1,80,Buy,Cloud,"## Amazon.com, Inc. (AMZN) — Cloud Hyperscaler | 🟢 Buy
+
+**Quality Score: 62.1 | Valuation Score: 80**
+
+The 1.3% FCF margin is the most glaring number here — for a company generating $600B+ in revenue, the gap between a 50.6% gross margin and a near-zero FCF margin signals how aggressively Amazon is reinvesting capital into infrastructure, fulfillment, and AI buildout, which compresses near-term cash generation but reflects deliberate capital deployment rather than structural weakness. Operating margin at 13.1% is improving and AWS remains the crown jewel — a structurally necessary cloud platform with strong switching costs and pricing power that anchors the quality thesis. The EV/FCF of 289x is essentially meaningless at this FCF margin level and should be discounted; EV/Revenue of 3.82x is modest for a hyperscaler with 16.6% revenue growth, and the clean balance sheet (Net Debt/EBITDA of 0.59x) gives Amazon significant capacity to sustain this capital intensity. The Rule of 40 score of 17.9 is weak in isolation, but for a hyperscaler reinvesting at this scale, it understates the earnings power that will surface as CapEx normalizes.
+
+**Investment Takeaway:** Amazon is a structurally necessary AI infrastructure compounder where the suppressed FCF today is the price of owning one of only three credible hyperscale cloud platforms tomorrow — the Buy verdict is justified on quality trajectory, not current cash generation."
+MSFT,Hyperscaler,Microsoft Corporation,80.68,11.6,46.3,68.3,12.4,18.3,0.4,9.38,0.26,77.34,29.9,76.8,60,Buy,Cloud,"## Microsoft Corporation (MSFT) — Buy | Quality: 76.8 | Valuation: 60
+
+Microsoft's operating margin of 46.3% and gross margin of 68.3% confirm elite-tier business quality, and 18.3% revenue growth at this scale is structurally impressive — few hyperscalers can sustain that. The balance sheet is essentially clean at 0.26x Net Debt/EBITDA, giving Microsoft full flexibility to continue investing aggressively in AI infrastructure (OpenAI, Azure capacity). The notable tension is the FCF margin of just 11.6% against an EV/FCF of 80.68x — heavy capex is compressing near-term free cash flow, meaning the valuation requires Azure AI monetization to materialize at scale; the Rule of 40 score of 29.9 is below the 40 threshold, flagging that current cash generation doesn't yet justify the multiple on its own. The Valuation Score of 60 suggests the market is pricing in execution, not giving it away cheap.
+
+**Investment Takeaway:** MSFT is a structurally necessary AI infrastructure platform with fortress economics, but the Buy verdict is contingent on Azure AI converting heavy capex into FCF expansion — investors are paying for tomorrow's margins today."
+GOOGL,Hyperscaler,Alphabet Inc.,160.99,6.6,36.1,60.4,12.5,21.8,4.3,10.64,-0.19,219.18,28.4,72.6,40,Watch,Cloud,"## Alphabet Inc. (GOOGL) — Watch
+
+Alphabet's operating margin of 36.1% and gross margin of 60.4% confirm a genuinely high-quality business with significant pricing power across Search and Cloud, and the near-zero net debt position (Net Debt/EBITDA: -0.19) reflects a fortress balance sheet. However, the FCF margin of just 6.6% against a 36.1% op margin is a notable disconnect — likely driven by aggressive capex in AI infrastructure — which inflates the EV/FCF to a punishing 160.99x and pushes the Rule of 40 to a below-threshold 28.4, weak for a hyperscaler of this scale. Revenue growth of 21.8% is strong and Google Cloud is accelerating, but at EV/Revenue of 10.64x, the market is pricing in sustained execution with little room for error. The Quality Score of 72.6 reflects the underlying business strength, but the Valuation Score of 40 confirms this is not a cheap entry point — the capex-driven FCF compression is the key risk to monitor.
+
+**Investment Takeaway:** Alphabet is a structurally essential AI infrastructure compounder, but the current valuation prices in near-perfection while FCF is being heavily reinvested, making this a stock to own on weakness rather than chase at today's multiple."
+ORCL,Hyperscaler,Oracle Corporation,,-36.4,36.2,65.8,10.5,20.6,-7.0,7.68,4.44,6.63,-15.8,55.8,60,Avoid,Cloud,
+SNOW,Cloud_Data,Snowflake Inc.,54.07,34.6,-22.2,67.1,31.4,33.5,1.9,18.69,,-135.78,68.1,77.9,60,Buy,Cloud,"## Snowflake Inc. (SNOW) — Verdict: Buy
+
+Snowflake demonstrates genuine business quality with a 34.6% FCF margin and a Rule of 40 score of 68.1, confirming it's generating real cash while sustaining 33.5% revenue growth — the operating loss of -22.2% is largely a GAAP artifact of stock-based compensation rather than a structural profitability problem. The 67.1% gross margin reflects strong pricing power in cloud data warehousing, and its consumption-based model tied directly to customer data workloads makes it structurally embedded in enterprise AI pipelines — switching costs are high once data assets and transformation logic are built on the platform. At EV/FCF of 54x and EV/Revenue of 18.7x, the valuation is undeniably rich, but the Valuation Score of 60 suggests it's within a justifiable range relative to peers in the Cloud_Data archetype given the growth and margin profile. The primary risk is competitive pressure from Databricks and cloud-native offerings from AWS/Google, which could compress growth rates and force pricing concessions.
+
+**Investment Takeaway:** Snowflake's combination of high FCF generation, deep enterprise switching costs, and direct structural relevance to AI data infrastructure justifies its premium valuation, making it a quality-first buy for investors with a 2–3 year horizon."
+MDB,Cloud_Data,"MongoDB, Inc.",47.18,19.9,-3.6,72.0,24.3,25.2,-1.0,9.38,,-25.61,45.1,60.0,80,Buy,Cloud,"## MongoDB (MDB) — Buy | Quality: 60 | Valuation: 80
+
+MongoDB presents a mixed quality picture: a strong 72% gross margin and 25.2% revenue growth signal genuine competitive strength in the developer-native database market, but the -3.6% operating margin reveals that profitability remains elusive at the bottom line despite a respectable 19.9% FCF margin (suggesting meaningful stock-based compensation or working capital dynamics). The Rule of 40 score of 45.1 is solid for the Cloud_Data archetype, confirming the growth/efficiency balance is competitive. At EV/Revenue of 9.38x and EV/FCF of 47x, the valuation score of 80 suggests MDB is cheap relative to peers of similar quality — unusual for a developer-platform business with genuine switching costs baked into its document model and Atlas ecosystem. The key risk is competitive pressure from cloud-native alternatives (DynamoDB, Firestore) and whether Atlas consumption growth can sustain 25%+ revenue expansion as the macro environment pressures developer budgets.
+
+**Takeaway:** MongoDB's developer lock-in, Atlas platform stickiness, and attractive relative valuation make it a credible Buy, but the path to sustained operating profitability remains the critical variable to monitor."
+DDOG,Cloud_Data,"Datadog, Inc.",96.79,25.5,0.8,79.9,26.9,32.2,0.7,24.69,-100.28,3.13,57.7,76.0,40,Watch,Cloud,"## Datadog (DDOG) — Watch
+
+Datadog demonstrates genuine business quality: 79.9% gross margins, 25.5% FCF margin, and 32.2% revenue growth combine for a Rule of 40 score of 57.7, well above the threshold that separates durable SaaS businesses from marginal ones. The near-zero operating margin (0.8%) reflects ongoing investment rather than structural weakness, and the deeply negative net debt/EBITDA (-100.28) signals a fortress balance sheet with no leverage risk. The core concern is valuation — at 96.8x EV/FCF and 24.7x EV/Revenue, the market is pricing in sustained hypergrowth with zero execution error, leaving virtually no margin of safety.
+
+Datadog occupies a structurally necessary position in cloud observability — as AI workloads proliferate, monitoring and troubleshooting complexity grows, which is a genuine tailwind — but at these multiples, even a modest growth deceleration would reprice the stock significantly.
+
+**Investment Takeaway:** DDOG is a high-quality, structurally well-positioned business, but the 97x FCF multiple demands flawless execution and leaves no room for error — hold off until valuation compresses meaningfully."
+NET,Cloud_Data,"Cloudflare, Inc.",127.51,32.4,-9.7,73.3,30.5,33.5,-1.6,41.34,,-4.14,65.9,75.8,20,Watch,Cloud,"## Cloudflare (NET) — Watch
+
+Cloudflare demonstrates genuine business quality with a **73.3% gross margin**, **32.4% FCF margin**, and **33.5% revenue growth**, producing a strong Rule of 40 score of **65.9** — metrics that validate its structural position as a network-layer security and connectivity platform with real switching costs. The disconnect between FCF margin and operating margin (-9.7%) reflects aggressive stock-based compensation rather than a cash-burning business, which partially flatters the FCF figure and warrants scrutiny. However, the valuation is simply extreme — **EV/FCF of 127.5x and EV/Revenue of 41.3x** leave no margin for error and price in a decade of flawless execution, explaining the rock-bottom Valuation Score of 20.
+
+**Notable risk:** At these multiples, any deceleration in growth — from competitive pressure by AWS, Zscaler, or Palo Alto — would cause severe multiple compression. The business quality is real, but the price demands perfection.
+
+---
+
+**Investment Takeaway:** Cloudflare is a structurally sound, high-quality network platform with legitimate moats, but at 127x FCF it is priced for a best-case-only outcome — own it on a significant pullback, not here."
+ESTC,Cloud_Data,Elastic N.V.,12.43,26.5,-3.5,76.2,17.6,16.0,3.8,3.3,,-1.14,42.5,68.4,100,Buy,Cloud,"## Elastic N.V. (ESTC) — Buy | Quality: 68.4 | Valuation: 100
+
+Elastic presents a genuinely unusual profile: a 26.5% FCF margin trading at just 12.4x EV/FCF and 3.3x EV/Revenue, which is remarkably cheap for a software company growing at 16% with a 76% gross margin and a Rule of 40 score of 42.5. The disconnect between strong free cash flow generation and the negative operating margin (-3.5%) reflects typical SaaS stock-based compensation and GAAP adjustments rather than a structurally broken business model. The valuation score of 100 is a hard signal — at these multiples, the market is pricing in near-zero growth or significant execution risk, likely stemming from competitive pressure from OpenSearch, Datadog, and Splunk (now Cisco) in the search and observability space.
+
+**Key risk:** Elastic's moat is real but contested — its core search technology faces open-source forks and well-capitalized competitors, and the 16% growth rate, while respectable, has been decelerating, which may explain the compressed multiple.
+
+---
+
+**Investment takeaway:** At 12x FCF with a 26% FCF margin and Rule of 40 above 40, Elastic is priced for failure in a business that is quietly generating substantial cash — the valuation alone makes this compelling if competitive positioning stabilizes."

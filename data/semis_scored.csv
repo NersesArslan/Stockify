@@ -1,49 +1,158 @@
-Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,GM Trend (3Y),Rev CAGR (3Y),Rev Growth (YoY),ROIC,Net Debt/EBITDA,Interest Coverage,Quality Score,Valuation Score,Verdict
-TSM,Foundry,Taiwan Semiconductor Manufactur,-0.16,17.5,58.1,61.9,0.3,18.9,35.1,25.2,-0.8,230.88,78.0,100.0,Buy
-UMC,Foundry,United Microelectronics Corpora,0.13,14.3,18.5,29.6,-16.1,-5.2,5.5,8.7,-0.56,68.02,46.0,100.0,Avoid
-NVDA,Fabless,NVIDIA Corporation,110.21,18.3,65.6,74.1,14.1,100.0,85.2,66.8,-0.24,639.05,92.0,20.0,Watch
-AMD,Fabless,"Advanced Micro Devices, Inc.",119.1,19.2,14.4,53.1,4.6,13.6,37.8,4.4,-1.14,56.72,57.0,20.0,Pass
-QCOM,Fabless,QUALCOMM Incorporated,20.13,21.6,22.1,54.8,-2.4,0.1,-3.5,27.2,0.42,19.58,72.0,80.0,Buy
-AVGO,Fabless,Broadcom Inc.,70.6,36.1,49.0,76.3,1.2,24.4,47.9,14.1,1.08,13.11,77.0,40.0,Watch
-MRVL,Fabless,"Marvell Technology, Inc.",82.2,26.0,14.5,51.5,0.5,11.4,27.6,6.2,0.53,13.39,63.0,40.0,Watch
-MPWR,Fabless,"Monolithic Power Systems, Inc.",132.41,16.6,30.0,55.2,-3.3,15.9,26.1,16.7,-1.57,,68.0,20.0,Watch
-MCHP,Fabless,Microchip Technology Incorporat,45.83,24.2,17.1,57.7,-9.8,-17.6,35.1,3.7,4.43,5.66,47.0,60.0,Avoid
-QRVO,Fabless,"Qorvo, Inc.",13.92,15.1,16.0,46.2,9.6,1.0,-7.0,8.6,0.48,11.13,58.0,100.0,Avoid
-SWKS,Fabless,"Skyworks Solutions, Inc.",12.24,17.0,7.7,41.1,-6.3,-9.3,-1.0,7.0,-0.26,33.55,46.0,100.0,Avoid
-ARM,Fabless,Arm Holdings plc,390.08,15.3,29.5,97.5,1.5,22.5,20.1,8.6,-2.92,,68.0,20.0,Watch
-SLAB,Fabless,"Silicon Laboratories, Inc.",439.69,1.9,-8.0,59.3,-4.5,-8.5,20.1,-3.9,,-21.33,35.8,20.0,Pass
-ALGM,Fabless,"Allegro MicroSystems, Inc.",63.07,16.8,10.4,46.5,-9.8,-2.9,26.1,2.0,1.29,4.79,42.0,40.0,Pass
-MTSI,Fabless,MACOM Technology Solutions Hold,271.14,7.6,17.6,55.7,-5.5,12.7,22.5,5.6,-1.07,42.6,52.0,20.0,Pass
-CRUS,Fabless,"Cirrus Logic, Inc.",12.38,25.3,20.1,52.8,2.3,1.7,5.7,18.0,-1.47,570.91,70.0,100.0,Buy
-SIMO,Fabless,Silicon Motion Technology Corpo,,-11.8,15.3,48.1,-1.0,-2.2,105.5,9.8,-0.81,,43.0,,Insufficient Data
-MXL,Fabless,"MaxLinear, Inc",354.99,4.5,-12.2,57.2,-1.2,-25.3,43.0,-17.3,,-3.69,35.8,20.0,Pass
-RMBS,Fabless,"Rambus, Inc.",41.49,34.6,34.3,80.4,3.2,15.9,8.1,15.6,-2.52,220.15,83.0,60.0,Buy
-ASML,Equipment,ASML Holding N.V. - New York Re,83.9,24.5,36.0,52.6,2.3,15.6,13.2,38.7,-0.45,107.39,82.0,40.0,Watch
-LRCX,Equipment,Lam Research Corporation,96.15,20.1,35.0,50.0,3.0,2.3,23.8,37.0,-0.13,44.04,80.0,40.0,Watch
-KLAC,Equipment,KLA Corporation,101.88,22.1,41.2,61.4,-0.1,9.7,11.5,41.5,0.2,19.36,82.0,20.0,Watch
-AMAT,Equipment,"Applied Materials, Inc.",150.99,10.5,31.9,49.0,2.2,3.2,11.4,23.7,-0.1,34.48,63.0,20.0,Watch
-ENTG,Equipment,"Entegris, Inc.",54.91,13.8,17.9,44.8,1.9,-0.9,5.0,11.2,3.76,4.41,50.0,60.0,Avoid
-MKSI,Equipment,MKS Inc.,56.53,12.0,16.0,46.6,3.1,3.5,15.2,8.0,3.96,4.11,54.0,60.0,Avoid
-ACLS,Equipment,"Axcelis Technologies, Inc.",84.72,5.8,4.0,43.6,1.2,-3.0,3.3,10.0,-2.74,20.16,46.0,40.0,Pass
-UCTT,Equipment,"Ultra Clean Holdings, Inc.",,-1.8,2.1,15.6,-3.9,-4.7,2.9,2.9,3.86,3.09,26.0,,Insufficient Data
-ICHR,Equipment,Ichor Holdings,139.54,2.5,1.1,12.0,-7.3,-9.5,4.7,-4.1,2.57,4.09,28.0,20.0,Pass
-COHU,Equipment,"Cohu, Inc.",35.24,14.4,-8.3,43.5,-4.4,-17.7,29.3,-4.4,,-0.58,36.8,60.0,Avoid
-FORM,Equipment,"FormFactor, Inc.",,-0.1,17.7,42.2,-0.2,1.6,32.0,4.7,-1.98,263.71,40.0,,Insufficient Data
-ONTO,Equipment,Onto Innovation Inc.,73.53,19.1,16.8,54.2,-3.9,0.0,9.5,6.1,-2.45,,56.0,40.0,Pass
-NVMI,Equipment,Nova Ltd.,120.32,13.6,30.1,57.3,1.8,15.6,10.3,10.6,-1.05,,65.0,20.0,Watch
-CAMT,Equipment,Camtek Ltd.,,,22.4,51.0,0.6,15.6,2.5,10.9,-1.32,83.65,66.2,,Insufficient Data
-TER,Equipment,"Teradyne, Inc.",178.98,7.9,37.6,58.7,-1.0,0.4,87.0,20.2,-0.14,169.66,63.0,20.0,Watch
-INTC,IDM,Intel Corporation,,-15.4,6.9,37.2,-7.8,-5.7,7.2,-0.0,0.86,12.99,32.0,,Insufficient Data
-TXN,IDM,Texas Instruments Incorporated,264.97,5.8,37.8,57.3,-11.7,-4.1,18.6,17.7,1.03,15.96,57.0,20.0,Pass
-NXPI,IDM,NXP Semiconductors N.V.,28.77,21.6,27.7,55.6,-2.2,-2.4,12.2,10.9,1.93,8.93,59.0,80.0,Avoid
-STM,IDM,STMicroelectronics N.V.,,-2.9,3.7,34.0,-13.5,-9.9,23.0,1.3,-0.72,45.27,30.0,,Insufficient Data
-ADI,IDM,"Analog Devices, Inc.",50.58,30.4,38.1,64.5,-1.2,-2.8,37.2,5.9,0.86,19.36,67.0,60.0,Buy
-ON,IDM,ON Semiconductor Corporation,28.75,21.1,18.2,42.7,-15.9,-10.4,4.7,6.6,0.41,28.88,52.0,80.0,Avoid
-WOLF,IDM,"Wolfspeed, Inc.",32.45,10.8,-72.0,-17.4,,,-19.0,,,,36.0,80.0,Avoid
-MU,Memory,"Micron Technology, Inc.",131.11,8.5,80.4,72.6,-5.4,6.7,345.7,13.2,-0.29,143.02,61.0,20.0,Watch
-WDC,Memory,Western Digital Corporation,84.63,17.6,37.0,45.4,7.5,-20.3,45.5,16.8,-0.39,11.0,66.0,40.0,Watch
-STX,Memory,Seagate Technology Holdings PLC,117.24,14.6,35.7,41.6,5.4,-7.9,44.1,40.9,0.86,10.95,75.0,20.0,Watch
-SNPS,EDA_IP,"Synopsys, Inc.",25.37,40.8,10.4,82.6,-3.6,15.2,41.9,2.1,4.93,3.8,62.0,80.0,Buy
-CDNS,EDA_IP,"Cadence Design Systems, Inc.",69.37,27.1,29.7,86.1,-3.2,14.1,18.7,15.1,0.76,17.28,72.0,40.0,Watch
-AVT,SUPPLY_CHAIN,"Avnet, Inc.",112.24,0.4,3.1,10.5,-1.5,-3.0,33.9,7.8,3.88,3.11,35.0,20.0,Pass
-ARW,SUPPLY_CHAIN,"Arrow Electronics, Inc.",48.08,0.8,4.2,11.3,-1.8,-6.0,39.0,7.7,1.7,5.96,36.0,60.0,Avoid
+Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,GM Trend (3Y),Rev CAGR (3Y),Rev Growth (YoY),ROIC,Net Debt/EBITDA,Interest Coverage,Quality Score,Valuation Score,Verdict,Vertical,AI Analysis
+TSM,Foundry,Taiwan Semiconductor Manufactur,-0.16,17.5,58.1,61.9,0.3,18.9,35.1,25.2,-0.8,230.88,78.0,100.0,Buy,Semiconductors,"## Taiwan Semiconductor Manufacturing (TSM) — Buy
+
+**Quality Score: 78 | Valuation Score: 100**
+
+TSMC's operating margin of 58.1% and gross margin of 61.9% are extraordinary for a capital-intensive foundry business, reflecting its unassailable position as the only manufacturer capable of producing leading-edge nodes at scale — a structural moat that no competitor can replicate in the near term. ROIC of 25.2% is exceptional given the massive capex requirements of the foundry model, and 35.1% revenue growth confirms that AI-driven chip demand is translating directly into top-line acceleration. The negative EV/FCF (-0.16) is a technical artifact of heavy capex investment cycles compressing near-term free cash flow, not a sign of business deterioration — the 17.5% FCF margin on a revenue base of this scale remains healthy, and the net cash balance sheet (Net Debt/EBITDA of -0.8) provides significant financial flexibility. The primary risks are geopolitical (Taiwan Strait exposure) and customer concentration (Apple, NVIDIA, AMD), neither of which diminishes the structural necessity of TSMC's role in the global semiconductor supply chain.
+
+**Investment Takeaway:** TSMC is the irreplaceable backbone of AI infrastructure with best-in-class margins and returns, and at a valuation score of 100, the market is offering a rare opportunity to own the world's most critical semiconductor asset at a compelling price."
+UMC,Foundry,United Microelectronics Corpora,0.13,14.3,18.5,29.6,-16.1,-5.2,5.5,8.7,-0.56,68.02,46.0,100.0,Avoid,Semiconductors,
+NVDA,Fabless,NVIDIA Corporation,110.21,18.3,65.6,74.1,14.1,100.0,85.2,66.8,-0.24,639.05,92.0,20.0,Watch,Semiconductors,"## NVIDIA Corporation (NVDA) — Watch
+
+NVIDIA's business quality metrics are exceptional and nearly unparalleled in semiconductors: a 65.6% operating margin and 74.1% gross margin reflect extraordinary pricing power in AI accelerators, while a 66.8% ROIC confirms the company is compounding capital at a rate few businesses in any sector can match. Revenue growth of 85.2% YoY alongside a net cash position (Net Debt/EBITDA of -0.24) underscores that this is a structurally necessary platform — not a cyclical commodity chipmaker — as hyperscalers have no credible near-term alternative for GPU-accelerated AI training and inference. The FCF margin of 18.3% trails the operating margin significantly, worth monitoring for working capital or capex dynamics, but the core earnings power is undeniable. However, an EV/FCF of 110x leaves essentially zero margin of safety — the valuation scores a 20/100, meaning the market has already priced in years of dominance, and any deceleration in data center spending or competitive inroads from AMD, custom silicon (Google TPUs, Amazon Trainium), or geopolitical restrictions on China sales could compress multiples sharply.
+
+**Investment Takeaway:** NVIDIA is the highest-quality name in AI infrastructure, but at 110x FCF it demands flawless execution indefinitely — own it if already held, but new capital is better deployed waiting for a meaningful drawdown."
+AMD,Fabless,"Advanced Micro Devices, Inc.",119.1,19.2,14.4,53.1,4.6,13.6,37.8,4.4,-1.14,56.72,57.0,20.0,Pass,Semiconductors,
+QCOM,Fabless,QUALCOMM Incorporated,20.13,21.6,22.1,54.8,-2.4,0.1,-3.5,27.2,0.42,19.58,72.0,80.0,Buy,Semiconductors,"## QUALCOMM (QCOM) — Fabless Semiconductor | **BUY**
+**Quality Score: 72 | Valuation Score: 80**
+
+QCOM exhibits strong fundamental business quality — a 27.2% ROIC signals genuine competitive advantage in modem and SoC design, while 54.8% gross margins and 21.6% FCF margins confirm durable pricing power consistent with its IP licensing moat and dominant smartphone chip position. The balance sheet is essentially clean at 0.42x Net Debt/EBITDA, and at an EV/FCF of ~20x for a capital-light fabless model generating these returns, the valuation is materially cheap relative to semiconductor peers. The primary concern is the -3.5% revenue decline, which reflects ongoing smartphone market softness and concentration risk — QCOM's heavy Apple and Android OEM dependence makes it vulnerable to handset cycle timing, and its diversification into automotive and IoT, while real, remains early-stage relative to the core business.
+
+**Investment Takeaway:** QCOM is a high-ROIC, cash-generative fabless franchise trading at a discounted multiple — the cyclical revenue dip creates a buying opportunity so long as you believe handset volumes normalize and the licensing business remains intact."
+AVGO,Fabless,Broadcom Inc.,70.6,36.1,49.0,76.3,1.2,24.4,47.9,14.1,1.08,13.11,77.0,40.0,Watch,Semiconductors,"## Broadcom Inc. (AVGO) — Watch
+
+Broadcom demonstrates exceptional business quality with a 76.3% gross margin and 49% operating margin that reflect genuine pricing power and switching costs across its semiconductor and infrastructure software portfolio — the VMware acquisition has meaningfully expanded both scale and margin profile. The 47.9% revenue growth is impressive even accounting for the VMware consolidation effect, and a 36.1% FCF margin confirms the business converts revenue to cash at a rate few in the industry match. However, at 70.6x EV/FCF, the market is pricing in sustained perfection — the ROIC of 14.1% is solid but not exceptional for a business carrying this multiple, and the valuation leaves almost no room for execution missteps, integration friction, or a slowdown in custom AI ASIC demand from hyperscaler customers.
+
+**One-sentence takeaway:** Broadcom is a structurally necessary, high-quality compounder in AI infrastructure with legitimate moats, but at 70.6x EV/FCF the valuation demands flawless execution and continued hyperscaler ASIC momentum to justify entry at current prices."
+MRVL,Fabless,"Marvell Technology, Inc.",82.2,26.0,14.5,51.5,0.5,11.4,27.6,6.2,0.53,13.39,63.0,40.0,Watch,Semiconductors,"## Marvell Technology (MRVL) — Watch
+
+Marvell's 27.6% revenue growth signals strong momentum in its AI-driven data center business (custom silicon, PAM4 DSPs), and the 26% FCF margin demonstrates real cash generation capability for a fabless semiconductor company. However, the quality picture is muddied by a 6.2% ROIC — well below what you'd expect from a high-quality semiconductor franchise — suggesting the heavy capital deployed through acquisitions (Inphi, Cavium) has yet to earn adequate returns. The EV/FCF of 82.2x is pricing in a significant acceleration of that ROIC improvement, leaving essentially no margin of safety at current levels, which is why the Valuation Score sits at 40.
+
+The 14.5% operating margin relative to the 51.5% gross margin also flags meaningful overhead drag, meaning profitability leverage depends heavily on continued revenue scaling — a risk if AI infrastructure spending cycles down.
+
+**Investment Takeaway:** Marvell is a structurally relevant AI infrastructure play with real growth, but the combination of sub-7% ROIC and 82x FCF leaves no room for execution stumbles, making this a stock to own only at a meaningfully lower entry point."
+MPWR,Fabless,"Monolithic Power Systems, Inc.",132.41,16.6,30.0,55.2,-3.3,15.9,26.1,16.7,-1.57,,68.0,20.0,Watch,Semiconductors,"## Monolithic Power Systems (MPWR) — Watch
+
+MPWR demonstrates solid business quality with a 30% operating margin and 55.2% gross margin that are respectable for a fabless semiconductor company, alongside 26.1% revenue growth reflecting strong AI-adjacent demand in power management ICs. However, the FCF margin of 16.6% lags behind the operating margin more than expected, and the ROIC of 16.7% — while positive — is modest for a fabless model that should theoretically generate higher returns given its asset-light structure. The balance sheet is clean with net cash (Net Debt/EBITDA of -1.57), but the valuation is the critical problem: an EV/FCF of 132x is pricing in flawless execution for years, leaving essentially no margin of safety, which is reflected in the near-floor Valuation Score of 20.
+
+**Notable Risk:** MPWR's power management chips are structurally necessary in AI server builds, but it faces intense competition from Texas Instruments and others, and any design socket loss or inventory correction could rapidly expose how much perfection is baked into the price.
+
+---
+
+**Investment Takeaway:** MPWR is a quality fabless semiconductor business with genuine AI infrastructure exposure, but at 132x EV/FCF, you are paying a price that demands everything goes right — wait for a meaningful valuation reset before initiating a position."
+MCHP,Fabless,Microchip Technology Incorporat,45.83,24.2,17.1,57.7,-9.8,-17.6,35.1,3.7,4.43,5.66,47.0,60.0,Avoid,Semiconductors,
+QRVO,Fabless,"Qorvo, Inc.",13.92,15.1,16.0,46.2,9.6,1.0,-7.0,8.6,0.48,11.13,58.0,100.0,Avoid,Semiconductors,
+SWKS,Fabless,"Skyworks Solutions, Inc.",12.24,17.0,7.7,41.1,-6.3,-9.3,-1.0,7.0,-0.26,33.55,46.0,100.0,Avoid,Semiconductors,
+ARM,Fabless,Arm Holdings plc,390.08,15.3,29.5,97.5,1.5,22.5,20.1,8.6,-2.92,,68.0,20.0,Watch,Semiconductors,"## Arm Holdings (ARM) — Watch
+
+ARM's 97.5% gross margin is exceptional even within the fabless archetype, reflecting the pure IP licensing model where incremental costs are near-zero — this is a structurally differentiated business. However, the quality story has cracks: an 8.6% ROIC is underwhelming for a company of this caliber, and a 15.3% FCF margin looks thin relative to the operating margin of 29.5%, suggesting royalty recognition timing or heavy R&D reinvestment is compressing cash conversion. The EV/FCF of 390x is the defining problem — the valuation score of 20/100 reflects an almost total absence of margin of safety, pricing in decades of flawless execution in a market where RISC-V represents a credible, growing architectural alternative. The balance sheet is clean (net cash position, Net Debt/EBITDA of -2.92), and 20% revenue growth is solid, but none of that justifies paying 390x FCF for a business with sub-10% ROIC.
+
+**Investment Takeaway:** ARM owns genuinely critical semiconductor IP and has structural necessity in the AI edge and mobile ecosystems, but at 390x FCF, you are paying a price that leaves zero room for competitive disruption from RISC-V or any growth deceleration — wait for a significant valuation reset before initiating."
+SLAB,Fabless,"Silicon Laboratories, Inc.",439.69,1.9,-8.0,59.3,-4.5,-8.5,20.1,-3.9,,-21.33,35.8,20.0,Pass,Semiconductors,
+ALGM,Fabless,"Allegro MicroSystems, Inc.",63.07,16.8,10.4,46.5,-9.8,-2.9,26.1,2.0,1.29,4.79,42.0,40.0,Pass,Semiconductors,
+MTSI,Fabless,MACOM Technology Solutions Hold,271.14,7.6,17.6,55.7,-5.5,12.7,22.5,5.6,-1.07,42.6,52.0,20.0,Pass,Semiconductors,
+CRUS,Fabless,"Cirrus Logic, Inc.",12.38,25.3,20.1,52.8,2.3,1.7,5.7,18.0,-1.47,570.91,70.0,100.0,Buy,Semiconductors,"## Cirrus Logic (CRUS) — Buy
+
+Cirrus Logic presents a compelling value case for a fabless semiconductor company, trading at an EV/FCF of just 12.38x despite generating a 25.3% FCF margin and 18% ROIC — metrics that signal genuine capital efficiency rather than accounting illusion. The balance sheet is net cash (Net Debt/EBITDA of -1.47x), which provides downside protection and optionality, while operating margins of 20%+ confirm disciplined cost structure for a fabless model. The primary risk is well-known: heavy customer concentration with Apple (audio/haptics chips), meaning revenue growth of 5.7% YoY reflects dependency on iPhone cycle timing rather than diversified demand — this is a structural constraint, not a temporary headwind.
+
+**The Valuation Score of 100 is the standout signal here** — at 12.38x FCF, the market is pricing Cirrus as if the Apple relationship is a liability, which arguably creates the opportunity for investors who believe that deep integration with the world's most valuable hardware ecosystem is actually a durable switching-cost moat.
+
+---
+
+**Investment Takeaway:** Cirrus Logic is a cash-generative, capital-light business trading at a near-trough multiple for its archetype — the Apple concentration risk is real but already heavily discounted, making this a quality compounder available at a value price."
+SIMO,Fabless,Silicon Motion Technology Corpo,,-11.8,15.3,48.1,-1.0,-2.2,105.5,9.8,-0.81,,43.0,,Insufficient Data,Semiconductors,
+MXL,Fabless,"MaxLinear, Inc",354.99,4.5,-12.2,57.2,-1.2,-25.3,43.0,-17.3,,-3.69,35.8,20.0,Pass,Semiconductors,
+RMBS,Fabless,"Rambus, Inc.",41.49,34.6,34.3,80.4,3.2,15.9,8.1,15.6,-2.52,220.15,83.0,60.0,Buy,Semiconductors,"## Rambus, Inc. (RMBS) — Buy | Quality: 83 | Valuation: 60
+
+Rambus demonstrates exceptional business quality for a fabless semiconductor company, with an 80.4% gross margin and 34.6% FCF margin reflecting its IP licensing-heavy model — a structurally superior economics profile with minimal capital intensity. The net debt/EBITDA of -2.52 signals a fortress balance sheet with net cash, and ROIC of 15.6% confirms the business is genuinely creating value, not just reporting accounting profits. Revenue growth of 8.1% is modest but respectable for a licensing business, and the EV/FCF of 41.49 is elevated but partially justified given the high-quality, recurring nature of royalty streams tied to memory interface chips that are structurally necessary in AI server buildouts (HBM, DDR5).
+
+The Valuation Score of 60 flags that you're not getting this cheaply, but the quality warrants the premium — the primary risk is licensing contract renewal concentration and any slowdown in memory semiconductor capex that could compress royalty volumes.
+
+**Investment Takeaway:** Rambus is a high-conviction Buy for investors willing to pay a fair price for a capital-light, IP-moat business sitting directly in the path of AI memory infrastructure demand."
+ASML,Equipment,ASML Holding N.V. - New York Re,83.9,24.5,36.0,52.6,2.3,15.6,13.2,38.7,-0.45,107.39,82.0,40.0,Watch,Semiconductors,"## ASML Holding (ASML) — Watch
+
+ASML is a textbook high-quality compounder: 38.7% ROIC signals exceptional capital efficiency, 36% operating margins reflect its monopoly position in EUV lithography, and a net cash balance sheet (Net Debt/EBITDA of -0.45) provides structural resilience. The 24.5% FCF margin is solid but the EV/FCF of 83.9x is demanding — you are paying a significant premium for a business with no direct competitor, which is partially justified but leaves little room for execution misses or demand timing risk. Revenue growth of 13.2% is respectable but trails the premium being asked, and ASML's order-driven, lumpy revenue model means near-term growth visibility is tied to customer capex cycles, particularly among TSMC, Samsung, and Intel — all of whom face their own pressures. The Valuation Score of 40 correctly captures that this is an expensive stock even by Equipment archetype standards, where multiples are already elevated relative to the broader market.
+
+**Investment Takeaway:** ASML is the irreplaceable backbone of advanced semiconductor manufacturing with best-in-class economics, but at 84x FCF the valuation demands near-perfect execution and leaves little margin of safety — hold existing positions and wait for a more attractive entry point."
+LRCX,Equipment,Lam Research Corporation,96.15,20.1,35.0,50.0,3.0,2.3,23.8,37.0,-0.13,44.04,80.0,40.0,Watch,Semiconductors,"## Lam Research Corporation (LRCX) — Watch
+
+Lam Research demonstrates compelling business quality across the board: a 35% operating margin and 50% gross margin are exceptional for capital equipment, while a 37% ROIC signals a genuinely high-quality, capital-efficient franchise with durable competitive advantages in etch and deposition tools. The 23.8% revenue growth confirms the WFE (wafer fabrication equipment) cycle is inflecting positively, and a net cash position (Net Debt/EBITDA of -0.13) removes balance sheet risk entirely. The problem is valuation — an EV/FCF of 96x is difficult to justify even for a high-quality cyclical, particularly given that equipment companies are inherently exposed to capex spending cycles and China export restriction risks that could compress revenues sharply and without much warning. The 20.1% FCF margin, while solid, means you're paying a steep premium for earnings that have historically been volatile.
+
+**Investment Takeaway:** LRCX is a structurally necessary, high-moat equipment franchise firing on all cylinders, but at 96x EV/FCF the market is pricing near-perfection into a cyclical business — wait for a meaningful pullback or cycle-driven multiple compression before initiating a position."
+KLAC,Equipment,KLA Corporation,101.88,22.1,41.2,61.4,-0.1,9.7,11.5,41.5,0.2,19.36,82.0,20.0,Watch,Semiconductors,"## KLA Corporation (KLAC) — Watch
+
+KLA's business quality is exceptional by any standard: a 41.2% operating margin and 61.4% gross margin reflect the near-irreplaceable nature of its process control and yield management equipment, while a 41.5% ROIC confirms the company converts capital into returns at a rate that only truly moaty businesses achieve. The 22.1% FCF margin is solid but notably lower than operating margin, worth monitoring, and 11.5% revenue growth is respectable for a company of this maturity in an equipment cycle. The balance sheet is essentially clean at 0.2x Net Debt/EBITDA, leaving ample capacity for buybacks and R&D investment.
+
+The valuation is the single friction point — an EV/FCF of 101.88 is demanding, pricing in sustained growth and margin expansion that leaves almost no room for error, hence the Valuation Score of 20. At this multiple, even a modest softening in wafer fab equipment (WFE) spending — a historically cyclical market — could compress the multiple significantly.
+
+**Investment Takeaway:** KLAC is one of the highest-quality businesses in semiconductor equipment with a structurally necessary role in advanced node yield management, but at ~102x FCF the valuation demands perfection and patient investors should wait for a cyclical pullback to build a position."
+AMAT,Equipment,"Applied Materials, Inc.",150.99,10.5,31.9,49.0,2.2,3.2,11.4,23.7,-0.1,34.48,63.0,20.0,Watch,Semiconductors,"## Applied Materials (AMAT) — Watch
+
+**Quality Score: 63 | Valuation Score: 20**
+
+AMAT demonstrates solid underlying business quality with a 31.9% operating margin and 23.7% ROIC, confirming its structural position as a critical enabler of semiconductor fabrication — a genuine moat in the AI infrastructure buildout. The near-zero net debt (Net Debt/EBITDA of -0.1) and healthy gross margins of 49% reflect a well-managed balance sheet, though the 10.5% FCF margin is notably thin relative to operating margins, suggesting working capital or capex dynamics worth scrutinizing. The valuation score of 20 is the critical red flag here: an EV/FCF of 151x is extremely demanding and prices in near-flawless execution for years, leaving virtually no margin of safety even for a competitively entrenched equipment supplier. Revenue growth of 11.4% YoY is respectable but insufficient to justify that multiple on its own.
+
+**Investment Takeaway:** AMAT is a high-quality, structurally necessary business in semiconductor equipment, but at 151x EV/FCF the valuation offers no margin of safety — wait for a meaningful re-rating before initiating a position."
+ENTG,Equipment,"Entegris, Inc.",54.91,13.8,17.9,44.8,1.9,-0.9,5.0,11.2,3.76,4.41,50.0,60.0,Avoid,Semiconductors,
+MKSI,Equipment,MKS Inc.,56.53,12.0,16.0,46.6,3.1,3.5,15.2,8.0,3.96,4.11,54.0,60.0,Avoid,Semiconductors,
+ACLS,Equipment,"Axcelis Technologies, Inc.",84.72,5.8,4.0,43.6,1.2,-3.0,3.3,10.0,-2.74,20.16,46.0,40.0,Pass,Semiconductors,
+UCTT,Equipment,"Ultra Clean Holdings, Inc.",,-1.8,2.1,15.6,-3.9,-4.7,2.9,2.9,3.86,3.09,26.0,,Insufficient Data,Semiconductors,
+ICHR,Equipment,Ichor Holdings,139.54,2.5,1.1,12.0,-7.3,-9.5,4.7,-4.1,2.57,4.09,28.0,20.0,Pass,Semiconductors,
+COHU,Equipment,"Cohu, Inc.",35.24,14.4,-8.3,43.5,-4.4,-17.7,29.3,-4.4,,-0.58,36.8,60.0,Avoid,Semiconductors,
+FORM,Equipment,"FormFactor, Inc.",,-0.1,17.7,42.2,-0.2,1.6,32.0,4.7,-1.98,263.71,40.0,,Insufficient Data,Semiconductors,
+ONTO,Equipment,Onto Innovation Inc.,73.53,19.1,16.8,54.2,-3.9,0.0,9.5,6.1,-2.45,,56.0,40.0,Pass,Semiconductors,
+NVMI,Equipment,Nova Ltd.,120.32,13.6,30.1,57.3,1.8,15.6,10.3,10.6,-1.05,,65.0,20.0,Watch,Semiconductors,"## Nova Ltd. (NVMI) — Watch
+
+Nova is a solid semiconductor metrology equipment business with genuine structural necessity in advanced chip manufacturing — you cannot skip process control at leading-edge nodes. The 57.3% gross margin and 30.1% operating margin confirm real pricing power and a defensible niche, and the net cash balance sheet (Net Debt/EBITDA of -1.05x) adds financial resilience. However, the numbers fall short of elite equipment peers: 10.3% revenue growth and 10.6% ROIC are respectable but not exceptional, and the 13.6% FCF margin lagging well behind the operating margin warrants scrutiny around working capital or capex intensity. The EV/FCF of 120x is the critical problem — at that multiple, you are paying a premium that demands accelerating growth and margin expansion Nova has not yet demonstrated.
+
+**Investment Takeaway:** Nova is a quality business in the right part of the semiconductor value chain, but at 120x FCF you are pricing in a best-case scenario with no margin for error — wait for a meaningful correction before building a position."
+CAMT,Equipment,Camtek Ltd.,,,22.4,51.0,0.6,15.6,2.5,10.9,-1.32,83.65,66.2,,Insufficient Data,Semiconductors,
+TER,Equipment,"Teradyne, Inc.",178.98,7.9,37.6,58.7,-1.0,0.4,87.0,20.2,-0.14,169.66,63.0,20.0,Watch,Semiconductors,"## Teradyne, Inc. (TER) — Watch
+
+Teradyne's 87% YoY revenue growth and 58.7% gross margins signal a structurally important semiconductor test equipment business benefiting from surging AI chip complexity, and the 20.2% ROIC confirms it's deploying capital effectively. However, the glaring disconnect between a 37.6% operating margin and a paltry 7.9% FCF margin warrants scrutiny — something is consuming cash between the operating and free cash flow lines, likely elevated capex or working capital build tied to the growth surge. At an EV/FCF of 178.98, the market is pricing in sustained perfection, which is an extremely demanding multiple even for a high-quality equipment name, and the Valuation Score of 20 reflects that there is almost no margin of safety here. The clean balance sheet (net debt/EBITDA of -0.14) is a positive, but it doesn't offset the valuation risk.
+
+**Investment Takeaway:** Teradyne is a legitimate AI infrastructure enabler with real competitive moats in semiconductor test, but at nearly 179x FCF, you are paying a steep premium for a business whose FCF conversion needs to prove itself — wait for either multiple compression or FCF margin normalization before building a position."
+INTC,IDM,Intel Corporation,,-15.4,6.9,37.2,-7.8,-5.7,7.2,-0.0,0.86,12.99,32.0,,Insufficient Data,Semiconductors,
+TXN,IDM,Texas Instruments Incorporated,264.97,5.8,37.8,57.3,-11.7,-4.1,18.6,17.7,1.03,15.96,57.0,20.0,Pass,Semiconductors,
+NXPI,IDM,NXP Semiconductors N.V.,28.77,21.6,27.7,55.6,-2.2,-2.4,12.2,10.9,1.93,8.93,59.0,80.0,Avoid,Semiconductors,
+STM,IDM,STMicroelectronics N.V.,,-2.9,3.7,34.0,-13.5,-9.9,23.0,1.3,-0.72,45.27,30.0,,Insufficient Data,Semiconductors,
+ADI,IDM,"Analog Devices, Inc.",50.58,30.4,38.1,64.5,-1.2,-2.8,37.2,5.9,0.86,19.36,67.0,60.0,Buy,Semiconductors,"## Analog Devices, Inc. (ADI) — Buy | Quality: 67 | Valuation: 60
+
+ADI demonstrates genuine business quality through its **64.5% gross margin and 38.1% operating margin**, which are exceptional for an IDM and reflect strong pricing power across its industrial, automotive, and communications analog signal chain portfolio — these are structurally sticky designs that take years to displace. The **30.4% FCF margin** confirms the earnings quality is real, not accounting-driven, and **37.2% revenue growth** signals a meaningful cyclical recovery after the severe inventory correction that compressed results through 2023-2024. The **EV/FCF of 50.58x is rich**, but partially justifiable given the FCF conversion strength and ADI's moat as a highly specified component in long-lifecycle industrial systems; the **5.9% ROIC is the key concern**, sitting well below ADI's historical levels and reflecting lingering post-Maxim acquisition capital dilution and under-utilized capacity — this needs to recover toward 10%+ to fully vindicate the multiple. Balance sheet is clean at **0.86x Net Debt/EBITDA**, giving management flexibility as the upcycle progresses.
+
+> **Investment Takeaway:** ADI is a high-quality analog franchise with real pricing power and exceptional margins catching a cyclical tailwind, but the Buy conviction hinges on ROIC recovering meaningfully as utilization improves — the current multiple leaves little room for error if the industrial recovery stalls."
+ON,IDM,ON Semiconductor Corporation,28.75,21.1,18.2,42.7,-15.9,-10.4,4.7,6.6,0.41,28.88,52.0,80.0,Avoid,Semiconductors,
+WOLF,IDM,"Wolfspeed, Inc.",32.45,10.8,-72.0,-17.4,,,-19.0,,,,36.0,80.0,Avoid,Semiconductors,
+MU,Memory,"Micron Technology, Inc.",131.11,8.5,80.4,72.6,-5.4,6.7,345.7,13.2,-0.29,143.02,61.0,20.0,Watch,Semiconductors,"## Micron Technology (MU) — Watch
+
+Micron's metrics tell a complex story: the 345.7% revenue growth and strong gross margins (72.6%) reflect the memory cycle's sharp upcycle, but the 8.5% FCF margin against an EV/FCF of 131x reveals that cash conversion remains the critical weakness — typical for capital-intensive memory fabs that consume enormous capex. The operating margin of 80.4% looks exceptional but is almost certainly a cyclical peak figure, and memory's notorious boom-bust nature means these margins will compress when the cycle turns, making the ROIC of 13.2% a more honest signal of through-cycle returns. The balance sheet is clean (net debt/EBITDA of -0.29), which provides cushion heading into any downcycle, but the Valuation Score of 20 correctly flags that the market is pricing near-peak economics at a steep premium — leaving almost no margin of safety.
+
+**Memory is structurally necessary for AI infrastructure (HBM demand is real), but buying Micron at peak-cycle multiples with a 131x EV/FCF is paying luxury prices for a commodity business — hold off until FCF yield improves materially or the cycle resets.**"
+WDC,Memory,Western Digital Corporation,84.63,17.6,37.0,45.4,7.5,-20.3,45.5,16.8,-0.39,11.0,66.0,40.0,Watch,Semiconductors,"## Western Digital Corporation (WDC) — Watch
+
+Western Digital is exhibiting a strong cyclical recovery, with 45.5% revenue growth and a 37% operating margin that signals the memory upcycle is in full effect — these are impressive numbers but must be contextualized as cycle-peak metrics rather than structural baselines. The 17.6% FCF margin is solid, and the near-zero net debt position (Net Debt/EBITDA of -0.39) reflects a clean balance sheet, giving WDC resilience heading into the next inevitable downturn. However, the EV/FCF of 84.6x is punishing for a memory company — memory is a commoditized, capital-intensive, cyclically volatile business with limited pricing power, and the market is pricing in sustained earnings that history suggests won't hold. ROIC of 16.8% is respectable but reflects current-cycle conditions, not the through-cycle reality of a business that has historically destroyed capital during downturns.
+
+**Investment Takeaway:** WDC's metrics look strong today, but you're paying a cycle-peak multiple for a commodity memory business with no structural moat — wait for valuation to compress before initiating."
+STX,Memory,Seagate Technology Holdings PLC,117.24,14.6,35.7,41.6,5.4,-7.9,44.1,40.9,0.86,10.95,75.0,20.0,Watch,Semiconductors,"## Seagate Technology (STX)
+
+**Verdict: Watch | Quality: 75 | Valuation: 20**
+
+Seagate is firing on nearly all cylinders operationally — 44.1% revenue growth, 35.7% operating margins, and a 40.9% ROIC signal a business in the midst of a powerful upcycle, almost certainly driven by surging nearline HDD demand from hyperscaler AI storage buildouts. The gross and operating margin profile is genuinely impressive for a memory/storage hardware company, and the 0.86x Net Debt/EBITDA means the balance sheet is clean. However, the **EV/FCF of 117x** is the critical red flag here — the market has already priced in a sustained version of what may be a cyclical peak, and a 14.6% FCF margin against that multiple leaves almost no margin of safety if demand softens or pricing normalizes.
+
+The core risk is archetype-specific: HDD manufacturers are structurally cyclical, and Seagate's current metrics reflect favorable supply/demand conditions rather than a permanently elevated earnings power — paying 117x FCF assumes the cycle never turns.
+
+---
+
+**Investment Takeaway:** Seagate's operational momentum is real and AI-driven nearline demand is a genuine tailwind, but at 117x EV/FCF the stock is pricing in perfection for a cyclical hardware business, making this a **Watch** until either valuation corrects or cycle durability is proven across multiple quarters."
+SNPS,EDA_IP,"Synopsys, Inc.",25.37,40.8,10.4,82.6,-3.6,15.2,41.9,2.1,4.93,3.8,62.0,80.0,Buy,Semiconductors,"## Synopsys (SNPS) — EDA/IP | Verdict: Buy
+
+Synopsys exhibits the hallmarks of a structurally critical EDA platform — 82.6% gross margins and 40.8% FCF margins confirm exceptional pricing power and switching costs, as no chip design happens without EDA tooling. Revenue growth of 41.9% YoY is striking but warrants scrutiny given likely acquisition contribution (the pending Ansys deal), which partially explains the distorted ROIC of just 2.1% and elevated Net Debt/EBITDA of 4.93x — the balance sheet is meaningfully stretched. The EV/FCF of 25.37x is surprisingly reasonable for a near-monopoly EDA franchise alongside Cadence, suggesting the market is discounting integration risk and leverage rather than mispricing the core business quality. The operating margin of 10.4% looks anomalously low against the gross margin profile, signaling elevated near-term opex or acquisition costs that should normalize, supporting the valuation case.
+
+**Investment Takeaway:** SNPS offers a rare entry point into an irreplaceable AI chip design infrastructure asset at a defensible FCF multiple, with the primary risk being balance sheet digestion from the Ansys acquisition rather than any structural threat to its core EDA moat."
+CDNS,EDA_IP,"Cadence Design Systems, Inc.",69.37,27.1,29.7,86.1,-3.2,14.1,18.7,15.1,0.76,17.28,72.0,40.0,Watch,Semiconductors,"## Cadence Design Systems (CDNS) — Watch
+
+Cadence demonstrates genuine business quality through its 86.1% gross margin and 29.7% operating margin, reflecting the sticky, license-driven nature of EDA software where switching costs are exceptionally high — chip designers simply cannot afford to retool workflows mid-project. The 18.7% revenue growth alongside a 27.1% FCF margin confirms the business is scaling efficiently, and the nearly debt-free balance sheet (Net Debt/EBITDA: 0.76x) provides resilience. However, the EV/FCF of 69.4x is the central problem — the market is already pricing in sustained excellence, leaving almost no margin of safety, which the Valuation Score of 40 reflects accurately. ROIC of 15.1% is solid but not exceptional for a software business at this multiple, suggesting the market is paying a significant premium for Cadence's structural necessity in the AI chip design wave.
+
+**One-sentence takeaway:** Cadence is a high-conviction quality business with irreplaceable positioning in EDA tooling, but at 69x FCF the valuation demands near-flawless execution and leaves little room for error — hold off for a better entry point."
+AVT,SUPPLY_CHAIN,"Avnet, Inc.",112.24,0.4,3.1,10.5,-1.5,-3.0,33.9,7.8,3.88,3.11,35.0,20.0,Pass,Semiconductors,
+ARW,SUPPLY_CHAIN,"Arrow Electronics, Inc.",48.08,0.8,4.2,11.3,-1.8,-6.0,39.0,7.7,1.7,5.96,36.0,60.0,Avoid,Semiconductors,
