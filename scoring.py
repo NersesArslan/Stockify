@@ -396,28 +396,26 @@ SCORING_CONFIG = {
         "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
     },
 
-    "DevOps": {
-"quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
-},
-        "quality_thresholds": {
-            "Rule of 40":       RULE_OF_40_THRESHOLDS,
-            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-        },
-        "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+"DevOps": {
+    "quality_weights": {
+        "Rule of 40":       0.30,  # primary quality signal
+        "Rev CAGR (3Y)":    0.20,  # growth trajectory matters most
+        "Gross Margin":     0.20,  # platform moat signal
+        "FCF Margin":       0.15,  # real cash generation
+        "GM Trend (3Y)":    0.10,  # moat durability
+        "Op Margin":        0.05,  # low weight — GAAP artifact
     },
+    "quality_thresholds": {
+        "Rule of 40":       RULE_OF_40_THRESHOLDS,
+        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "Op Margin":        OP_MARGIN_THRESHOLDS,
+    },
+    "valuation_metric":     "EV/Revenue",
+    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+},
 
     "Data_Analytics": {
 "quality_weights": {
