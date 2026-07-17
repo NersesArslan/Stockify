@@ -26,8 +26,8 @@ all_df = pd.concat([
 ], ignore_index=True)
 
 # --- Percentage columns per vertical ---
-pct_cols_semis  = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)", "ROIC"]
-pct_cols_default = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)"]
+pct_cols_semis   = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)", "ROIC", "Rev CAGR (3Y)"]
+pct_cols_default = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)", "Rev CAGR (3Y)"]
 
 color_map = {
     "Buy":               "#2ecc71",
