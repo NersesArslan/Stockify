@@ -108,6 +108,13 @@ GM_TREND_THRESHOLDS = [
     (8,  float("inf"),  5),  # strongly expanding
 ]
 
+COLLABORATION_EV_REVENUE_THRESHOLDS = [
+    (-float("inf"), 2,   5),
+    (2,             4,   4),
+    (4,             6,   3),
+    (6,             10,  2),
+    (10, float("inf"),  1),
+]
 # --- Config registry ---
 
 SCORING_CONFIG = {
@@ -460,13 +467,13 @@ SCORING_CONFIG = {
 
     "Collaboration": {
 "quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
+"FCF Margin":       0.25,  # cash generation is the only thesis
+"Op Margin":        0.25,
+"Gross Margin":     0.20,
+"GM Trend (3Y)":    0.10,
+"Rule of 40":       0.10,  # less relevant for slow growers
+"Rev CAGR (3Y)":    0.10,  # growth is minimal, weight it low
+
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
@@ -475,10 +482,10 @@ SCORING_CONFIG = {
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+
         },
         "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+        "valuation_thresholds": COLLABORATION_EV_REVENUE_THRESHOLDS
     },
 
     # --- Cybersecurity ---
