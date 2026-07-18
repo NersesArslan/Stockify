@@ -327,74 +327,48 @@ SCORING_CONFIG = {
     },
 
     # --- SaaS ---
-    "CRM_Sales": {
-"quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
-},
-        "quality_thresholds": {
-            "Rule of 40":       RULE_OF_40_THRESHOLDS,
-            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-        },
-        "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+"Enterprise_SaaS": {
+    "quality_weights": {
+        "FCF Margin":       0.25,
+        "Rule of 40":       0.20,
+        "Gross Margin":     0.15,
+        "Op Margin":        0.15,
+        "GM Trend (3Y)":    0.10,
+        "Rev CAGR (3Y)":    0.10,
+        "Net Debt/EBITDA":  0.05,
     },
-
-    "HR_Mgmt": {
-"quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
-},
-        "quality_thresholds": {
-            "Rule of 40":       RULE_OF_40_THRESHOLDS,
-            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-        },
-        "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    "quality_thresholds": {
+        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+        "Rule of 40":       RULE_OF_40_THRESHOLDS,
+        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+        "Op Margin":        OP_MARGIN_THRESHOLDS,
+        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+        "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
     },
-
-    "ERP_Finance": {
-"quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
+    "valuation_metric":     "EV/Revenue",
+    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
 },
-        "quality_thresholds": {
-            "Rule of 40":       RULE_OF_40_THRESHOLDS,
-            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-        },
-        "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+"Enterprise_AI": {
+    "quality_weights": {
+        "Gross Margin":     0.25,
+        "Rule of 40":       0.25,
+        "Rev CAGR (3Y)":    0.20,
+        "FCF Margin":       0.15,
+        "GM Trend (3Y)":    0.10,
+        "Op Margin":        0.05,
     },
+    "quality_thresholds": {
+        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+        "Rule of 40":       RULE_OF_40_THRESHOLDS,
+        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "Op Margin":        OP_MARGIN_THRESHOLDS,
+    },
+    "valuation_metric":     "EV/Revenue",
+    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+},
 
 "DevOps": {
     "quality_weights": {
@@ -416,29 +390,6 @@ SCORING_CONFIG = {
     "valuation_metric":     "EV/Revenue",
     "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
 },
-
-    "Data_Analytics": {
-"quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
-},
-        "quality_thresholds": {
-            "Rule of 40":       RULE_OF_40_THRESHOLDS,
-            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-        },
-        "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
-    },
 
     "Vertical_SaaS": {
 "quality_weights": {

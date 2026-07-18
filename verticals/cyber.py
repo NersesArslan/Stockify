@@ -8,15 +8,15 @@ NETWORK   = ["PANW", "FTNT", "CHKP"]
 IDENTITY  = ["OKTA", 
              # "CYBR" — removed, being acquired by PANW (deal announced July 2025)
 ]
-CLOUD_SEC = ["ZS"]
+CLOUD_SEC = []  # ZS moved to Enterprise_AI in SaaS
+# or remove CLOUD_SEC entirely
 DATA_SEC  = ["QLYS", "VRNT"]
 
 UNIVERSE = {
-    "ENDPOINT" : ENDPOINT,
-    "NETWORK" : NETWORK,
-    "IDENTITY" : IDENTITY,
-    "CLOUD_SEC" : CLOUD_SEC,
-    "DATA_SEC" : DATA_SEC
+    "ENDPOINT": ENDPOINT,
+    "NETWORK":  NETWORK,
+    "IDENTITY": IDENTITY,
+    "DATA_SEC": DATA_SEC,
 }
 # --- Fetcher ---
 def get_metrics(ticker_symbol, archetype):

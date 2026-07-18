@@ -3,22 +3,25 @@ import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 # --- Universe ---
-CRM_SALES = ["CRM", "HUBS"]
-HR_MGMT = ["WDAY", "PAYC", "PCTY"]
-ERP_FINANCE = ["SAP", "INTU"]
+ENTERPRISE_SAAS = [
+    "CRM", "HUBS", "WDAY", "INTU", "NOW",
+    "ADBE", "TEAM", "SAP", "PAYC", "PCTY", "NICE"
+]
+
 DEVOPS = ["GTLB", "PD"]
-DATA_ANALYTICS = ["PLTR", "NICE"]
+
+ENTERPRISE_AI = ["PLTR", "SNOW", "DDOG", "MDB", "ZS"]
+
 VERTICAL_SAAS = ["VEEV", "IOT"]
+
 COLLABORATION = ["ZM", "DBX", "BOX"]
 
 UNIVERSE = {
-    "CRM_Sales":      CRM_SALES,
-    "HR_Mgmt":        HR_MGMT,
-    "ERP_Finance":    ERP_FINANCE,
-    "DevOps":         DEVOPS,
-    "Data_Analytics": DATA_ANALYTICS,
-    "Vertical_SaaS":  VERTICAL_SAAS,
-    "Collaboration":  COLLABORATION,
+    "Enterprise_SaaS": ENTERPRISE_SAAS,
+    "DevOps":          DEVOPS,
+    "Enterprise_AI":   ENTERPRISE_AI,
+    "Vertical_SaaS":   VERTICAL_SAAS,
+    "Collaboration":   COLLABORATION,
 }
 
 # --- Fetcher ---

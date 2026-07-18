@@ -4,15 +4,14 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 
 # --- Universe ---
-HYPERSCALERS = ["AMZN", "MSFT", "GOOGL", "ORCL"]
-
-CLOUD_DATA = [
-    "SNOW",  # Snowflake - data warehousing
-    "MDB",   # MongoDB - cloud-native database
-    "DDOG",  # Datadog - observability
-    "NET",   # Cloudflare - edge network
-    "ESTC",  # Elastic - search and analytics
+HYPERSCALERS = [
+    "AMZN",  # AWS
+    "MSFT",  # Azure
+    "GOOGL", # Google Cloud
+    "ORCL",  # Oracle Cloud — conglomerate, scored as hyperscaler pending multi-segment handling
 ]
+
+CLOUD_DATA = ["ESTC"]  # SNOW, DDOG, MDB moved to Enterprise_AI in SaaS
 
 UNIVERSE = {
     "Hyperscaler": HYPERSCALERS,
