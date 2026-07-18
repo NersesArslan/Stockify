@@ -1,9 +1,46 @@
-Ticker,Archetype,Name,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),Rule of 40,NRR,Net Debt/EBITDA,Interest Coverage,Quality Score,Valuation Score,Verdict
-CRWD,ENDPOINT,"CrowdStrike Holdings, Inc.",105.77,40.0,37.8,-2.2,75.1,29.0,25.6,1.5,63.4,,-62.9,2.12,77.0,20,Watch
-S,ENDPOINT,"SentinelOne, Inc.",22.53,5.76,25.6,-28.8,73.2,33.4,20.8,8.3,46.4,,,,72.6,80,Buy
-PANW,NETWORK,"Palo Alto Networks, Inc.",80.33,27.11,33.7,-2.5,72.0,18.8,31.1,4.7,64.8,,-0.66,780.79,79.0,40,Watch
-FTNT,NETWORK,"Fortinet, Inc.",63.47,16.19,25.5,31.3,80.3,15.5,20.1,5.0,45.6,,-1.16,117.48,79.0,60,Buy
-CHKP,NETWORK,Check Point Software Technologi,18.36,4.86,26.5,27.7,87.7,5.4,4.8,-0.2,31.3,,-0.91,436.65,68.0,100,Buy
-OKTA,IDENTITY,"Okta, Inc.",24.27,7.92,32.6,7.3,77.4,16.3,11.2,6.7,43.8,,-8.16,66.75,77.0,80,Buy
-QLYS,DATA_SEC,"Qualys, Inc.",21.61,7.49,34.7,35.0,83.2,11.0,9.8,3.8,44.5,,-1.71,,84.0,80,Buy
-VRNT,DATA_SEC,Verint Systems Inc.,13.46,1.7,12.6,2.0,70.9,1.3,-1.0,5.4,11.6,,2.48,10.91,52.0,100,Avoid
+Ticker,Archetype,Name,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),Rule of 40,NRR,Net Debt/EBITDA,Interest Coverage,Quality Score,Valuation Score,Verdict,Vertical,AI Analysis
+CRWD,ENDPOINT,"CrowdStrike Holdings, Inc.",105.77,40.0,37.8,-2.2,75.1,29.0,25.6,1.5,63.4,,-62.9,2.12,77.0,20,Watch,Cybersecurity,"## CrowdStrike Holdings (CRWD) — Cybersecurity / Endpoint | **Watch**
+
+CrowdStrike is a genuine quality business: a 75.1% gross margin, 37.8% FCF margin, and Rule of 40 score of 63.4 confirm that the Falcon platform has real pricing power and sticky enterprise relationships — the platform's single-agent architecture creates meaningful switching costs that justify the quality score of 77. Revenue growth of 25.6% post the July 2024 Falcon sensor outage is a resilience signal; most customers stayed, validating structural necessity in endpoint security. The problem is entirely valuation — EV/FCF of 105.8x and EV/Revenue of 40x price in a decade of flawless execution, leaving the Valuation Score at a punishing 20, and the operating margin of -2.2% means GAAP profitability remains elusive despite strong cash generation.
+
+**One-sentence takeaway:** CRWD is a high-conviction quality compounder in structurally critical endpoint security, but at 105x FCF it demands perfection and offers no margin of safety — hold if owned, but new capital should wait for a meaningful drawdown."
+S,ENDPOINT,"SentinelOne, Inc.",22.53,5.76,25.6,-28.8,73.2,33.4,20.8,8.3,46.4,,,,72.6,80,Buy,Cybersecurity,"## SentinelOne (S) — Cybersecurity / Endpoint
+
+**Verdict: Buy | Quality: 72.6 | Valuation: 80**
+
+SentinelOne's 25.6% FCF margin is the headline number here — it demonstrates the business has crossed into genuine cash generation despite a still-negative operating margin (-28.8%), suggesting stock-based compensation is masking underlying unit economics that are actually working. The 73.2% gross margin is structurally healthy for an endpoint security platform, and a Rule of 40 score of 46.4 (20.8% growth + 25.6% FCF margin) confirms this is a real business, not a growth-at-any-cost story. At 22.5x EV/FCF and 5.76x EV/Revenue, the valuation is notably undemanding for a cybersecurity platform with switching costs baked in — endpoint security is a sticky, mission-critical workload, and SentinelOne's AI-native architecture gives it a credible structural position as enterprises consolidate vendors. The primary risk is competitive pressure from CrowdStrike, which dominates the same archetype with a larger installed base and brand advantage, making customer acquisition costs and net retention the key variables to watch.
+
+**Investment Takeaway:** SentinelOne offers a rare combination of genuine FCF generation, reasonable valuation, and structural necessity in endpoint security — the CrowdStrike competition is real but the price already reflects significant skepticism, making this a quality entry point."
+PANW,NETWORK,"Palo Alto Networks, Inc.",80.33,27.11,33.7,-2.5,72.0,18.8,31.1,4.7,64.8,,-0.66,780.79,79.0,40,Watch,Cybersecurity,"## Palo Alto Networks (PANW) — Watch
+
+PANW demonstrates strong underlying business quality with a 33.7% FCF margin and 72% gross margin, confirming genuine pricing power and platform stickiness in enterprise security — the Rule of 40 score of 64.8 is well above the threshold and reflects a healthy growth/profitability balance. The 31.1% revenue growth validates continued platform consolidation momentum as enterprises rationalize their security vendor count, a structural tailwind that benefits scaled players with broad portfolios. However, the -2.5% operating margin reveals aggressive reinvestment (likely stock-based compensation and sales capacity buildout) masking true earnings power, and the EV/FCF of 80x alongside EV/Revenue of 27x leaves virtually no margin of safety — the valuation score of 40 reflects a market already pricing in sustained excellence with no room for execution stumbles.
+
+**One-sentence takeaway:** PANW is a genuinely high-quality cybersecurity platform with durable structural advantages, but at 80x FCF you are paying a steep premium for perfection in a competitive landscape where any growth deceleration would compress the multiple sharply."
+FTNT,NETWORK,"Fortinet, Inc.",63.47,16.19,25.5,31.3,80.3,15.5,20.1,5.0,45.6,,-1.16,117.48,79.0,60,Buy,Cybersecurity,"## Fortinet (FTNT) — Cybersecurity | NETWORK Archetype
+
+**Verdict: Buy | Quality Score: 79 | Valuation Score: 60**
+
+Fortinet's 80.3% gross margin and 31.3% operating margin reflect the structural pricing power of an integrated network security platform, where switching costs are high and consolidation within the Secure Networking segment plays directly to their strengths. A 25.5% FCF margin alongside 20.1% revenue growth produces a Rule of 40 score of 45.6 — comfortably above the threshold and demonstrating that growth is not being purchased at the expense of cash generation. The balance sheet is net cash (Net Debt/EBITDA of -1.16), which removes financing risk and provides optionality for M&A or buybacks. The EV/FCF of 63.47 is elevated but partially justified by the compounding nature of its recurring subscription revenue mix; the Valuation Score of 60 signals it's not cheap, but not stretched enough to override quality at this growth rate.
+
+**Investment Takeaway:** Fortinet is a high-quality, cash-generative network security franchise trading at a premium that is defensible given its platform consolidation tailwinds, making it a legitimate Buy for investors willing to pay for durable, structurally necessary infrastructure."
+CHKP,NETWORK,Check Point Software Technologi,18.36,4.86,26.5,27.7,87.7,5.4,4.8,-0.2,31.3,,-0.91,436.65,68.0,100,Buy,Cybersecurity,"## Check Point Software (CHKP) — Buy
+
+Check Point's financials reflect a high-quality, mature security franchise: 87.7% gross margins and 26.5% FCF margin confirm exceptional unit economics, while negative net debt/EBITDA (-0.91) signals a fortress balance sheet with net cash. The valuation is strikingly cheap for a software business — EV/FCF of 18.36 is near trough multiples for enterprise security, which is why the Valuation Score hits 100. The primary knock is growth — 4.8% YoY revenue and a Rule of 40 of 31.3 are underwhelming relative to peers like CrowdStrike or Palo Alto, reflecting Check Point's slower transition to its Infinity platform and persistent share loss in next-gen firewall. The quality score of 68 is fair — this is a profitable, cash-generative business, but not a compounder, and the missing ROIC figure warrants a closer look at capital allocation discipline.
+
+**Investment Takeaway:** CHKP offers a rare combination of best-in-class FCF margins and near-trough valuation multiples, making it a compelling value entry in cybersecurity for investors willing to accept low-single-digit growth while waiting for platform re-acceleration."
+OKTA,IDENTITY,"Okta, Inc.",24.27,7.92,32.6,7.3,77.4,16.3,11.2,6.7,43.8,,-8.16,66.75,77.0,80,Buy,Cybersecurity,"## Okta, Inc. (OKTA) — Identity Cybersecurity | **BUY**
+**Quality Score: 77 | Valuation Score: 80**
+
+Okta's 32.6% FCF margin is the standout metric here — it demonstrates the business has real cash generation discipline even as GAAP operating margins (7.3%) remain suppressed by stock-based compensation and growth investment. The Rule of 40 at 43.8 is healthy for an identity platform growing at 11.2%, and the -8.16 Net Debt/EBITDA signals a fortress balance sheet with net cash, removing any refinancing or distress risk. Identity and access management is structurally non-discretionary in enterprise IT — Okta's position as the leading independent identity layer creates meaningful switching costs as customers embed it into SSO, MFA, and workforce/customer identity workflows across hundreds of applications. At 24x EV/FCF for a 77-quality business with a defensible moat, the valuation score of 80 confirms this is genuinely cheap relative to peers — the market appears to be discounting the 2023 breach overhang and moderating growth without fully crediting the FCF inflection.
+
+---
+
+**Investment Takeaway:** Okta is a structurally necessary identity platform with an elite FCF profile trading at a discount driven by reputational noise rather than fundamental deterioration — the risk/reward is compelling at current levels."
+QLYS,DATA_SEC,"Qualys, Inc.",21.61,7.49,34.7,35.0,83.2,11.0,9.8,3.8,44.5,,-1.71,,84.0,80,Buy,Cybersecurity,"## Qualys, Inc. (QLYS) — Buy
+
+Qualys demonstrates exceptional business quality with an 83.2% gross margin and 34.7% FCF margin, reflecting the high-value, recurring nature of its cloud-based vulnerability management platform — a structurally necessary layer in any enterprise security stack. The Rule of 40 score of 44.5 is solid, though 9.8% revenue growth is the one soft spot, suggesting the market may be commoditizing some of its legacy scanning products as competitors like Tenable and Rapid7 compete for the same budget. However, the balance sheet is a notable strength — net cash position (Net Debt/EBITDA of -1.71) removes financial risk entirely, and an EV/FCF of 21.6x is genuinely cheap for a business generating 35% operating margins with durable switching costs baked into enterprise security workflows.
+
+The valuation score of 80 combined with quality of 84 confirms this is not a story stock — the numbers themselves justify the Buy verdict.
+
+**Investment takeaway:** Qualys is a high-margin, cash-generative cybersecurity platform trading at an undemanding multiple for its quality tier, making it a rare case where discipline on valuation and business quality align cleanly."
+VRNT,DATA_SEC,Verint Systems Inc.,13.46,1.7,12.6,2.0,70.9,1.3,-1.0,5.4,11.6,,2.48,10.91,52.0,100,Avoid,Cybersecurity,
