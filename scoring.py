@@ -369,7 +369,26 @@ SCORING_CONFIG = {
     "valuation_metric":     "EV/Revenue",
     "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
 },
-
+"Vertical_SaaS": {
+    "quality_weights": {
+        "Gross Margin":     0.25,  # vertical moat signal
+        "FCF Margin":       0.25,  # cash generation validates moat
+        "Op Margin":        0.20,  # operational efficiency
+        "GM Trend (3Y)":    0.15,  # moat durability over time
+        "Rule of 40":       0.10,  # growth/profitability balance
+        "Rev CAGR (3Y)":    0.05,  # durability > growth for verticals
+    },
+    "quality_thresholds": {
+        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+        "Op Margin":        OP_MARGIN_THRESHOLDS,
+        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "Rule of 40":       RULE_OF_40_THRESHOLDS,
+        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+    },
+    "valuation_metric":     "EV/Revenue",
+    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+},
 "DevOps": {
     "quality_weights": {
         "Rule of 40":       0.30,  # primary quality signal
@@ -391,28 +410,6 @@ SCORING_CONFIG = {
     "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
 },
 
-    "Vertical_SaaS": {
-"quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
-},
-        "quality_thresholds": {
-            "Rule of 40":       RULE_OF_40_THRESHOLDS,
-            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
-            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-        },
-        "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
-    },
 
     "Collaboration": {
 "quality_weights": {

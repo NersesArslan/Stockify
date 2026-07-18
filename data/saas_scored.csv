@@ -17,8 +17,8 @@ SNOW,Enterprise_AI,Snowflake Inc.,53.47,18.48,34.6,-22.2,67.1,31.4,33.5,1.9,68.1
 DDOG,Enterprise_AI,"Datadog, Inc.",94.6,24.13,25.5,0.8,79.9,26.9,32.2,0.7,57.7,,-100.28,3.13,81.0,40,Watch
 MDB,Enterprise_AI,"MongoDB, Inc.",43.96,8.74,19.9,-3.6,72.0,24.3,25.2,-1.0,45.1,,,-25.61,70.0,80,Buy
 ZS,Enterprise_AI,"Zscaler, Inc.",20.36,7.11,34.9,-3.3,76.7,34.8,25.4,-0.9,60.3,,,-11.63,85.0,80,Buy
-VEEV,Vertical_SaaS,Veeva Systems Inc.,19.47,7.39,37.9,30.9,75.0,14.0,16.3,3.8,54.2,,-7.03,,86.0,80,Buy
-IOT,Vertical_SaaS,Samsara Inc.,88.98,12.48,14.0,1.5,76.3,35.4,30.5,4.7,44.5,,,,69.5,60,Buy
+VEEV,Vertical_SaaS,Veeva Systems Inc.,19.47,7.39,37.9,30.9,75.0,14.0,16.3,3.8,54.2,,-7.03,,89.0,80,Buy
+IOT,Vertical_SaaS,Samsara Inc.,88.98,12.48,14.0,1.5,76.3,35.4,30.5,4.7,44.5,,,,71.0,60,Buy
 ZM,Collaboration,"Zoom Communications, Inc.",9.62,3.86,40.2,25.1,77.8,3.5,5.5,2.1,45.7,,-5.71,,81.0,80,Buy
 DBX,Collaboration,"Dropbox, Inc.",12.08,3.91,32.3,27.5,79.7,2.7,0.8,-0.8,33.1,,3.24,10.67,77.0,80,Buy
 BOX,Collaboration,"Box, Inc.",29.2,6.57,22.5,-22.1,69.5,5.9,13.6,4.7,36.1,,,-7.37,65.0,40,Watch
