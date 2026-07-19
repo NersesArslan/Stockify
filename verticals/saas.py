@@ -1,24 +1,22 @@
 import yfinance as yf
 import pandas as pd
+import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
+
 # --- Universe ---
 ENTERPRISE_SAAS = [
     "CRM", "HUBS", "WDAY", "INTU", "NOW",
     "ADBE", "TEAM", "SAP", "PAYC", "PCTY", "NICE"
 ]
-
-DEVOPS = ["GTLB", "PD"]
-
+DEVOPS        = ["GTLB", "PD"]
 ENTERPRISE_AI = ["PLTR", "SNOW", "DDOG", "MDB", "ZS"]
-
 VERTICAL_SAAS = ["VEEV", "IOT"]
-
 COLLABORATION = ["ZM", "DBX", "BOX"]
 
 UNIVERSE = {
     "Enterprise_SaaS": ENTERPRISE_SAAS,
-    "DevOps":          DEVOPS,
+    "DevOps":          DEVOPS,  
     "Enterprise_AI":   ENTERPRISE_AI,
     "Vertical_SaaS":   VERTICAL_SAAS,
     "Collaboration":   COLLABORATION,
@@ -148,6 +146,6 @@ def run():
         print(f"{'='*60}")
         subset = df[df["Archetype"] == archetype].drop(columns=["Archetype"])
         print(subset.to_string(index=False))
-
+    df["Last Updated"] = datetime.date.today().strftime("%Y-%m-%d")
     df.to_csv("data/saas.csv", index=False)
     print("Saved to data/saas.csv")

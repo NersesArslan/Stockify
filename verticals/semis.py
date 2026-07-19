@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 # --- Universe ---
@@ -147,6 +148,6 @@ def run():
         print(f"{'='*60}")
         subset = df[df["Archetype"] == archetype].drop(columns=["Archetype"])
         print(subset.to_string(index=False))
-
+    df["Last Updated"] = datetime.date.today().strftime("%Y-%m-%d")
     df.to_csv("data/semis.csv", index=False)
     print("Saved to data/semis.csv")
