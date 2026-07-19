@@ -72,6 +72,9 @@ def verdict_chart(df, title):
                   color_discrete_map=color_map, title=title)
 
 def show_analysis(df, title="AI Analysis"):
+    if "AI Analysis" not in df.columns:
+        st.info("AI Analysis not yet generated for this vertical.")
+        return
     analysis_df = df[df["AI Analysis"].notna()].copy()
     if len(analysis_df) == 0:
         return
