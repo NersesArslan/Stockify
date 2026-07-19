@@ -100,6 +100,14 @@ SAAS_EV_REVENUE_THRESHOLDS = [
     (40,  float("inf"),  1),
 ]
 
+ENTERPRISE_SAAS_EV_REVENUE_THRESHOLDS = [
+    (-float("inf"), 2,   5),
+    (2,             4,   4),
+    (4,             7,   3),
+    (7,             12,  2),
+    (12, float("inf"),  1),
+]
+
 GM_TREND_THRESHOLDS = [
     (-float("inf"), -5,  1),  # significantly compressing
     (-5,             0,  2),  # slightly compressing
@@ -347,7 +355,7 @@ SCORING_CONFIG = {
         "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
     },
     "valuation_metric":     "EV/Revenue",
-    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    "valuation_thresholds": ENTERPRISE_SAAS_EV_REVENUE_THRESHOLDS,
 },
 "Enterprise_AI": {
     "quality_weights": {
