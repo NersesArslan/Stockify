@@ -18,6 +18,17 @@ saas["Vertical"] = "SaaS"
 cyber = pd.read_csv("data/cyber_scored.csv")
 cyber["Vertical"] = "Cybersecurity"
 
+# --- Show last updated timestamp (oldest across all verticals) ---
+timestamps = []
+for name in ["semis", "cloud", "saas", "cyber"]:
+    try:
+        raw = pd.read_csv(f"data/{name}.csv")
+        timestamps.append(raw["Last Updated"].iloc[0])
+    except (FileNotFoundError, KeyError, IndexError):
+        pass
+if timestamps:
+    st.caption(f"Data last updated: {min(timestamps)}")
+
 all_df = pd.concat([
     pd.read_csv("data/semis_scored.csv").assign(Vertical="Semiconductors"),
     pd.read_csv("data/cloud_scored.csv").assign(Vertical="Cloud"),
