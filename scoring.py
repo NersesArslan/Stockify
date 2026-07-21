@@ -445,22 +445,20 @@ SCORING_CONFIG = {
     # --- Cybersecurity ---
     "ENDPOINT": {
 "quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
+    "Rule of 40":       0.30,  # early-stage platform — growth+profit blend is the thesis
+    "Rev CAGR (3Y)":    0.25,  # high growth is the core signal at this stage
+    "Gross Margin":     0.15,  # platform moat
+    "FCF Margin":       0.15,  # real cash generation despite GAAP losses
+    "GM Trend (3Y)":    0.10,  # moat durability
+    "Op Margin":        0.05,  # low weight — negative GAAP margins are accounting artifacts
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
         "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
@@ -468,12 +466,12 @@ SCORING_CONFIG = {
 
     "NETWORK": {
 "quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
+    "FCF Margin":       0.25,  # mature platform — real cash generation matters most
+    "Op Margin":        0.25,  # real GAAP profitability, not an artifact at this stage
     "Gross Margin":     0.15,
     "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
+    "Rule of 40":       0.10,  # secondary to raw profitability here
+    "Rev CAGR (3Y)":    0.10,  # growth weighted below profitability
     "Net Debt/EBITDA":  0.05,
 },
         "quality_thresholds": {
@@ -482,7 +480,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
@@ -491,22 +489,20 @@ SCORING_CONFIG = {
 
     "IDENTITY": {
 "quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
+    "Gross Margin":     0.20,  # switching-cost moat signal
+    "Rule of 40":       0.20,  # balanced growth/profit blend
+    "FCF Margin":       0.20,  # balanced growth/profit blend
     "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
+    "Rev CAGR (3Y)":    0.15,
+    "GM Trend (3Y)":    0.10,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
         "valuation_metric":     "EV/Revenue",
         "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
@@ -537,13 +533,13 @@ SCORING_CONFIG = {
 
     "DATA_SEC": {
 "quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
+    "FCF Margin":       0.25,  # mature tooling — profitability matters most
+    "Op Margin":        0.20,
+    "Gross Margin":     0.20,
     "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
-    "Net Debt/EBITDA":  0.05,
+    "Net Debt/EBITDA":  0.10,
+    "Rule of 40":       0.10,
+    "Rev CAGR (3Y)":    0.05,  # growth least important at this stage
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
