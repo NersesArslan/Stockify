@@ -69,6 +69,7 @@ def get_metrics(ticker_symbol, archetype):
             operating_income = income.loc["Operating Income"].iloc[0] if "Operating Income" in income.index else None
             tax_rate         = income.loc["Tax Rate For Calcs"].iloc[0] if "Tax Rate For Calcs" in income.index else 0.21
             interest_exp     = income.loc["Interest Expense Non Operating"].iloc[0] if "Interest Expense Non Operating" in income.index else None
+            rnd_expense      = income.loc["Research And Development"].iloc[0] if "Research And Development" in income.index else None
 
             ev_fcf          = round(ev / free_cashflow, 2)         if free_cashflow and free_cashflow > 0 else None
             fcf_margin      = round(free_cashflow / revenue * 100, 1) if free_cashflow and revenue else None
@@ -81,6 +82,7 @@ def get_metrics(ticker_symbol, archetype):
             ev_revenue = round(ev / revenue, 2) if revenue and revenue > 0 else None
             rule_of_40 = round(revenue_growth + fcf_margin, 1) if revenue_growth is not None and fcf_margin is not None else None
             nrr = None  # requires manual data from filings
+            rnd_intensity = round(rnd_expense / revenue * 100, 1) if rnd_expense and revenue else None
 
             return {
                 "Ticker":            ticker_symbol,
@@ -94,6 +96,7 @@ def get_metrics(ticker_symbol, archetype):
                 "Rev Growth (YoY)":  revenue_growth,
                 "GM Trend (3Y)":     gm_trend,
                 "EV/Revenue":              ev_revenue,
+                "R&D Intensity":     rnd_intensity,
                 "Net Debt/EBITDA":   net_debt_ebitda,
                 "Interest Coverage": interest_cov,
                 "Rule of 40": rule_of_40,

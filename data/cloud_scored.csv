@@ -1,6 +1,6 @@
-Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),EV/Revenue,Net Debt/EBITDA,Interest Coverage,Rule of 40,Last Updated,Quality Score,Valuation Score,Verdict
-AMZN,Hyperscaler,"Amazon.com, Inc.",280.62,1.3,13.1,50.6,11.7,16.6,6.5,3.7,0.59,68.54,17.9,2026-07-19,62.1,80,Buy
-MSFT,Hyperscaler,Microsoft Corporation,80.32,11.6,46.3,68.3,12.4,18.3,0.4,9.34,0.26,77.34,29.9,2026-07-19,76.8,60,Buy
-GOOGL,Hyperscaler,Alphabet Inc.,150.44,6.6,36.1,60.4,12.5,21.8,4.3,9.94,-0.19,219.18,28.4,2026-07-19,72.6,60,Buy
-ORCL,Hyperscaler,Oracle Corporation,,-36.4,36.2,65.8,10.5,20.6,-7.0,7.42,4.44,6.63,-15.8,2026-07-19,55.8,60,Avoid
-ESTC,Cloud_Data,Elastic N.V.,12.29,26.5,-3.5,76.2,17.6,16.0,3.8,3.26,,-1.14,42.5,2026-07-19,68.4,100,Buy
+Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),EV/Revenue,R&D Intensity,Net Debt/EBITDA,Interest Coverage,Rule of 40,Last Updated,Quality Score,Valuation Score,Verdict
+AMZN,Hyperscaler,"Amazon.com, Inc.",280.97,1.3,13.1,50.6,11.7,16.6,6.5,3.71,,0.59,68.54,17.9,2026-07-21,62.1,80,Buy
+MSFT,Hyperscaler,Microsoft Corporation,81.11,11.6,46.3,68.3,12.4,18.3,0.4,9.43,10.2,0.26,77.34,29.9,2026-07-21,76.8,60,Buy
+GOOGL,Hyperscaler,Alphabet Inc.,150.61,6.6,36.1,60.4,12.5,21.8,4.3,9.95,14.5,-0.19,219.18,28.4,2026-07-21,72.6,60,Buy
+ORCL,Hyperscaler,Oracle Corporation,,-36.4,36.2,65.8,10.5,20.6,-7.0,7.45,15.3,4.44,6.63,-15.8,2026-07-21,55.8,60,Avoid
+ESTC,Cloud_Data,Elastic N.V.,11.97,26.5,-3.5,76.2,17.6,16.0,3.8,3.18,26.0,,-1.14,42.5,2026-07-21,68.4,100,Buy

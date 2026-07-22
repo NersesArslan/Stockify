@@ -1,9 +1,9 @@
-Ticker,Archetype,Name,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),Rule of 40,NRR,Net Debt/EBITDA,Interest Coverage,Last Updated
-CRWD,ENDPOINT,"CrowdStrike Holdings, Inc.",105.41,39.86,37.8,-2.2,75.1,29.0,25.6,1.5,63.4,,-62.9,2.12,2026-07-19
-S,ENDPOINT,"SentinelOne, Inc.",22.45,5.75,25.6,-28.8,73.2,33.4,20.8,8.3,46.4,,,,2026-07-19
-PANW,NETWORK,"Palo Alto Networks, Inc.",81.39,27.47,33.7,-2.5,72.0,18.8,31.1,4.7,64.8,,-0.66,780.79,2026-07-19
-FTNT,NETWORK,"Fortinet, Inc.",63.8,16.27,25.5,31.3,80.3,15.5,20.1,5.0,45.6,,-1.16,117.48,2026-07-19
-CHKP,NETWORK,Check Point Software Technologi,18.44,4.89,26.5,27.7,87.7,5.4,4.8,-0.2,31.3,,-0.91,436.65,2026-07-19
-OKTA,IDENTITY,"Okta, Inc.",24.56,8.01,32.6,7.3,77.4,16.3,11.2,6.7,43.8,,-8.16,66.75,2026-07-19
-QLYS,DATA_SEC,"Qualys, Inc.",21.89,7.59,34.7,35.0,83.2,11.0,9.8,3.8,44.5,,-1.71,,2026-07-19
-VRNT,DATA_SEC,Verint Systems Inc.,13.46,1.7,12.6,2.0,70.9,1.3,-1.0,5.4,11.6,,2.48,10.91,2026-07-19
+Ticker,Archetype,Name,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),Rule of 40,NRR,R&D Intensity,Net Debt/EBITDA,Interest Coverage,Last Updated
+CRWD,ENDPOINT,"CrowdStrike Holdings, Inc.",99.1,37.48,37.8,-2.2,75.1,29.0,25.6,1.5,63.4,,27.2,-62.9,2.12,2026-07-21
+S,ENDPOINT,"SentinelOne, Inc.",21.49,5.5,25.6,-28.8,73.2,33.4,20.8,8.3,46.4,,30.9,,,2026-07-21
+PANW,NETWORK,"Palo Alto Networks, Inc.",77.63,26.2,33.7,-2.5,72.0,18.8,31.1,4.7,64.8,,18.7,-0.66,780.79,2026-07-21
+FTNT,NETWORK,"Fortinet, Inc.",62.38,15.91,25.5,31.3,80.3,15.5,20.1,5.0,45.6,,11.5,-1.16,117.48,2026-07-21
+CHKP,NETWORK,Check Point Software Technologi,17.49,4.64,26.5,27.7,87.7,5.4,4.8,-0.2,31.3,,16.6,-0.91,436.65,2026-07-21
+OKTA,IDENTITY,"Okta, Inc.",23.19,7.57,32.6,7.3,77.4,16.3,11.2,6.7,43.8,,21.3,-8.16,66.75,2026-07-21
+QLYS,DATA_SEC,"Qualys, Inc.",19.57,6.78,34.7,35.0,83.2,11.0,9.8,3.8,44.5,,17.1,-1.71,,2026-07-21
+VRNT,DATA_SEC,Verint Systems Inc.,13.46,1.7,12.6,2.0,70.9,1.3,-1.0,5.4,11.6,,16.7,2.48,10.91,2026-07-21

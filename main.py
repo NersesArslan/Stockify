@@ -3,8 +3,8 @@ from verticals import semis, cloud, saas, cyber
 from scoring import score_dataframe
 from analyst import analyze_dataframe
 
-FETCH  = {"semis": False, "cloud": False, "saas": False, "cyber": False}
-SCORE  = {"semis": False,  "cloud": False,  "saas": False,  "cyber": True}
+FETCH  = {"semis": True, "cloud": True, "saas": True, "cyber": True}
+SCORE  = {"semis": True,  "cloud": True,  "saas": True,  "cyber": True}
 ANALYZE = {"semis": False,  "cloud": False,  "saas": False,  "cyber": False}
 
 if FETCH["semis"]: semis.run()
