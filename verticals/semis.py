@@ -79,6 +79,7 @@ def get_metrics(ticker_symbol, archetype):
             nopat            = operating_income * (1 - tax_rate) if operating_income is not None else None
             interest_exp     = income.loc["Interest Expense Non Operating"].iloc[0] if "Interest Expense Non Operating" in income.index else None
             rnd_expense      = income.loc["Research And Development"].iloc[0] if "Research And Development" in income.index else None
+            employees        = info.get("fullTimeEmployees") or None
 
             ev_fcf          = round(ev / free_cashflow, 2)         if free_cashflow and free_cashflow > 0 else None
             fcf_margin      = round(free_cashflow / revenue * 100, 1) if free_cashflow and revenue else None
@@ -90,6 +91,7 @@ def get_metrics(ticker_symbol, archetype):
             interest_cov    = round(ebitda / abs(interest_exp), 2) if ebitda and interest_exp and interest_exp != 0 else None
             roic            = round(nopat / invested_capital * 100, 1) if nopat and invested_capital and invested_capital > 0 else None
             rnd_intensity   = round(rnd_expense / revenue * 100, 1) if rnd_expense and revenue else None
+            rev_per_employee = round(revenue / employees / 1000, 1) if revenue and employees else None
 
             return {
                 "Ticker":            ticker_symbol,
@@ -104,6 +106,7 @@ def get_metrics(ticker_symbol, archetype):
                 "Rev Growth (YoY)":  revenue_growth,
                 "ROIC":              roic,
                 "R&D Intensity":     rnd_intensity,
+                "Revenue per Employee ($K)": rev_per_employee,
                 "Net Debt/EBITDA":   net_debt_ebitda,
                 "Interest Coverage": interest_cov,
             }

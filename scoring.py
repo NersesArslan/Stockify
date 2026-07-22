@@ -141,6 +141,17 @@ SOFTWARE_RND_THRESHOLDS = [
     (35,            50,  4),
     (50,  float("inf"),  3),
 ]
+
+# Revenue per Employee ($K): scoped to USD-reporting SaaS archetypes only for now.
+# Semis is deferred — yfinance reports some foreign filers (e.g. TSM, UMC) in local
+# currency, which corrupts this metric until that's fixed.
+REV_PER_EMPLOYEE_THRESHOLDS = [
+    (-float("inf"), 300, 1),
+    (300,           450, 2),
+    (450,           600, 3),
+    (600,           900, 4),
+    (900, float("inf"),  5),
+]
 # --- Config registry ---
 
 SCORING_CONFIG = {
@@ -369,13 +380,14 @@ SCORING_CONFIG = {
     # --- SaaS ---
 "Enterprise_SaaS": {
     "quality_weights": {
-        "FCF Margin":       0.25,
-        "Rule of 40":       0.20,
-        "Gross Margin":     0.15,
-        "Op Margin":        0.15,
-        "GM Trend (3Y)":    0.10,
-        "Rev CAGR (3Y)":    0.10,
+        "FCF Margin":       0.23,
+        "Rule of 40":       0.18,
+        "Gross Margin":     0.14,
+        "Op Margin":        0.14,
+        "GM Trend (3Y)":    0.09,
+        "Rev CAGR (3Y)":    0.09,
         "Net Debt/EBITDA":  0.05,
+        "Revenue per Employee ($K)": 0.08,
     },
     "quality_thresholds": {
         "FCF Margin":       FCF_MARGIN_THRESHOLDS,
@@ -385,19 +397,21 @@ SCORING_CONFIG = {
         "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
         "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
         "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
     },
     "valuation_metric":     "EV/Revenue",
     "valuation_thresholds": ENTERPRISE_SAAS_EV_REVENUE_THRESHOLDS,
 },
 "Enterprise_AI": {
     "quality_weights": {
-        "Gross Margin":     0.23,
-        "Rule of 40":       0.23,
-        "Rev CAGR (3Y)":    0.18,
-        "FCF Margin":       0.14,
-        "GM Trend (3Y)":    0.09,
+        "Gross Margin":     0.21,
+        "Rule of 40":       0.21,
+        "Rev CAGR (3Y)":    0.17,
+        "FCF Margin":       0.13,
+        "GM Trend (3Y)":    0.08,
         "Op Margin":        0.05,
-        "R&D Intensity":    0.08,
+        "R&D Intensity":    0.07,
+        "Revenue per Employee ($K)": 0.08,
     },
     "quality_thresholds": {
         "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
@@ -407,6 +421,7 @@ SCORING_CONFIG = {
         "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
         "Op Margin":        OP_MARGIN_THRESHOLDS,
         "R&D Intensity":    SOFTWARE_RND_THRESHOLDS,
+        "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
     },
     "valuation_metric":     "EV/Revenue",
     "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
@@ -457,21 +472,22 @@ SCORING_CONFIG = {
 
     "Collaboration": {
 "quality_weights": {
-"FCF Margin":       0.25,  # cash generation is the only thesis
-"Op Margin":        0.25,
-"Gross Margin":     0.20,
-"GM Trend (3Y)":    0.10,
-"Rule of 40":       0.10,  # less relevant for slow growers
-"Rev CAGR (3Y)":    0.10,  # growth is minimal, weight it low
-
+"FCF Margin":       0.23,  # cash generation is the only thesis
+"Op Margin":        0.23,
+"Gross Margin":     0.19,
+"GM Trend (3Y)":    0.09,
+"Rule of 40":       0.09,  # less relevant for slow growers
+"Rev CAGR (3Y)":    0.09,  # growth is minimal, weight it low
+"Revenue per Employee ($K)": 0.08,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+            "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
 
         },
         "valuation_metric":     "EV/Revenue",
