@@ -25,6 +25,24 @@ UNIVERSE = {
     "SUPPLY_CHAIN": SUPPLY_CHAIN
 }
 
+# --- FX handling for foreign filers (e.g. TSM, UMC report financials in TWD
+# while their ADR market cap is quoted in USD) ---
+_fx_cache = {}
+
+def get_fx_rate(financial_currency, price_currency="USD"):
+    """Local-currency units per 1 price_currency unit, e.g. TWD per USD."""
+    if not financial_currency or financial_currency == price_currency:
+        return 1.0
+    if financial_currency in _fx_cache:
+        return _fx_cache[financial_currency]
+    try:
+        fx_info = yf.Ticker(f"{financial_currency}=X").info
+        rate = fx_info.get("regularMarketPrice") or fx_info.get("previousClose")
+    except Exception:
+        rate = None
+    _fx_cache[financial_currency] = rate
+    return rate
+
 # --- Fetcher ---
 def get_metrics(ticker_symbol, archetype):
     for attempt in range(3): 
@@ -38,6 +56,23 @@ def get_metrics(ticker_symbol, archetype):
             ebitda         = info.get("ebitda") or None
             revenue        = info.get("totalRevenue") or None
             free_cashflow  = info.get("freeCashflow") or None
+
+            # market_cap is always quoted in `currency`; everything else above
+            # (and the financial statements below) is reported in `financialCurrency`,
+            # which differs for foreign filers like TSM/UMC (TWD). Normalize to
+            # `currency` (USD for our universe) so dollar figures aren't corrupted.
+            fx_rate = get_fx_rate(info.get("financialCurrency"), info.get("currency") or "USD")
+
+            def to_usd(value):
+                if value is None or not fx_rate or fx_rate == 1.0:
+                    return value
+                return value / fx_rate
+
+            total_debt    = to_usd(total_debt)
+            cash          = to_usd(cash)
+            ebitda        = to_usd(ebitda)
+            revenue       = to_usd(revenue)
+            free_cashflow = to_usd(free_cashflow)
 
             income = t.financials
             # Revenue CAGR (3 year)
@@ -79,6 +114,8 @@ def get_metrics(ticker_symbol, archetype):
             nopat            = operating_income * (1 - tax_rate) if operating_income is not None else None
             interest_exp     = income.loc["Interest Expense Non Operating"].iloc[0] if "Interest Expense Non Operating" in income.index else None
             rnd_expense      = income.loc["Research And Development"].iloc[0] if "Research And Development" in income.index else None
+            interest_exp     = to_usd(interest_exp)
+            rnd_expense      = to_usd(rnd_expense)
             employees        = info.get("fullTimeEmployees") or None
 
             ev_fcf          = round(ev / free_cashflow, 2)         if free_cashflow and free_cashflow > 0 else None

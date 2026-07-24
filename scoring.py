@@ -142,9 +142,9 @@ SOFTWARE_RND_THRESHOLDS = [
     (50,  float("inf"),  3),
 ]
 
-# Revenue per Employee ($K): scoped to USD-reporting SaaS archetypes only for now.
-# Semis is deferred — yfinance reports some foreign filers (e.g. TSM, UMC) in local
-# currency, which corrupts this metric until that's fixed.
+# Revenue per Employee ($K): wired into semis and USD-reporting SaaS archetypes.
+# Foreign filers (e.g. TSM, UMC) are normalized to USD in verticals/semis.py via
+# the financialCurrency FX conversion before this metric is computed.
 REV_PER_EMPLOYEE_THRESHOLDS = [
     (-float("inf"), 300, 1),
     (300,           450, 2),
@@ -159,14 +159,15 @@ SCORING_CONFIG = {
     # --- Semiconductors ---
     "Foundry": {
 "quality_weights": {
-    "ROIC":             0.23,
-    "FCF Margin":       0.18,
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.09,
+    "ROIC":             0.21,
+    "FCF Margin":       0.17,
+    "Gross Margin":     0.13,
+    "GM Trend (3Y)":    0.08,
+    "Op Margin":        0.13,
+    "Rev CAGR (3Y)":    0.08,
     "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.08,
+    "R&D Intensity":    0.07,
+    "Revenue per Employee ($K)": 0.08,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -177,6 +178,7 @@ SCORING_CONFIG = {
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
     "R&D Intensity":    SEMIS_RND_THRESHOLDS,
+    "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
@@ -184,14 +186,15 @@ SCORING_CONFIG = {
 
     "Fabless": {
 "quality_weights": {
-    "ROIC":             0.23,
-    "FCF Margin":       0.18,
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.09,
+    "ROIC":             0.21,
+    "FCF Margin":       0.17,
+    "Gross Margin":     0.13,
+    "GM Trend (3Y)":    0.08,
+    "Op Margin":        0.13,
+    "Rev CAGR (3Y)":    0.08,
     "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.08,
+    "R&D Intensity":    0.07,
+    "Revenue per Employee ($K)": 0.08,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -202,6 +205,7 @@ SCORING_CONFIG = {
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
     "R&D Intensity":    SEMIS_RND_THRESHOLDS,
+    "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
@@ -209,14 +213,15 @@ SCORING_CONFIG = {
 
     "Equipment": {
 "quality_weights": {
-    "ROIC":             0.23,
-    "FCF Margin":       0.18,
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.09,
+    "ROIC":             0.21,
+    "FCF Margin":       0.17,
+    "Gross Margin":     0.13,
+    "GM Trend (3Y)":    0.08,
+    "Op Margin":        0.13,
+    "Rev CAGR (3Y)":    0.08,
     "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.08,
+    "R&D Intensity":    0.07,
+    "Revenue per Employee ($K)": 0.08,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -227,6 +232,7 @@ SCORING_CONFIG = {
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
     "R&D Intensity":    SEMIS_RND_THRESHOLDS,
+    "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
@@ -234,14 +240,15 @@ SCORING_CONFIG = {
 
     "IDM": {
 "quality_weights": {
-    "ROIC":             0.23,
-    "FCF Margin":       0.18,
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.09,
+    "ROIC":             0.21,
+    "FCF Margin":       0.17,
+    "Gross Margin":     0.13,
+    "GM Trend (3Y)":    0.08,
+    "Op Margin":        0.13,
+    "Rev CAGR (3Y)":    0.08,
     "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.08,
+    "R&D Intensity":    0.07,
+    "Revenue per Employee ($K)": 0.08,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -252,6 +259,7 @@ SCORING_CONFIG = {
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
     "R&D Intensity":    SEMIS_RND_THRESHOLDS,
+    "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
@@ -259,14 +267,15 @@ SCORING_CONFIG = {
 
     "Memory": {
 "quality_weights": {
-    "ROIC":             0.23,
-    "FCF Margin":       0.18,
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.09,
+    "ROIC":             0.21,
+    "FCF Margin":       0.17,
+    "Gross Margin":     0.13,
+    "GM Trend (3Y)":    0.08,
+    "Op Margin":        0.13,
+    "Rev CAGR (3Y)":    0.08,
     "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.08,
+    "R&D Intensity":    0.07,
+    "Revenue per Employee ($K)": 0.08,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -277,6 +286,7 @@ SCORING_CONFIG = {
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
     "R&D Intensity":    SEMIS_RND_THRESHOLDS,
+    "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
@@ -284,14 +294,15 @@ SCORING_CONFIG = {
 
     "EDA_IP": {
 "quality_weights": {
-    "ROIC":             0.23,
-    "FCF Margin":       0.18,
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.09,
+    "ROIC":             0.21,
+    "FCF Margin":       0.17,
+    "Gross Margin":     0.13,
+    "GM Trend (3Y)":    0.08,
+    "Op Margin":        0.13,
+    "Rev CAGR (3Y)":    0.08,
     "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.08,
+    "R&D Intensity":    0.07,
+    "Revenue per Employee ($K)": 0.08,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -302,6 +313,7 @@ SCORING_CONFIG = {
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
     "R&D Intensity":    SEMIS_RND_THRESHOLDS,
+    "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
@@ -309,14 +321,16 @@ SCORING_CONFIG = {
 
     "SUPPLY_CHAIN": {
 "quality_weights": {
-    "ROIC":             0.23,
-    "FCF Margin":       0.18,
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.09,
+    # Distributor, not an IP-driven tech co (AVT, ARW) — Revenue per Employee
+    # and R&D Intensity excluded since headcount leverage and R&D spend aren't
+    # quality signals for a distribution business.
+    "ROIC":             0.25,
+    "FCF Margin":       0.20,
+    "Gross Margin":     0.15,
+    "Op Margin":        0.15,
+    "GM Trend (3Y)":    0.10,
+    "Rev CAGR (3Y)":    0.10,
     "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.08,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -326,7 +340,6 @@ SCORING_CONFIG = {
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-    "R&D Intensity":    SEMIS_RND_THRESHOLDS,
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
