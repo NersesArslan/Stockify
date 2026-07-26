@@ -116,6 +116,14 @@ GM_TREND_THRESHOLDS = [
     (8,  float("inf"),  5),  # strongly expanding
 ]
 
+DEVOPS_EV_REVENUE_THRESHOLDS = [
+    (-float("inf"), 2,   5),
+    (2,             4,   4),
+    (4,             6,   3),
+    (6,             10,  2),
+    (10, float("inf"),  1),
+]
+
 COLLABORATION_EV_REVENUE_THRESHOLDS = [
     (-float("inf"), 2,   5),
     (2,             4,   4),
@@ -498,7 +506,7 @@ SCORING_CONFIG = {
         "R&D Intensity":    SOFTWARE_RND_THRESHOLDS,
     },
     "valuation_metric":     "EV/Revenue",
-    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    "valuation_thresholds": DEVOPS_EV_REVENUE_THRESHOLDS,
 },
 
 
