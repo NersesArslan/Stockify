@@ -159,15 +159,19 @@ SCORING_CONFIG = {
     # --- Semiconductors ---
     "Foundry": {
 "quality_weights": {
-    "ROIC":             0.21,
-    "FCF Margin":       0.17,
-    "Gross Margin":     0.13,
-    "GM Trend (3Y)":    0.08,
+    # Scale, capital-intensive business — ROIC is the biggest differentiator
+    # between disciplined operators and laggards; leverage matters given
+    # enormous fab capex. Rev/Employee de-weighted: fabs are capital-heavy,
+    # not headcount-leveraged.
+    "ROIC":             0.24,
+    "FCF Margin":       0.15,
+    "Gross Margin":     0.14,
     "Op Margin":        0.13,
-    "Rev CAGR (3Y)":    0.08,
-    "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.07,
-    "Revenue per Employee ($K)": 0.08,
+    "Net Debt/EBITDA":  0.09,
+    "R&D Intensity":    0.08,
+    "GM Trend (3Y)":    0.08,
+    "Rev CAGR (3Y)":    0.06,
+    "Revenue per Employee ($K)": 0.03,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -186,15 +190,18 @@ SCORING_CONFIG = {
 
     "Fabless": {
 "quality_weights": {
-    "ROIC":             0.21,
-    "FCF Margin":       0.17,
-    "Gross Margin":     0.13,
-    "GM Trend (3Y)":    0.08,
-    "Op Margin":        0.13,
-    "Rev CAGR (3Y)":    0.08,
-    "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.07,
+    # Asset-light, IP-driven — R&D and headcount leverage are the moat;
+    # growth is a real quality signal here (capturing AI buildout upside),
+    # unlike capex-heavy archetypes. Rarely levered, so debt weight is low.
+    "ROIC":             0.20,
+    "FCF Margin":       0.16,
+    "Gross Margin":     0.12,
+    "Op Margin":        0.12,
+    "Rev CAGR (3Y)":    0.12,
+    "R&D Intensity":    0.10,
     "Revenue per Employee ($K)": 0.08,
+    "GM Trend (3Y)":    0.07,
+    "Net Debt/EBITDA":  0.03,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -213,15 +220,18 @@ SCORING_CONFIG = {
 
     "Equipment": {
 "quality_weights": {
-    "ROIC":             0.21,
-    "FCF Margin":       0.17,
-    "Gross Margin":     0.13,
-    "GM Trend (3Y)":    0.08,
+    # Technological-moat, cyclical-orders business — margin quality and R&D
+    # matter far more than trailing growth, which is mostly cycle noise.
+    # Most equipment names run net cash, so debt weight is minimal.
+    "ROIC":             0.20,
+    "Gross Margin":     0.16,
+    "FCF Margin":       0.15,
+    "R&D Intensity":    0.13,
     "Op Margin":        0.13,
-    "Rev CAGR (3Y)":    0.08,
-    "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.07,
-    "Revenue per Employee ($K)": 0.08,
+    "GM Trend (3Y)":    0.08,
+    "Revenue per Employee ($K)": 0.06,
+    "Rev CAGR (3Y)":    0.06,
+    "Net Debt/EBITDA":  0.03,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -240,15 +250,17 @@ SCORING_CONFIG = {
 
     "IDM": {
 "quality_weights": {
-    "ROIC":             0.21,
-    "FCF Margin":       0.17,
+    # Same capital intensity as Foundry, but the key quality tell is
+    # leverage discipline (e.g. TXN vs. Intel) rather than pure scale ROIC.
+    "ROIC":             0.22,
+    "FCF Margin":       0.16,
+    "Op Margin":        0.14,
     "Gross Margin":     0.13,
+    "Net Debt/EBITDA":  0.09,
     "GM Trend (3Y)":    0.08,
-    "Op Margin":        0.13,
-    "Rev CAGR (3Y)":    0.08,
-    "Net Debt/EBITDA":  0.05,
+    "Rev CAGR (3Y)":    0.07,
     "R&D Intensity":    0.07,
-    "Revenue per Employee ($K)": 0.08,
+    "Revenue per Employee ($K)": 0.04,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -267,15 +279,19 @@ SCORING_CONFIG = {
 
     "Memory": {
 "quality_weights": {
-    "ROIC":             0.21,
-    "FCF Margin":       0.17,
-    "Gross Margin":     0.13,
-    "GM Trend (3Y)":    0.08,
-    "Op Margin":        0.13,
-    "Rev CAGR (3Y)":    0.08,
-    "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.07,
-    "Revenue per Employee ($K)": 0.08,
+    # Commodity, brutally cyclical — trailing ROIC/margins are noisy and can
+    # go negative at trough. Quality here means surviving the cycle: balance
+    # sheet strength and GM trend (inflection signal) outweigh peak
+    # profitability. Growth is exogenous/cycle-driven, so it's a weak signal.
+    "FCF Margin":       0.20,
+    "Net Debt/EBITDA":  0.16,
+    "GM Trend (3Y)":    0.14,
+    "ROIC":             0.14,
+    "Gross Margin":     0.12,
+    "Op Margin":        0.11,
+    "R&D Intensity":    0.06,
+    "Rev CAGR (3Y)":    0.04,
+    "Revenue per Employee ($K)": 0.03,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -294,15 +310,18 @@ SCORING_CONFIG = {
 
     "EDA_IP": {
 "quality_weights": {
-    "ROIC":             0.21,
-    "FCF Margin":       0.17,
-    "Gross Margin":     0.13,
-    "GM Trend (3Y)":    0.08,
-    "Op Margin":        0.13,
-    "Rev CAGR (3Y)":    0.08,
-    "Net Debt/EBITDA":  0.05,
-    "R&D Intensity":    0.07,
-    "Revenue per Employee ($K)": 0.08,
+    # Best-in-class asset-light IP moat, near-duopoly — R&D and
+    # per-employee leverage are the whole thesis; growth from design-cycle
+    # attach is a real signal; balance sheet risk is essentially irrelevant.
+    "ROIC":             0.19,
+    "FCF Margin":       0.16,
+    "R&D Intensity":    0.12,
+    "Revenue per Employee ($K)": 0.12,
+    "Op Margin":        0.12,
+    "Rev CAGR (3Y)":    0.10,
+    "Gross Margin":     0.11,
+    "GM Trend (3Y)":    0.06,
+    "Net Debt/EBITDA":  0.02,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
