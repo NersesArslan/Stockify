@@ -165,6 +165,7 @@ def get_metrics(ticker_symbol, archetype):
             employees        = info.get("fullTimeEmployees") or None
 
             ev_fcf          = round(ev / free_cashflow, 2)         if free_cashflow and free_cashflow > 0 else None
+            ev_revenue      = round(ev / revenue, 2)               if revenue and revenue > 0 else None
             fcf_margin      = round(free_cashflow / revenue * 100, 1) if free_cashflow and revenue else None
             op_margin       = round(info.get("operatingMargins") * 100, 1) if info.get("operatingMargins") else None
             gross_margin    = round(info.get("grossMargins") * 100, 1)     if info.get("grossMargins") else None
@@ -181,6 +182,7 @@ def get_metrics(ticker_symbol, archetype):
                 "Archetype":         archetype,
                 "Name":              info.get("shortName"),
                 "EV/FCF":            ev_fcf,
+                "EV/Revenue":        ev_revenue,
                 "FCF Margin":        fcf_margin,
                 "Op Margin":         op_margin,
                 "Gross Margin":      gross_margin,

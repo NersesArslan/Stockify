@@ -100,6 +100,14 @@ SAAS_EV_REVENUE_THRESHOLDS = [
     (40,  float("inf"),  1),
 ]
 
+SEMIS_EV_REVENUE_THRESHOLDS = [
+    (-float("inf"), 3,   5),  # cheap for semis
+    (3,             6,   4),  # reasonable
+    (6,             10,  3),  # fair value
+    (10,            15,  2),  # expensive
+    (15, float("inf"),  1),  # very expensive
+]
+
 ENTERPRISE_SAAS_EV_REVENUE_THRESHOLDS = [
     (-float("inf"), 2,   5),
     (2,             4,   4),
@@ -770,6 +778,13 @@ def score_row(row):
     val_metric     = config["valuation_metric"]
     val_thresholds = config["valuation_thresholds"]
     val_score      = score_metric(row.get(val_metric), val_thresholds)
+
+    # Fallback to EV/Revenue if the primary metric is undefined (e.g. EV/FCF
+    # with negative or zero FCF). Only triggers for EV/FCF-primary archetypes
+    # (semis) since every other archetype already uses EV/Revenue directly.
+    if val_score is None and val_metric != "EV/Revenue":
+        val_score = score_metric(row.get("EV/Revenue"), SEMIS_EV_REVENUE_THRESHOLDS)
+
     valuation      = round(val_score * 20, 1) if val_score is not None else None
 
     verdict = get_verdict(quality, valuation)
