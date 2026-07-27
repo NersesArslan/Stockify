@@ -64,6 +64,32 @@ def get_metrics(ticker_symbol, archetype):
                     gm_trend = None
             except Exception:
                 gm_trend = None
+            # ROIC Trend (3Y): most recent year's ROIC minus ROIC from 3 years ago
+            try:
+                if "Operating Income" in income.index and "Invested Capital" in balance.index:
+                    op_income_hist = income.loc["Operating Income"]
+                    invested_capital_hist = balance.loc["Invested Capital"]
+                    if "Tax Rate For Calcs" in income.index:
+                        tax_rate_hist = income.loc["Tax Rate For Calcs"]
+                    else:
+                        tax_rate_hist = pd.Series(0.21, index=op_income_hist.index)
+                    roic_hist = []
+                    for date in op_income_hist.index:
+                        oi = op_income_hist.get(date)
+                        ic = invested_capital_hist.get(date)
+                        tr = tax_rate_hist.get(date)
+                        if pd.isna(tr):
+                            tr = 0.21
+                        if pd.notna(oi) and pd.notna(ic) and ic != 0:
+                            roic_hist.append(oi * (1 - tr) / ic * 100)
+                    if len(roic_hist) >= 4:
+                        roic_trend = round(roic_hist[0] - roic_hist[3], 1)
+                    else:
+                        roic_trend = None
+                else:
+                    roic_trend = None
+            except Exception:
+                roic_trend = None
             ev = market_cap + total_debt - cash
 
             operating_income = income.loc["Operating Income"].iloc[0] if "Operating Income" in income.index else None
@@ -97,6 +123,7 @@ def get_metrics(ticker_symbol, archetype):
                 "Rev CAGR (3Y)":     rev_cagr,
                 "Rev Growth (YoY)":  revenue_growth,
                 "GM Trend (3Y)":     gm_trend,
+                "ROIC Trend (3Y)":   roic_trend,
                 "EV/Revenue":              ev_revenue,
                 "R&D Intensity":     rnd_intensity,
                 "Revenue per Employee ($K)": rev_per_employee,

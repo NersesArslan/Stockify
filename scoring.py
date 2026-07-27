@@ -150,6 +150,16 @@ SOFTWARE_RND_THRESHOLDS = [
     (50,  float("inf"),  3),
 ]
 
+# ROIC Trend (3Y): monotonic, unlike R&D Intensity — improving capital
+# efficiency is unambiguously good, deteriorating is unambiguously bad.
+ROIC_TREND_THRESHOLDS = [
+    (-float("inf"), -10,  1),  # severe deterioration
+    (-10,            -3,  2),  # meaningful deterioration
+    (-3,              3,  3),  # stable
+    (3,              10,  4),  # improving
+    (10,  float("inf"),  5),  # strongly improving
+]
+
 # Revenue per Employee ($K): wired into semis and USD-reporting SaaS archetypes.
 # Foreign filers (e.g. TSM, UMC) are normalized to USD in verticals/semis.py via
 # the financialCurrency FX conversion before this metric is computed.
@@ -171,13 +181,14 @@ SCORING_CONFIG = {
     # between disciplined operators and laggards; leverage matters given
     # enormous fab capex. Rev/Employee de-weighted: fabs are capital-heavy,
     # not headcount-leveraged.
-    "ROIC":             0.24,
-    "FCF Margin":       0.15,
-    "Gross Margin":     0.14,
-    "Op Margin":        0.13,
-    "Net Debt/EBITDA":  0.09,
+    "ROIC":             0.22,
+    "FCF Margin":       0.14,
+    "Gross Margin":     0.13,
+    "Op Margin":        0.12,
+    "Net Debt/EBITDA":  0.08,
     "R&D Intensity":    0.08,
-    "GM Trend (3Y)":    0.08,
+    "GM Trend (3Y)":    0.07,
+    "ROIC Trend (3Y)":  0.07,
     "Rev CAGR (3Y)":    0.06,
     "Revenue per Employee ($K)": 0.03,
 },
@@ -186,6 +197,7 @@ SCORING_CONFIG = {
     "FCF Margin":       FCF_MARGIN_THRESHOLDS,
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
+    "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -201,14 +213,15 @@ SCORING_CONFIG = {
     # Asset-light, IP-driven — R&D and headcount leverage are the moat;
     # growth is a real quality signal here (capturing AI buildout upside),
     # unlike capex-heavy archetypes. Rarely levered, so debt weight is low.
-    "ROIC":             0.20,
-    "FCF Margin":       0.16,
-    "Gross Margin":     0.12,
-    "Op Margin":        0.12,
-    "Rev CAGR (3Y)":    0.12,
-    "R&D Intensity":    0.10,
-    "Revenue per Employee ($K)": 0.08,
+    "ROIC":             0.19,
+    "FCF Margin":       0.15,
+    "Gross Margin":     0.11,
+    "Op Margin":        0.11,
+    "Rev CAGR (3Y)":    0.11,
+    "R&D Intensity":    0.09,
+    "Revenue per Employee ($K)": 0.07,
     "GM Trend (3Y)":    0.07,
+    "ROIC Trend (3Y)":  0.07,
     "Net Debt/EBITDA":  0.03,
 },
 "quality_thresholds": {
@@ -216,6 +229,7 @@ SCORING_CONFIG = {
     "FCF Margin":       FCF_MARGIN_THRESHOLDS,
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
+    "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -231,13 +245,14 @@ SCORING_CONFIG = {
     # Technological-moat, cyclical-orders business — margin quality and R&D
     # matter far more than trailing growth, which is mostly cycle noise.
     # Most equipment names run net cash, so debt weight is minimal.
-    "ROIC":             0.20,
-    "Gross Margin":     0.16,
-    "FCF Margin":       0.15,
-    "R&D Intensity":    0.13,
-    "Op Margin":        0.13,
-    "GM Trend (3Y)":    0.08,
-    "Revenue per Employee ($K)": 0.06,
+    "ROIC":             0.19,
+    "Gross Margin":     0.15,
+    "FCF Margin":       0.14,
+    "R&D Intensity":    0.12,
+    "Op Margin":        0.12,
+    "GM Trend (3Y)":    0.07,
+    "ROIC Trend (3Y)":  0.07,
+    "Revenue per Employee ($K)": 0.05,
     "Rev CAGR (3Y)":    0.06,
     "Net Debt/EBITDA":  0.03,
 },
@@ -246,6 +261,7 @@ SCORING_CONFIG = {
     "FCF Margin":       FCF_MARGIN_THRESHOLDS,
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
+    "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -260,12 +276,13 @@ SCORING_CONFIG = {
 "quality_weights": {
     # Same capital intensity as Foundry, but the key quality tell is
     # leverage discipline (e.g. TXN vs. Intel) rather than pure scale ROIC.
-    "ROIC":             0.22,
-    "FCF Margin":       0.16,
-    "Op Margin":        0.14,
-    "Gross Margin":     0.13,
-    "Net Debt/EBITDA":  0.09,
-    "GM Trend (3Y)":    0.08,
+    "ROIC":             0.20,
+    "FCF Margin":       0.15,
+    "Op Margin":        0.13,
+    "Gross Margin":     0.12,
+    "Net Debt/EBITDA":  0.08,
+    "GM Trend (3Y)":    0.07,
+    "ROIC Trend (3Y)":  0.07,
     "Rev CAGR (3Y)":    0.07,
     "R&D Intensity":    0.07,
     "Revenue per Employee ($K)": 0.04,
@@ -275,6 +292,7 @@ SCORING_CONFIG = {
     "FCF Margin":       FCF_MARGIN_THRESHOLDS,
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
+    "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -291,13 +309,14 @@ SCORING_CONFIG = {
     # go negative at trough. Quality here means surviving the cycle: balance
     # sheet strength and GM trend (inflection signal) outweigh peak
     # profitability. Growth is exogenous/cycle-driven, so it's a weak signal.
-    "FCF Margin":       0.20,
-    "Net Debt/EBITDA":  0.16,
-    "GM Trend (3Y)":    0.14,
-    "ROIC":             0.14,
-    "Gross Margin":     0.12,
-    "Op Margin":        0.11,
-    "R&D Intensity":    0.06,
+    "FCF Margin":       0.19,
+    "Net Debt/EBITDA":  0.15,
+    "GM Trend (3Y)":    0.13,
+    "ROIC":             0.13,
+    "ROIC Trend (3Y)":  0.07,
+    "Gross Margin":     0.11,
+    "Op Margin":        0.10,
+    "R&D Intensity":    0.05,
     "Rev CAGR (3Y)":    0.04,
     "Revenue per Employee ($K)": 0.03,
 },
@@ -306,6 +325,7 @@ SCORING_CONFIG = {
     "FCF Margin":       FCF_MARGIN_THRESHOLDS,
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
+    "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -321,14 +341,15 @@ SCORING_CONFIG = {
     # Best-in-class asset-light IP moat, near-duopoly — R&D and
     # per-employee leverage are the whole thesis; growth from design-cycle
     # attach is a real signal; balance sheet risk is essentially irrelevant.
-    "ROIC":             0.19,
-    "FCF Margin":       0.16,
-    "R&D Intensity":    0.12,
-    "Revenue per Employee ($K)": 0.12,
-    "Op Margin":        0.12,
-    "Rev CAGR (3Y)":    0.10,
-    "Gross Margin":     0.11,
+    "ROIC":             0.18,
+    "FCF Margin":       0.15,
+    "R&D Intensity":    0.11,
+    "Revenue per Employee ($K)": 0.11,
+    "Op Margin":        0.11,
+    "Rev CAGR (3Y)":    0.09,
+    "Gross Margin":     0.10,
     "GM Trend (3Y)":    0.06,
+    "ROIC Trend (3Y)":  0.07,
     "Net Debt/EBITDA":  0.02,
 },
 "quality_thresholds": {
@@ -336,6 +357,7 @@ SCORING_CONFIG = {
     "FCF Margin":       FCF_MARGIN_THRESHOLDS,
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
+    "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -351,12 +373,13 @@ SCORING_CONFIG = {
     # Distributor, not an IP-driven tech co (AVT, ARW) — Revenue per Employee
     # and R&D Intensity excluded since headcount leverage and R&D spend aren't
     # quality signals for a distribution business.
-    "ROIC":             0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "Op Margin":        0.15,
-    "GM Trend (3Y)":    0.10,
-    "Rev CAGR (3Y)":    0.10,
+    "ROIC":             0.23,
+    "FCF Margin":       0.19,
+    "Gross Margin":     0.14,
+    "Op Margin":        0.14,
+    "GM Trend (3Y)":    0.09,
+    "ROIC Trend (3Y)":  0.07,
+    "Rev CAGR (3Y)":    0.09,
     "Net Debt/EBITDA":  0.05,
 },
 "quality_thresholds": {
@@ -364,6 +387,7 @@ SCORING_CONFIG = {
     "FCF Margin":       FCF_MARGIN_THRESHOLDS,
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
+    "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
