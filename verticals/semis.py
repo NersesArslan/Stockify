@@ -132,6 +132,26 @@ def get_metrics(ticker_symbol, archetype):
                     roic_trend = None
             except Exception:
                 roic_trend = None
+            # FCF Margin Trend (3Y): most recent year's FCF margin minus FCF margin from 3 years ago
+            try:
+                cf = t.cashflow
+                if "Free Cash Flow" in cf.index and "Total Revenue" in income.index:
+                    fcf_hist = cf.loc["Free Cash Flow"]
+                    rev_hist_fcf = income.loc["Total Revenue"]
+                    fcf_margin_hist = []
+                    for date in fcf_hist.index:
+                        fcf_val = fcf_hist.get(date)
+                        rev_val = rev_hist_fcf.get(date)
+                        if pd.notna(fcf_val) and pd.notna(rev_val) and rev_val != 0:
+                            fcf_margin_hist.append(fcf_val / rev_val * 100)
+                    if len(fcf_margin_hist) >= 4:
+                        fcf_margin_trend = round(fcf_margin_hist[0] - fcf_margin_hist[3], 1)
+                    else:
+                        fcf_margin_trend = None
+                else:
+                    fcf_margin_trend = None
+            except Exception:
+                fcf_margin_trend = None
             ev = market_cap + total_debt - cash
 
             operating_income = income.loc["Operating Income"].iloc[0] if "Operating Income" in income.index else None
@@ -169,6 +189,7 @@ def get_metrics(ticker_symbol, archetype):
                 "Rev Growth (YoY)":  revenue_growth,
                 "ROIC":              roic,
                 "ROIC Trend (3Y)":   roic_trend,
+                "FCF Margin Trend (3Y)": fcf_margin_trend,
                 "R&D Intensity":     rnd_intensity,
                 "Revenue per Employee ($K)": rev_per_employee,
                 "Net Debt/EBITDA":   net_debt_ebitda,

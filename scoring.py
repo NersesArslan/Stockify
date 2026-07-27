@@ -160,6 +160,16 @@ ROIC_TREND_THRESHOLDS = [
     (10,  float("inf"),  5),  # strongly improving
 ]
 
+# FCF Margin Trend (3Y): monotonic, same shape as ROIC Trend — improving cash
+# conversion is unambiguously good, deteriorating is unambiguously bad.
+FCF_MARGIN_TREND_THRESHOLDS = [
+    (-float("inf"), -10,  1),  # severe deterioration
+    (-10,            -3,  2),  # meaningful deterioration
+    (-3,              3,  3),  # stable
+    (3,              10,  4),  # improving
+    (10,  float("inf"),  5),  # strongly improving
+]
+
 # Revenue per Employee ($K): wired into semis and USD-reporting SaaS archetypes.
 # Foreign filers (e.g. TSM, UMC) are normalized to USD in verticals/semis.py via
 # the financialCurrency FX conversion before this metric is computed.
@@ -181,16 +191,17 @@ SCORING_CONFIG = {
     # between disciplined operators and laggards; leverage matters given
     # enormous fab capex. Rev/Employee de-weighted: fabs are capital-heavy,
     # not headcount-leveraged.
-    "ROIC":             0.22,
-    "FCF Margin":       0.14,
-    "Gross Margin":     0.13,
-    "Op Margin":        0.12,
-    "Net Debt/EBITDA":  0.08,
-    "R&D Intensity":    0.08,
+    "ROIC":             0.21,
+    "FCF Margin":       0.13,
+    "Gross Margin":     0.12,
+    "Op Margin":        0.11,
+    "Net Debt/EBITDA":  0.07,
+    "R&D Intensity":    0.07,
     "GM Trend (3Y)":    0.07,
     "ROIC Trend (3Y)":  0.07,
     "Rev CAGR (3Y)":    0.06,
     "Revenue per Employee ($K)": 0.03,
+    "FCF Margin Trend (3Y)": 0.06,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -198,6 +209,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -213,16 +225,17 @@ SCORING_CONFIG = {
     # Asset-light, IP-driven — R&D and headcount leverage are the moat;
     # growth is a real quality signal here (capturing AI buildout upside),
     # unlike capex-heavy archetypes. Rarely levered, so debt weight is low.
-    "ROIC":             0.19,
-    "FCF Margin":       0.15,
-    "Gross Margin":     0.11,
-    "Op Margin":        0.11,
-    "Rev CAGR (3Y)":    0.11,
-    "R&D Intensity":    0.09,
+    "ROIC":             0.18,
+    "FCF Margin":       0.14,
+    "Gross Margin":     0.10,
+    "Op Margin":        0.10,
+    "Rev CAGR (3Y)":    0.10,
+    "R&D Intensity":    0.08,
     "Revenue per Employee ($K)": 0.07,
     "GM Trend (3Y)":    0.07,
     "ROIC Trend (3Y)":  0.07,
     "Net Debt/EBITDA":  0.03,
+    "FCF Margin Trend (3Y)": 0.06,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -230,6 +243,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -245,16 +259,17 @@ SCORING_CONFIG = {
     # Technological-moat, cyclical-orders business — margin quality and R&D
     # matter far more than trailing growth, which is mostly cycle noise.
     # Most equipment names run net cash, so debt weight is minimal.
-    "ROIC":             0.19,
-    "Gross Margin":     0.15,
-    "FCF Margin":       0.14,
-    "R&D Intensity":    0.12,
-    "Op Margin":        0.12,
+    "ROIC":             0.18,
+    "Gross Margin":     0.14,
+    "FCF Margin":       0.13,
+    "R&D Intensity":    0.11,
+    "Op Margin":        0.11,
     "GM Trend (3Y)":    0.07,
-    "ROIC Trend (3Y)":  0.07,
+    "ROIC Trend (3Y)":  0.06,
     "Revenue per Employee ($K)": 0.05,
     "Rev CAGR (3Y)":    0.06,
     "Net Debt/EBITDA":  0.03,
+    "FCF Margin Trend (3Y)": 0.06,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -262,6 +277,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -276,16 +292,17 @@ SCORING_CONFIG = {
 "quality_weights": {
     # Same capital intensity as Foundry, but the key quality tell is
     # leverage discipline (e.g. TXN vs. Intel) rather than pure scale ROIC.
-    "ROIC":             0.20,
-    "FCF Margin":       0.15,
-    "Op Margin":        0.13,
-    "Gross Margin":     0.12,
-    "Net Debt/EBITDA":  0.08,
-    "GM Trend (3Y)":    0.07,
+    "ROIC":             0.19,
+    "FCF Margin":       0.14,
+    "Op Margin":        0.12,
+    "Gross Margin":     0.11,
+    "Net Debt/EBITDA":  0.07,
+    "GM Trend (3Y)":    0.06,
     "ROIC Trend (3Y)":  0.07,
     "Rev CAGR (3Y)":    0.07,
     "R&D Intensity":    0.07,
     "Revenue per Employee ($K)": 0.04,
+    "FCF Margin Trend (3Y)": 0.06,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -293,6 +310,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -309,16 +327,17 @@ SCORING_CONFIG = {
     # go negative at trough. Quality here means surviving the cycle: balance
     # sheet strength and GM trend (inflection signal) outweigh peak
     # profitability. Growth is exogenous/cycle-driven, so it's a weak signal.
-    "FCF Margin":       0.19,
-    "Net Debt/EBITDA":  0.15,
-    "GM Trend (3Y)":    0.13,
-    "ROIC":             0.13,
+    "FCF Margin":       0.18,
+    "Net Debt/EBITDA":  0.14,
+    "GM Trend (3Y)":    0.12,
+    "ROIC":             0.12,
     "ROIC Trend (3Y)":  0.07,
-    "Gross Margin":     0.11,
-    "Op Margin":        0.10,
+    "Gross Margin":     0.10,
+    "Op Margin":        0.09,
     "R&D Intensity":    0.05,
     "Rev CAGR (3Y)":    0.04,
     "Revenue per Employee ($K)": 0.03,
+    "FCF Margin Trend (3Y)": 0.06,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -326,6 +345,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -341,16 +361,17 @@ SCORING_CONFIG = {
     # Best-in-class asset-light IP moat, near-duopoly — R&D and
     # per-employee leverage are the whole thesis; growth from design-cycle
     # attach is a real signal; balance sheet risk is essentially irrelevant.
-    "ROIC":             0.18,
-    "FCF Margin":       0.15,
-    "R&D Intensity":    0.11,
-    "Revenue per Employee ($K)": 0.11,
-    "Op Margin":        0.11,
+    "ROIC":             0.17,
+    "FCF Margin":       0.14,
+    "R&D Intensity":    0.10,
+    "Revenue per Employee ($K)": 0.10,
+    "Op Margin":        0.10,
     "Rev CAGR (3Y)":    0.09,
-    "Gross Margin":     0.10,
+    "Gross Margin":     0.09,
     "GM Trend (3Y)":    0.06,
     "ROIC Trend (3Y)":  0.07,
     "Net Debt/EBITDA":  0.02,
+    "FCF Margin Trend (3Y)": 0.06,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -358,6 +379,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -373,14 +395,15 @@ SCORING_CONFIG = {
     # Distributor, not an IP-driven tech co (AVT, ARW) — Revenue per Employee
     # and R&D Intensity excluded since headcount leverage and R&D spend aren't
     # quality signals for a distribution business.
-    "ROIC":             0.23,
-    "FCF Margin":       0.19,
-    "Gross Margin":     0.14,
-    "Op Margin":        0.14,
-    "GM Trend (3Y)":    0.09,
+    "ROIC":             0.22,
+    "FCF Margin":       0.18,
+    "Gross Margin":     0.13,
+    "Op Margin":        0.13,
+    "GM Trend (3Y)":    0.08,
     "ROIC Trend (3Y)":  0.07,
-    "Rev CAGR (3Y)":    0.09,
+    "Rev CAGR (3Y)":    0.08,
     "Net Debt/EBITDA":  0.05,
+    "FCF Margin Trend (3Y)": 0.06,
 },
 "quality_thresholds": {
     "ROIC":             ROIC_THRESHOLDS,
@@ -388,6 +411,7 @@ SCORING_CONFIG = {
     "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
     "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
     "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
     "Op Margin":        OP_MARGIN_THRESHOLDS,
     "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
@@ -399,18 +423,20 @@ SCORING_CONFIG = {
     # --- Cloud ---
     "Hyperscaler": {
 "quality_weights": {
-    "FCF Margin":       0.25,  # reduced from 0.30
-    "Op Margin":        0.20,  # reduced from 0.25
-    "Gross Margin":     0.15,  # reduced from 0.20
-    "GM Trend (3Y)":    0.10,  # NEW
-    "Rev CAGR (3Y)":    0.15,
-    "Net Debt/EBITDA":  0.10,  # unchanged
+    "FCF Margin":       0.24,
+    "Op Margin":        0.19,
+    "Gross Margin":     0.14,
+    "GM Trend (3Y)":    0.09,
+    "Rev CAGR (3Y)":    0.14,
+    "Net Debt/EBITDA":  0.09,
+    "FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
@@ -420,20 +446,22 @@ SCORING_CONFIG = {
 
     "Cloud_Data": {
 "quality_weights": {
-    "Rule of 40":       0.25,  # reduced from 0.30
-    "FCF Margin":       0.20,  # reduced from 0.25
-    "Gross Margin":     0.15,  # reduced from 0.20
-    "GM Trend (3Y)":    0.10,  # NEW
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,  # reduced from 0.15
+    "Rule of 40":       0.24,
+    "FCF Margin":       0.19,
+    "Gross Margin":     0.14,
+    "GM Trend (3Y)":    0.09,
+    "Op Margin":        0.14,
+    "Rev CAGR (3Y)":    0.09,
     "Net Debt/EBITDA":  0.05,
+    "FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
@@ -444,14 +472,15 @@ SCORING_CONFIG = {
     # --- SaaS ---
 "Enterprise_SaaS": {
     "quality_weights": {
-        "FCF Margin":       0.23,
-        "Rule of 40":       0.18,
-        "Gross Margin":     0.14,
-        "Op Margin":        0.14,
-        "GM Trend (3Y)":    0.09,
-        "Rev CAGR (3Y)":    0.09,
+        "FCF Margin":       0.22,
+        "Rule of 40":       0.17,
+        "Gross Margin":     0.13,
+        "Op Margin":        0.13,
+        "GM Trend (3Y)":    0.08,
+        "Rev CAGR (3Y)":    0.08,
         "Net Debt/EBITDA":  0.05,
         "Revenue per Employee ($K)": 0.08,
+        "FCF Margin Trend (3Y)": 0.06,
     },
     "quality_thresholds": {
         "FCF Margin":       FCF_MARGIN_THRESHOLDS,
@@ -459,6 +488,7 @@ SCORING_CONFIG = {
         "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
         "Op Margin":        OP_MARGIN_THRESHOLDS,
         "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
         "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
         "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
@@ -468,14 +498,15 @@ SCORING_CONFIG = {
 },
 "Enterprise_AI": {
     "quality_weights": {
-        "Gross Margin":     0.21,
-        "Rule of 40":       0.21,
-        "Rev CAGR (3Y)":    0.17,
-        "FCF Margin":       0.13,
-        "GM Trend (3Y)":    0.08,
+        "Gross Margin":     0.20,
+        "Rule of 40":       0.20,
+        "Rev CAGR (3Y)":    0.16,
+        "FCF Margin":       0.12,
+        "GM Trend (3Y)":    0.07,
         "Op Margin":        0.05,
         "R&D Intensity":    0.07,
-        "Revenue per Employee ($K)": 0.08,
+        "Revenue per Employee ($K)": 0.07,
+        "FCF Margin Trend (3Y)": 0.06,
     },
     "quality_thresholds": {
         "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
@@ -483,6 +514,7 @@ SCORING_CONFIG = {
         "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
         "FCF Margin":       FCF_MARGIN_THRESHOLDS,
         "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
         "Op Margin":        OP_MARGIN_THRESHOLDS,
         "R&D Intensity":    SOFTWARE_RND_THRESHOLDS,
         "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
@@ -492,18 +524,20 @@ SCORING_CONFIG = {
 },
 "Vertical_SaaS": {
     "quality_weights": {
-        "Gross Margin":     0.25,  # vertical moat signal
-        "FCF Margin":       0.25,  # cash generation validates moat
-        "Op Margin":        0.20,  # operational efficiency
-        "GM Trend (3Y)":    0.15,  # moat durability over time
-        "Rule of 40":       0.10,  # growth/profitability balance
+        "Gross Margin":     0.24,  # vertical moat signal
+        "FCF Margin":       0.23,  # cash generation validates moat
+        "Op Margin":        0.19,  # operational efficiency
+        "GM Trend (3Y)":    0.14,  # moat durability over time
+        "Rule of 40":       0.09,  # growth/profitability balance
         "Rev CAGR (3Y)":    0.05,  # durability > growth for verticals
+        "FCF Margin Trend (3Y)": 0.06,
     },
     "quality_thresholds": {
         "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
         "FCF Margin":       FCF_MARGIN_THRESHOLDS,
         "Op Margin":        OP_MARGIN_THRESHOLDS,
         "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
         "Rule of 40":       RULE_OF_40_THRESHOLDS,
         "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
     },
@@ -512,13 +546,14 @@ SCORING_CONFIG = {
 },
 "DevOps": {
     "quality_weights": {
-        "Rule of 40":       0.28,  # primary quality signal
-        "Rev CAGR (3Y)":    0.18,  # growth trajectory matters most
-        "Gross Margin":     0.18,  # platform moat signal
-        "FCF Margin":       0.14,  # real cash generation
-        "GM Trend (3Y)":    0.09,  # moat durability
+        "Rule of 40":       0.26,  # primary quality signal
+        "Rev CAGR (3Y)":    0.17,  # growth trajectory matters most
+        "Gross Margin":     0.17,  # platform moat signal
+        "FCF Margin":       0.13,  # real cash generation
+        "GM Trend (3Y)":    0.08,  # moat durability
         "Op Margin":        0.05,  # low weight — GAAP artifact
         "R&D Intensity":    0.08,
+        "FCF Margin Trend (3Y)": 0.06,
     },
     "quality_thresholds": {
         "Rule of 40":       RULE_OF_40_THRESHOLDS,
@@ -526,6 +561,7 @@ SCORING_CONFIG = {
         "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
         "FCF Margin":       FCF_MARGIN_THRESHOLDS,
         "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
         "Op Margin":        OP_MARGIN_THRESHOLDS,
         "R&D Intensity":    SOFTWARE_RND_THRESHOLDS,
     },
@@ -536,13 +572,14 @@ SCORING_CONFIG = {
 
     "Collaboration": {
 "quality_weights": {
-"FCF Margin":       0.23,  # cash generation is the only thesis
-"Op Margin":        0.23,
-"Gross Margin":     0.19,
-"GM Trend (3Y)":    0.09,
-"Rule of 40":       0.09,  # less relevant for slow growers
-"Rev CAGR (3Y)":    0.09,  # growth is minimal, weight it low
+"FCF Margin":       0.22,  # cash generation is the only thesis
+"Op Margin":        0.22,
+"Gross Margin":     0.18,
+"GM Trend (3Y)":    0.08,
+"Rule of 40":       0.08,  # less relevant for slow growers
+"Rev CAGR (3Y)":    0.08,  # growth is minimal, weight it low
 "Revenue per Employee ($K)": 0.08,
+"FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
@@ -550,6 +587,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
 
@@ -561,13 +599,14 @@ SCORING_CONFIG = {
     # --- Cybersecurity ---
     "ENDPOINT": {
 "quality_weights": {
-    "Rule of 40":       0.28,  # early-stage platform — growth+profit blend is the thesis
-    "Rev CAGR (3Y)":    0.23,  # high growth is the core signal at this stage
-    "Gross Margin":     0.14,  # platform moat
-    "FCF Margin":       0.14,  # real cash generation despite GAAP losses
-    "GM Trend (3Y)":    0.09,  # moat durability
+    "Rule of 40":       0.26,  # early-stage platform — growth+profit blend is the thesis
+    "Rev CAGR (3Y)":    0.22,  # high growth is the core signal at this stage
+    "Gross Margin":     0.13,  # platform moat
+    "FCF Margin":       0.13,  # real cash generation despite GAAP losses
+    "GM Trend (3Y)":    0.08,  # moat durability
     "Op Margin":        0.05,  # low weight — negative GAAP margins are accounting artifacts
     "Revenue per Employee ($K)": 0.07,
+    "FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
@@ -575,6 +614,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
         },
@@ -584,14 +624,15 @@ SCORING_CONFIG = {
 
     "NETWORK": {
 "quality_weights": {
-    "FCF Margin":       0.23,  # mature platform — real cash generation matters most
-    "Op Margin":        0.23,  # real GAAP profitability, not an artifact at this stage
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Rule of 40":       0.09,  # secondary to raw profitability here
-    "Rev CAGR (3Y)":    0.10,  # growth weighted below profitability
+    "FCF Margin":       0.22,  # mature platform — real cash generation matters most
+    "Op Margin":        0.22,  # real GAAP profitability, not an artifact at this stage
+    "Gross Margin":     0.13,
+    "GM Trend (3Y)":    0.08,
+    "Rule of 40":       0.08,  # secondary to raw profitability here
+    "Rev CAGR (3Y)":    0.09,  # growth weighted below profitability
     "Net Debt/EBITDA":  0.05,
     "Revenue per Employee ($K)": 0.07,
+    "FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
@@ -600,6 +641,7 @@ SCORING_CONFIG = {
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
             "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
         },
@@ -609,13 +651,14 @@ SCORING_CONFIG = {
 
     "IDENTITY": {
 "quality_weights": {
-    "Gross Margin":     0.18,  # switching-cost moat signal
-    "Rule of 40":       0.19,  # balanced growth/profit blend
-    "FCF Margin":       0.19,  # balanced growth/profit blend
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.14,
-    "GM Trend (3Y)":    0.09,
+    "Gross Margin":     0.17,  # switching-cost moat signal
+    "Rule of 40":       0.18,  # balanced growth/profit blend
+    "FCF Margin":       0.18,  # balanced growth/profit blend
+    "Op Margin":        0.13,
+    "Rev CAGR (3Y)":    0.13,
+    "GM Trend (3Y)":    0.08,
     "Revenue per Employee ($K)": 0.07,
+    "FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
@@ -623,6 +666,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
         },
@@ -632,20 +676,22 @@ SCORING_CONFIG = {
 
     "CLOUD_SEC": {
 "quality_weights": {
-    "Rule of 40":       0.25,
-    "FCF Margin":       0.20,
-    "Gross Margin":     0.15,
-    "GM Trend (3Y)":    0.10,
-    "Op Margin":        0.15,
-    "Rev CAGR (3Y)":    0.10,
+    "Rule of 40":       0.24,
+    "FCF Margin":       0.19,
+    "Gross Margin":     0.14,
+    "GM Trend (3Y)":    0.09,
+    "Op Margin":        0.14,
+    "Rev CAGR (3Y)":    0.09,
     "Net Debt/EBITDA":  0.05,
+    "FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
             "FCF Margin":       FCF_MARGIN_THRESHOLDS,
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS, 
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         },
@@ -655,14 +701,15 @@ SCORING_CONFIG = {
 
     "DATA_SEC": {
 "quality_weights": {
-    "FCF Margin":       0.23,  # mature tooling — profitability matters most
-    "Op Margin":        0.19,
-    "Gross Margin":     0.19,
-    "GM Trend (3Y)":    0.09,
-    "Net Debt/EBITDA":  0.09,
-    "Rule of 40":       0.09,
+    "FCF Margin":       0.22,  # mature tooling — profitability matters most
+    "Op Margin":        0.18,
+    "Gross Margin":     0.18,
+    "GM Trend (3Y)":    0.08,
+    "Net Debt/EBITDA":  0.08,
+    "Rule of 40":       0.08,
     "Rev CAGR (3Y)":    0.05,  # growth least important at this stage
     "Revenue per Employee ($K)": 0.07,
+    "FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
             "Rule of 40":       RULE_OF_40_THRESHOLDS,
@@ -670,6 +717,7 @@ SCORING_CONFIG = {
             "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
             "Op Margin":        OP_MARGIN_THRESHOLDS,
             "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
             "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
             "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
             "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
