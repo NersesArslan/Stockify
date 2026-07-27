@@ -215,28 +215,41 @@ with tab5:
     col3.metric("Watch", len(filtered_all[filtered_all["Verdict"] == "Watch"]))
     col4.metric("Pass / Avoid", len(filtered_all[filtered_all["Verdict"].isin(["Pass", "Avoid", "Insufficient Data"])]))
 
-    # Cross-vertical scatter plot
+    # Cross-vertical scatter plots
+    def all_companies_scatter(df, color_field, color_map_arg, title):
+        scatter_df = df.dropna(subset=["Quality Score", "Valuation Score"])
+        fig = px.scatter(
+            scatter_df,
+            x="Valuation Score",
+            y="Quality Score",
+            color=color_field,
+            color_discrete_map=color_map_arg,
+            symbol="Verdict",
+            hover_name="Ticker",
+            hover_data=["Name", "Archetype", "Vertical", "Verdict", "AI Exposure"],
+            title=title,
+            labels={
+                "Valuation Score": "Valuation Score (higher = cheaper)",
+                "Quality Score":   "Quality Score (higher = better business)",
+            },
+            height=600,
+        )
+        fig.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
+        fig.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
+        return fig
+
     st.subheader("Quality vs Valuation — All Companies")
-    scatter_all = filtered_all.dropna(subset=["Quality Score", "Valuation Score"])
-    fig_all = px.scatter(
-        scatter_all,
-        x="Valuation Score",
-        y="Quality Score",
-        color="AI Exposure",
-        color_discrete_map=ai_exposure_color_map,
-        symbol="Verdict",
-        hover_name="Ticker",
-        hover_data=["Name", "Archetype", "Vertical", "Verdict", "AI Exposure"],
-        title="All Companies — Quality vs Valuation",
-        labels={
-            "Valuation Score": "Valuation Score (higher = cheaper)",
-            "Quality Score":   "Quality Score (higher = better business)",
-        },
-        height=600,
-    )
-    fig_all.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
-    fig_all.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
-    st.plotly_chart(fig_all, use_container_width=True)
+    scatter_col1, scatter_col2 = st.columns(2)
+    with scatter_col1:
+        st.plotly_chart(
+            all_companies_scatter(filtered_all, "AI Exposure", ai_exposure_color_map, "Colored by AI Exposure"),
+            use_container_width=True,
+        )
+    with scatter_col2:
+        st.plotly_chart(
+            all_companies_scatter(filtered_all, "Vertical", None, "Colored by Vertical"),
+            use_container_width=True,
+        )
     show_analysis(filtered_all, "AI Analysis — All Companies")
     # Verdict distribution across all verticals
     st.subheader("Verdict Distribution — All Companies")
