@@ -48,6 +48,15 @@ color_map = {
     "Insufficient Data": "#95a5a6",
 }
 
+ai_exposure_color_map = {
+    "Enabler":    "#2ecc71",
+    "Compounder": "#3498db",
+    "Disruptor":  "#9b59b6",
+    "Exposed":    "#e74c3c",
+    "Neutral":    "#95a5a6",
+    "Unknown":    "#7f8c8d",
+}
+
 def format_pct(df, cols):
     display = df.copy()
     for col in cols:
@@ -192,7 +201,12 @@ with tab5:
     st.sidebar.header("All Companies")
     all_verticals = all_df["Vertical"].unique().tolist()
     selected_all  = st.sidebar.multiselect("Vertical", all_verticals, default=all_verticals)
-    filtered_all  = all_df[all_df["Vertical"].isin(selected_all)]
+    all_ai_exposures = all_df["AI Exposure"].unique().tolist()
+    selected_ai_exposures = st.sidebar.multiselect("AI Exposure", all_ai_exposures, default=all_ai_exposures)
+    filtered_all  = all_df[
+        all_df["Vertical"].isin(selected_all) &
+        all_df["AI Exposure"].isin(selected_ai_exposures)
+    ]
 
     # Summary stats
     col1, col2, col3, col4 = st.columns(4)
@@ -208,10 +222,11 @@ with tab5:
         scatter_all,
         x="Valuation Score",
         y="Quality Score",
-        color="Vertical",
+        color="AI Exposure",
+        color_discrete_map=ai_exposure_color_map,
         symbol="Verdict",
         hover_name="Ticker",
-        hover_data=["Name", "Archetype", "Vertical", "Verdict"],
+        hover_data=["Name", "Archetype", "Vertical", "Verdict", "AI Exposure"],
         title="All Companies — Quality vs Valuation",
         labels={
             "Valuation Score": "Valuation Score (higher = cheaper)",
