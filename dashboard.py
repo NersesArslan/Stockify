@@ -104,8 +104,70 @@ def show_analysis(df, title="AI Analysis"):
         with st.expander(f"{row['Ticker']} — {row['Name']} | {row['Verdict']}"):
             st.markdown(row["AI Analysis"])
 # --- Tabs ---
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity", "All Companies"])
+tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs(["Home", "Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity", "All Companies"])
 
+with tab0:
+    st.title("Find the real winners of the AI revolution")
+    
+    st.markdown("""
+    A quality-first stock screener for semiconductor and tech investors. Built on the belief 
+    that AI infrastructure represents a once-in-a-generation investment opportunity — and that 
+    separating the genuine beneficiaries from the narrative hype requires more than a price chart.
+    
+    This screener taxonomizes semiconductor and tech companies by archetype — Foundry, Fabless, 
+    Equipment, Enterprise SaaS, Cybersecurity and more — and evaluates each company using 
+    archetype-specific metrics. A Foundry is not scored like a SaaS company. An Enabler is not 
+    valued like a Disruptor. Quality comes first. Valuation comes second. AI exposure tells you 
+    whether the tailwind is structural or narrative.
+    """)
+
+    st.divider()
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.subheader("Quality First")
+        st.markdown("Companies scored on profitability, cash generation, moat durability and trajectory across 18 industry archetypes.")
+    with col2:
+        st.subheader("Valuation Second")
+        st.markdown("Quality score must clear 60 before valuation matters. High quality at a fair price beats cheap mediocrity every time.")
+    with col3:
+        st.subheader("AI Exposure")
+        st.markdown("Every company classified as Enabler, Compounder, Disruptor, Exposed or Neutral — because AI is a tailwind for some and a headwind for others.")
+
+    st.divider()
+
+    st.subheader("How to read the verdicts")
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.success("**Buy** — High quality, reasonable price")
+    with col2:
+        st.warning("**Watch** — High quality, expensive. Wait for a better entry.")
+    with col3:
+        st.warning("**Avoid** — Low quality, cheap. Value trap.")
+    with col4:
+        st.error("**Pass** — Low quality, expensive. Stay away.")
+
+    st.divider()
+
+    st.subheader("All Companies — Quality vs Valuation")
+    scatter_home = all_df.dropna(subset=["Quality Score", "Valuation Score"])
+    fig_home = px.scatter(
+        scatter_home,
+        x="Valuation Score",
+        y="Quality Score",
+        color="AI Exposure",
+        hover_name="Ticker",
+        hover_data=["Name", "Archetype", "Verdict"],
+        title="Quality vs Valuation — colored by AI Exposure",
+        labels={
+            "Valuation Score": "Valuation Score (higher = cheaper)",
+            "Quality Score":   "Quality Score (higher = better business)",
+        },
+        height=500,
+    )
+    fig_home.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
+    fig_home.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
+    st.plotly_chart(fig_home, use_container_width=True)
 with tab1:
     st.sidebar.header("Semiconductors")
     semi_archetypes = semis["Archetype"].unique().tolist()
