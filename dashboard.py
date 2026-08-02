@@ -3,7 +3,6 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(page_title="Stock Screener", layout="wide")
-st.title("Stock Screener")
 
 # --- Load data ---
 semis = pd.read_csv("data/semis_scored.csv")
@@ -18,6 +17,24 @@ saas["Vertical"] = "SaaS"
 cyber = pd.read_csv("data/cyber_scored.csv")
 cyber["Vertical"] = "Cybersecurity"
 
+all_df = pd.concat([
+    pd.read_csv("data/semis_scored.csv").assign(Vertical="Semiconductors"),
+    pd.read_csv("data/cloud_scored.csv").assign(Vertical="Cloud"),
+    pd.read_csv("data/saas_scored.csv").assign(Vertical="SaaS"),
+    pd.read_csv("data/cyber_scored.csv").assign(Vertical="Cybersecurity"),
+], ignore_index=True)
+
+# --- Header: title + ticker search, always visible above the tabs ---
+title_col, search_col = st.columns([3, 1])
+with title_col:
+    st.title("Stock Screener")
+with search_col:
+    st.write("")
+    st.write("")
+    search_ticker = st.text_input(
+        "Search ticker", placeholder="🔍 Search ticker, e.g. NVDA", label_visibility="collapsed"
+    ).upper().strip()
+
 # --- Show last updated timestamp (oldest across all verticals) ---
 timestamps = []
 for name in ["semis", "cloud", "saas", "cyber"]:
@@ -29,12 +46,54 @@ for name in ["semis", "cloud", "saas", "cyber"]:
 if timestamps:
     st.caption(f"Data last updated: {min(timestamps)}")
 
-all_df = pd.concat([
-    pd.read_csv("data/semis_scored.csv").assign(Vertical="Semiconductors"),
-    pd.read_csv("data/cloud_scored.csv").assign(Vertical="Cloud"),
-    pd.read_csv("data/saas_scored.csv").assign(Vertical="SaaS"),
-    pd.read_csv("data/cyber_scored.csv").assign(Vertical="Cybersecurity"),
-], ignore_index=True)
+if search_ticker:
+    result = all_df[all_df["Ticker"] == search_ticker]
+    if len(result) == 0:
+        st.error(f"Ticker '{search_ticker}' not found.")
+    else:
+        row = result.iloc[0]
+        verdict_colors = {"Buy": "green", "Watch": "orange", "Avoid": "orange", "Pass": "red"}
+        color = verdict_colors.get(row["Verdict"], "gray")
+
+        with st.container(border=True):
+            name_col, verdict_col = st.columns([3, 1])
+            with name_col:
+                st.markdown(f"### {row['Name']} ({row['Ticker']})")
+                st.markdown(f"{row['Archetype']} | {row['Vertical']} | AI Exposure: **{row['AI Exposure']}**")
+            with verdict_col:
+                st.markdown(f"#### Verdict: :{color}[{row['Verdict']}]")
+
+            score_col1, score_col2 = st.columns(2)
+            score_col1.metric("Quality Score", row["Quality Score"])
+            score_col2.metric("Valuation Score", row["Valuation Score"])
+
+            st.markdown("**Key Metrics**")
+            metrics = [
+                ("EV/FCF", row.get("EV/FCF")),
+                ("FCF Margin", row.get("FCF Margin")),
+                ("Op Margin", row.get("Op Margin")),
+                ("Gross Margin", row.get("Gross Margin")),
+                ("GM Trend (3Y)", row.get("GM Trend (3Y)")),
+                ("Rev CAGR (3Y)", row.get("Rev CAGR (3Y)")),
+                ("ROIC", row.get("ROIC")),
+                ("ROIC Trend (3Y)", row.get("ROIC Trend (3Y)")),
+                ("FCF Margin Trend (3Y)", row.get("FCF Margin Trend (3Y)")),
+                ("R&D Intensity", row.get("R&D Intensity")),
+                ("Revenue per Employee ($K)", row.get("Revenue per Employee ($K)")),
+                ("Net Debt/EBITDA", row.get("Net Debt/EBITDA")),
+            ]
+            present_metrics = [(l, v) for l, v in metrics if v is not None and str(v) != "nan"]
+            metric_cols = st.columns(4)
+            for i, (label, value) in enumerate(present_metrics):
+                metric_cols[i % 4].markdown(f"**{label}:** {value}")
+
+            analysis = row.get("AI Analysis")
+            if analysis and str(analysis) != "nan":
+                st.divider()
+                st.markdown("**AI Analysis**")
+                st.markdown(analysis)
+
+st.divider()
 
 # --- Percentage columns per vertical ---
 pct_cols_semis   = ["FCF Margin", "Op Margin", "Gross Margin", "Rev Growth (YoY)", "ROIC", "Rev CAGR (3Y)"]
@@ -104,7 +163,9 @@ def show_analysis(df, title="AI Analysis"):
         with st.expander(f"{row['Ticker']} — {row['Name']} | {row['Verdict']}"):
             st.markdown(row["AI Analysis"])
 # --- Tabs ---
-tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs(["Home", "Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity", "All Companies"])
+tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs(
+    ["Home", "Semiconductors", "Cloud", "Enterprise SaaS", "Cybersecurity", "All Companies"]
+)
 
 with tab0:
     st.title("Find the real winners of the AI revolution")
@@ -168,6 +229,7 @@ with tab0:
     fig_home.add_hline(y=60, line_dash="dash", line_color="gray", opacity=0.5)
     fig_home.add_vline(x=60, line_dash="dash", line_color="gray", opacity=0.5)
     st.plotly_chart(fig_home, use_container_width=True)
+
 with tab1:
     st.sidebar.header("Semiconductors")
     semi_archetypes = semis["Archetype"].unique().tolist()
