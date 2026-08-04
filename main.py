@@ -13,15 +13,23 @@ def add_ai_exposure(df):
     df["AI Exposure"] = df["Ticker"].map(AI_EXPOSURE).fillna("Unknown")
     return df
 
+def validate_ai_exposure(df, vertical_name):
+    unknowns = df[df["AI Exposure"] == "Unknown"]["Ticker"].tolist()
+    if unknowns:
+        print(f"⚠️  WARNING: Missing AI Exposure label in {vertical_name}: {unknowns}")
+        print(f"   Add these tickers to ai_exposure.py before committing.")
+
 if FETCH["semis"]: semis.run()
 if FETCH["cloud"]: cloud.run()
 if FETCH["saas"]:  saas.run()
 if FETCH["cyber"]: cyber.run()
 
+
 if SCORE["semis"]:
     df_semis = pd.read_csv("data/semis.csv")
     df_semis = score_dataframe(df_semis)
     df_semis = add_ai_exposure(df_semis)
+    validate_ai_exposure(df_semis, "semis")
     if ANALYZE["semis"]:
         df_semis["Vertical"] = "Semiconductors"
         df_semis = analyze_dataframe(df_semis, vertical="Semiconductors")
@@ -33,6 +41,7 @@ if SCORE["cloud"]:
     df_cloud = pd.read_csv("data/cloud.csv")
     df_cloud = score_dataframe(df_cloud)
     df_cloud = add_ai_exposure(df_cloud)
+    validate_ai_exposure(df_cloud, "cloud")
     if ANALYZE["cloud"]:
         df_cloud["Vertical"] = "Cloud"
         df_cloud = analyze_dataframe(df_cloud, vertical="Cloud")
@@ -44,6 +53,7 @@ if SCORE["saas"]:
     df_saas = pd.read_csv("data/saas.csv")
     df_saas = score_dataframe(df_saas)
     df_saas = add_ai_exposure(df_saas)
+    validate_ai_exposure(df_saas, "saas")
     if ANALYZE["saas"]:
         df_saas["Vertical"] = "SaaS"
         df_saas = analyze_dataframe(df_saas, vertical="SaaS")
@@ -55,6 +65,7 @@ if SCORE["cyber"]:
     df_cyber = pd.read_csv("data/cyber.csv")
     df_cyber = score_dataframe(df_cyber)
     df_cyber = add_ai_exposure(df_cyber)
+    validate_ai_exposure(df_cyber, "cyber")
     if ANALYZE["cyber"]:
         df_cyber["Vertical"] = "Cybersecurity"
         df_cyber = analyze_dataframe(df_cyber, vertical="Cybersecurity")
