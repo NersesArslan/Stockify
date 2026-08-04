@@ -431,12 +431,15 @@ SCORING_CONFIG = {
     # --- Cloud ---
     "Hyperscaler": {
 "quality_weights": {
-    "FCF Margin":       0.24,
-    "Op Margin":        0.19,
+    # Mega-cap, capital-intensive cloud infra — FCF margin and operating
+    # leverage are the clearest proof of quality at scale; growth and
+    # balance-sheet discipline matter given the size of AI capex.
+    "FCF Margin":       0.26,
+    "Op Margin":        0.20,
     "Gross Margin":     0.14,
     "GM Trend (3Y)":    0.09,
-    "Rev CAGR (3Y)":    0.14,
-    "Net Debt/EBITDA":  0.09,
+    "Rev CAGR (3Y)":    0.15,
+    "Net Debt/EBITDA":  0.10,
     "FCF Margin Trend (3Y)": 0.06,
 },
         "quality_thresholds": {
