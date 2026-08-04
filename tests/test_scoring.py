@@ -38,6 +38,37 @@ def test_weights_sum_to_one():
         assert abs(total - 1.0) < 0.01, \
             f"{archetype} weights sum to {total}, not 1.0"
 
+def test_archetype_coverage():
+    """Every ticker in every UNIVERSE dict must resolve to a scored archetype.
+
+    Catches drift between a vertical's UNIVERSE and SCORING_CONFIG (e.g. a
+    typo'd or renamed archetype key), which score_row() silently swallows
+    into "Insufficient Data" instead of raising.
+    """
+    from verticals import semis, cloud, saas, cyber
+
+    verticals = {
+        "semis": semis.UNIVERSE,
+        "cloud": cloud.UNIVERSE,
+        "saas": saas.UNIVERSE,
+        "cyber": cyber.UNIVERSE,
+    }
+
+    failures = []
+    for name, universe in verticals.items():
+        df = pd.read_csv(f"data/{name}_scored.csv")
+        for archetype, tickers in universe.items():
+            for ticker in tickers:
+                match = df[df["Ticker"] == ticker]
+                if match.empty:
+                    failures.append(f"{name}/{archetype}/{ticker}: missing from data/{name}_scored.csv")
+                    continue
+                verdict = match["Verdict"].iloc[0]
+                if verdict == "Insufficient Data":
+                    failures.append(f"{name}/{archetype}/{ticker}: Verdict is 'Insufficient Data'")
+
+    assert not failures, "Archetype coverage gaps:\n" + "\n".join(failures)
+
 def test_ai_exposure_no_unknowns():
     """Every company in the universe must have an AI Exposure label."""
     import pandas as pd
