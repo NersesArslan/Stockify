@@ -1,3 +1,5 @@
+import os
+import datetime
 import pandas as pd
 from verticals import semis, cloud, saas, cyber
 from scoring import score_dataframe
@@ -7,6 +9,18 @@ from ai_exposure import AI_EXPOSURE
 FETCH  = {"semis": True, "cloud": True, "saas": True, "cyber": True}
 SCORE  = {"semis": True,  "cloud": True,  "saas": True,  "cyber": True}
 ANALYZE = {"semis": False,  "cloud": False,  "saas": False,  "cyber": False}
+
+VERTICAL_LABELS = {
+    "semis": "Semiconductors",
+    "cloud": "Cloud",
+    "saas":  "SaaS",
+    "cyber": "Cybersecurity",
+}
+
+HISTORY_COLUMNS = [
+    "run_date", "Ticker", "Archetype", "Vertical",
+    "Quality Score", "Valuation Score", "Verdict", "AI Exposure",
+]
 
 def add_ai_exposure(df):
     df = df.copy()
@@ -19,11 +33,19 @@ def validate_ai_exposure(df, vertical_name):
         print(f"⚠️  WARNING: Missing AI Exposure label in {vertical_name}: {unknowns}")
         print(f"   Add these tickers to ai_exposure.py before committing.")
 
+def snapshot_for_history(df, vertical_key):
+    snap = df.copy()
+    snap["Vertical"] = VERTICAL_LABELS[vertical_key]
+    snap["run_date"] = datetime.date.today().strftime("%Y-%m-%d")
+    return snap[HISTORY_COLUMNS]
+
 if FETCH["semis"]: semis.run()
 if FETCH["cloud"]: cloud.run()
 if FETCH["saas"]:  saas.run()
 if FETCH["cyber"]: cyber.run()
 
+
+history_frames = []
 
 if SCORE["semis"]:
     df_semis = pd.read_csv("data/semis.csv")
@@ -34,6 +56,7 @@ if SCORE["semis"]:
         df_semis["Vertical"] = "Semiconductors"
         df_semis = analyze_dataframe(df_semis, vertical="Semiconductors")
     df_semis.to_csv("data/semis_scored.csv", index=False)
+    history_frames.append(snapshot_for_history(df_semis, "semis"))
     print("\nSemis scoring complete.")
     print(df_semis[["Ticker", "Archetype", "Quality Score", "Valuation Score", "Verdict"]].to_string(index=False))
 
@@ -46,6 +69,7 @@ if SCORE["cloud"]:
         df_cloud["Vertical"] = "Cloud"
         df_cloud = analyze_dataframe(df_cloud, vertical="Cloud")
     df_cloud.to_csv("data/cloud_scored.csv", index=False)
+    history_frames.append(snapshot_for_history(df_cloud, "cloud"))
     print("\nCloud scoring complete.")
     print(df_cloud[["Ticker", "Archetype", "Quality Score", "Valuation Score", "Verdict"]].to_string(index=False))
 
@@ -58,6 +82,7 @@ if SCORE["saas"]:
         df_saas["Vertical"] = "SaaS"
         df_saas = analyze_dataframe(df_saas, vertical="SaaS")
     df_saas.to_csv("data/saas_scored.csv", index=False)
+    history_frames.append(snapshot_for_history(df_saas, "saas"))
     print("\nSaaS scoring complete.")
     print(df_saas[["Ticker", "Archetype", "Quality Score", "Valuation Score", "Verdict"]].to_string(index=False))
 
@@ -70,5 +95,12 @@ if SCORE["cyber"]:
         df_cyber["Vertical"] = "Cybersecurity"
         df_cyber = analyze_dataframe(df_cyber, vertical="Cybersecurity")
     df_cyber.to_csv("data/cyber_scored.csv", index=False)
+    history_frames.append(snapshot_for_history(df_cyber, "cyber"))
     print("\nCyber scoring complete.")
     print(df_cyber[["Ticker", "Archetype", "Quality Score", "Valuation Score", "Verdict"]].to_string(index=False))
+
+if history_frames:
+    snapshot = pd.concat(history_frames, ignore_index=True)
+    history_path = "data/history.csv"
+    snapshot.to_csv(history_path, mode="a", header=not os.path.exists(history_path), index=False)
+    print(f"\nAppended {len(snapshot)} rows to {history_path}")

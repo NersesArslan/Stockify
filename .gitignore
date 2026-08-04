@@ -39,3 +39,6 @@ Thumbs.db
 # Environment variables
 .env
 .env.local
+
+# Historical score snapshots (append-only, grows unbounded)
+data/history.csv
