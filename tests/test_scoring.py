@@ -29,6 +29,48 @@ def test_saas_verdicts():
     assert verdict("CRM")  == "Buy"     # quality at reasonable price
     assert verdict("BOX")  == "Watch"   # mature, slow growth
 
+def test_cloud_verdicts():
+    """Known-good verdicts for key cloud companies."""
+    df = pd.read_csv("data/cloud_scored.csv")
+
+    def verdict(ticker):
+        return df[df["Ticker"] == ticker]["Verdict"].iloc[0]
+
+    assert verdict("AMZN") == "Buy"     # hyperscaler quality, cheap
+    assert verdict("MSFT") == "Watch"   # elite quality, expensive
+    assert verdict("ORCL") == "Avoid"   # weak quality, fairly valued
+
+    assert verdict("ESTC") == "Buy"     # strong quality, cheap
+    assert verdict("AKAM") == "Avoid"   # weak quality, cheap
+
+def test_cyber_verdicts():
+    """Known-good verdicts for key cybersecurity companies."""
+    df = pd.read_csv("data/cyber_scored.csv")
+
+    def verdict(ticker):
+        return df[df["Ticker"] == ticker]["Verdict"].iloc[0]
+
+    assert verdict("CRWD") == "Watch"   # elite quality, expensive
+    assert verdict("S")    == "Buy"     # strong quality, cheap
+    assert verdict("FTNT") == "Buy"     # elite quality, reasonable price
+
+    assert verdict("VRNT") == "Avoid"   # weak quality, cheap
+
+def test_data_analytics_sanity():
+    """MSCI is the sole Data_Analytics constituent, so its hand-designed
+    weights (scoring.py) have no second data point to sanity-check against.
+    Pin its computed scores exactly so any accidental weight/threshold
+    change to this archetype is caught immediately rather than assumed
+    correct until a second ticker is added.
+    """
+    df = pd.read_csv("data/saas_scored.csv")
+    row = df[df["Ticker"] == "MSCI"].iloc[0]
+
+    assert row["Archetype"] == "Data_Analytics"
+    assert row["Quality Score"] == 82.8
+    assert row["Valuation Score"] == 60
+    assert row["Verdict"] == "Buy"
+
 def test_weights_sum_to_one():
     """Every archetype's quality weights must sum to exactly 1.0."""
     from scoring import SCORING_CONFIG
