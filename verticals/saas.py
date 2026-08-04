@@ -11,15 +11,17 @@ ENTERPRISE_SAAS = [
 ]
 DEVOPS        = ["GTLB", "PD"]
 ENTERPRISE_AI = ["PLTR", "SNOW", "DDOG", "MDB", "ZS"]
-VERTICAL_SAAS = ["VEEV", "IOT"]
+VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL"]
 COLLABORATION = ["ZM", "DBX", "BOX"]
+DATA_ANALYTICS = ["MSCI"]
 
 UNIVERSE = {
     "Enterprise_SaaS": ENTERPRISE_SAAS,
-    "DevOps":          DEVOPS,  
+    "DevOps":          DEVOPS,
     "Enterprise_AI":   ENTERPRISE_AI,
     "Vertical_SaaS":   VERTICAL_SAAS,
     "Collaboration":   COLLABORATION,
+    "Data_Analytics":  DATA_ANALYTICS,
 }
 
 # --- Fetcher ---

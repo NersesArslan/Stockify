@@ -552,6 +552,31 @@ SCORING_CONFIG = {
     "valuation_metric":     "EV/Revenue",
     "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
 },
+"Data_Analytics": {
+    "quality_weights": {
+        # Asset-light data/index/analytics subscriptions (e.g. MSCI) — elite,
+        # durable margins and moat trend matter more than growth rate; some
+        # leverage tolerance since these businesses fund buybacks with debt.
+        "Gross Margin":     0.22,
+        "FCF Margin":       0.22,
+        "Op Margin":        0.18,
+        "GM Trend (3Y)":    0.12,
+        "Net Debt/EBITDA":  0.10,
+        "Rev CAGR (3Y)":    0.10,
+        "FCF Margin Trend (3Y)": 0.06,
+    },
+    "quality_thresholds": {
+        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+        "Op Margin":        OP_MARGIN_THRESHOLDS,
+        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+        "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+        "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,
+    },
+    "valuation_metric":     "EV/Revenue",
+    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+},
 "DevOps": {
     "quality_weights": {
         "Rule of 40":       0.26,  # primary quality signal

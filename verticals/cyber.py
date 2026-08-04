@@ -11,7 +11,7 @@ IDENTITY  = ["OKTA",
 ]
 CLOUD_SEC = []  # ZS moved to Enterprise_AI in SaaS
 # or remove CLOUD_SEC entirely
-DATA_SEC  = ["QLYS", "VRNT"]
+DATA_SEC  = ["QLYS", "VRNT", "TENB"]
 
 UNIVERSE = {
     "ENDPOINT": ENDPOINT,

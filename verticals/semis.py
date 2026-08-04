@@ -13,7 +13,9 @@ EQUIPMENT = ["ASML", "LRCX", "KLAC", "AMAT", "ENTG", "MKSI",
              "NVMI", "CAMT", "TER"]
 IDMS = ["INTC", "TXN", "NXPI", "STM", "ADI", "ON", "WOLF"]
 MEMORY = ["MU", "WDC", "STX"]
-EDA_IP = ["SNPS", "CDNS" ]
+# PSTG — removed, yfinance/Yahoo Finance returns no quote for this symbol (likely delisted)
+EDA_IP = ["SNPS", "CDNS"]
+# ANSS — removed, yfinance/Yahoo Finance returns no quote for this symbol (likely delisted, e.g. post-acquisition)
 SUPPLY_CHAIN = ["AVT", "ARW"]
 UNIVERSE = {
     "Foundry": FOUNDRIES,

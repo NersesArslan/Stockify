@@ -61,6 +61,9 @@ AI_EXPOSURE = {
     "GOOGL":"Compounder",
     "ORCL": "Compounder",
     "ESTC": "Compounder",
+    "AKAM": "Neutral",
+    "GDDY": "Neutral",
+    "FFIV": "Neutral",
     # Enterprise SaaS
     "CRM":  "Compounder",
     "HUBS": "Compounder",
@@ -80,6 +83,9 @@ AI_EXPOSURE = {
     "ZM":   "Exposed",
     "DBX":  "Neutral",
     "BOX":  "Exposed",
+    "PTC":  "Compounder",
+    "TYL":  "Neutral",
+    "MSCI": "Compounder",
     # Enterprise AI
     "PLTR": "Disruptor",
     "SNOW": "Disruptor",
@@ -95,4 +101,5 @@ AI_EXPOSURE = {
     "OKTA": "Compounder",
     "QLYS": "Neutral",
     "VRNT": "Neutral",
+    "TENB": "Compounder",
 }
