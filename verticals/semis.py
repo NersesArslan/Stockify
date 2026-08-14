@@ -10,13 +10,13 @@ FABLESS = ["NVDA", "AMD", "QCOM", "AVGO", "MRVL", "MPWR",
            "MTSI", "CRUS", "SIMO", "MXL", "RMBS"]
 EQUIPMENT = ["ASML", "LRCX", "KLAC", "AMAT", "ENTG", "MKSI",
              "ACLS", "UCTT", "ICHR", "COHU", "FORM", "ONTO",
-             "NVMI", "CAMT", "TER"]
+             "NVMI", "CAMT", "TER", "KEYS"]
 IDMS = ["INTC", "TXN", "NXPI", "STM", "ADI", "ON", "WOLF"]
 MEMORY = ["MU", "WDC", "STX"]
 # PSTG — removed, yfinance/Yahoo Finance returns no quote for this symbol (likely delisted)
 EDA_IP = ["SNPS", "CDNS"]
 # ANSS — removed, yfinance/Yahoo Finance returns no quote for this symbol (likely delisted, e.g. post-acquisition)
-SUPPLY_CHAIN = ["AVT", "ARW"]
+SUPPLY_CHAIN = ["AVT", "ARW", "CDW"]
 UNIVERSE = {
     "Foundry": FOUNDRIES,
     "Fabless": FABLESS,

@@ -7,13 +7,14 @@ import time
 # --- Universe ---
 ENTERPRISE_SAAS = [
     "CRM", "HUBS", "WDAY", "INTU", "NOW",
-    "ADBE", "TEAM", "SAP", "PAYC", "PCTY", "NICE"
+    "ADBE", "TEAM", "SAP", "PAYC", "PCTY", "NICE",
+    "ADP", "PAYX"
 ]
 DEVOPS        = ["GTLB", "PD"]
 ENTERPRISE_AI = ["PLTR", "SNOW", "DDOG", "MDB", "ZS"]
-VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL"]
+VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL", "ADSK", "JKHY", "BR", "TRMB", "MSI"]
 COLLABORATION = ["ZM", "DBX", "BOX"]
-DATA_ANALYTICS = ["MSCI"]
+DATA_ANALYTICS = ["MSCI", "FICO", "VRSK", "SPGI", "MCO", "CSGP"]
 
 UNIVERSE = {
     "Enterprise_SaaS": ENTERPRISE_SAAS,
