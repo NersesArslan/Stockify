@@ -55,6 +55,8 @@ AI_EXPOSURE = {
     "CDNS": "Enabler",
     "AVT":  "Neutral",
     "ARW":  "Neutral",
+    "CDW":  "Neutral",
+    "KEYS": "Enabler",
     # Cloud
     "AMZN": "Enabler",
     "MSFT": "Compounder",
@@ -64,6 +66,7 @@ AI_EXPOSURE = {
     "AKAM": "Neutral",
     "GDDY": "Neutral",
     "FFIV": "Neutral",
+    "VRSN": "Neutral",
     # Enterprise SaaS
     "CRM":  "Compounder",
     "HUBS": "Compounder",
@@ -76,6 +79,8 @@ AI_EXPOSURE = {
     "PAYC": "Neutral",
     "PCTY": "Neutral",
     "NICE": "Compounder",
+    "ADP":  "Neutral",
+    "PAYX": "Neutral",
     "GTLB": "Compounder",
     "PD":   "Neutral",
     "VEEV": "Compounder",
@@ -85,7 +90,18 @@ AI_EXPOSURE = {
     "BOX":  "Exposed",
     "PTC":  "Compounder",
     "TYL":  "Neutral",
+    "ADSK": "Compounder",
+    "JKHY": "Neutral",
+    "BR":   "Neutral",
+    "TRMB": "Compounder",
+    "MSI":  "Compounder",
     "MSCI": "Compounder",
+    # Data Analytics
+    "FICO": "Compounder",
+    "VRSK": "Compounder",
+    "SPGI": "Compounder",
+    "MCO":  "Compounder",
+    "CSGP": "Compounder",
     # Enterprise AI
     "PLTR": "Disruptor",
     "SNOW": "Disruptor",
@@ -102,4 +118,5 @@ AI_EXPOSURE = {
     "QLYS": "Neutral",
     "VRNT": "Neutral",
     "TENB": "Compounder",
+    "GEN":  "Neutral",
 }
