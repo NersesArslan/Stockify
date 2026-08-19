@@ -15,6 +15,8 @@ ENTERPRISE_AI = ["PLTR", "SNOW", "DDOG", "MDB", "ZS"]
 VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL", "ADSK", "JKHY", "BR", "TRMB", "MSI"]
 COLLABORATION = ["ZM", "DBX", "BOX"]
 DATA_ANALYTICS = ["MSCI", "FICO", "VRSK", "SPGI", "MCO", "CSGP"]
+IT_SERVICES   = ["ACN", "CTSH"]  # not yet wired into SCORING_CONFIG
+AD_PLATFORM   = ["APP", "TTD"]   # not yet wired into SCORING_CONFIG
 
 UNIVERSE = {
     "Enterprise_SaaS": ENTERPRISE_SAAS,
@@ -23,6 +25,8 @@ UNIVERSE = {
     "Vertical_SaaS":   VERTICAL_SAAS,
     "Collaboration":   COLLABORATION,
     "Data_Analytics":  DATA_ANALYTICS,
+    "IT_Services":     IT_SERVICES,
+    "Ad_Platform":     AD_PLATFORM,
 }
 
 # --- Fetcher ---

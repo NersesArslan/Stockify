@@ -188,6 +188,18 @@ REV_PER_EMPLOYEE_THRESHOLDS = [
     (600,           900, 4),
     (900, float("inf"),  5),
 ]
+
+# Revenue per Employee ($K), IT services scale: staffing-heavy consulting/
+# outsourcing firms (e.g. ACN, CTSH) run at a fraction of software companies'
+# per-employee revenue by business-model design — REV_PER_EMPLOYEE_THRESHOLDS
+# above would bottom both out at 1 with no differentiation.
+IT_SERVICES_REV_PER_EMPLOYEE_THRESHOLDS = [
+    (-float("inf"), 50,   1),  # very low efficiency
+    (50,            70,   2),  # below average — CTSH territory
+    (70,            90,   3),  # average — ACN territory
+    (90,            120,  4),  # strong
+    (120, float("inf"),  5),  # exceptional for IT services
+]
 # --- Config registry ---
 
 SCORING_CONFIG = {
@@ -576,6 +588,46 @@ SCORING_CONFIG = {
         "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
         "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
         "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,
+    },
+    "valuation_metric":     "EV/Revenue",
+    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+},
+"IT_Services": {
+    "quality_weights": {
+        "Revenue per Employee ($K)": 0.30,  # primary signal — staffing efficiency
+        "FCF Margin":                0.20,
+        "Op Margin":                 0.20,
+        "Rev CAGR (3Y)":             0.15,
+        "Gross Margin":              0.10,
+        "Net Debt/EBITDA":           0.05,
+    },
+    "quality_thresholds": {
+        "Revenue per Employee ($K)": IT_SERVICES_REV_PER_EMPLOYEE_THRESHOLDS,
+        "FCF Margin":                FCF_MARGIN_THRESHOLDS,
+        "Op Margin":                 OP_MARGIN_THRESHOLDS,
+        "Rev CAGR (3Y)":             REV_GROWTH_THRESHOLDS,
+        "Gross Margin":              GROSS_MARGIN_THRESHOLDS,
+        "Net Debt/EBITDA":           NET_DEBT_EBITDA_THRESHOLDS,
+    },
+    "valuation_metric":     "EV/Revenue",
+    "valuation_thresholds": ENTERPRISE_SAAS_EV_REVENUE_THRESHOLDS,
+},
+"Ad_Platform": {
+    "quality_weights": {
+        "Gross Margin":              0.25,  # platform take rate — APP 88.5% vs TTD 76.9%
+        "Rule of 40":                0.25,  # growth/profit blend
+        "FCF Margin":                0.20,  # cash generation
+        "Rev CAGR (3Y)":             0.15,  # platform adoption
+        "Revenue per Employee ($K)": 0.10,  # platform efficiency
+        "GM Trend (3Y)":             0.05,  # moat durability
+    },
+    "quality_thresholds": {
+        "Gross Margin":              GROSS_MARGIN_THRESHOLDS,
+        "Rule of 40":                RULE_OF_40_THRESHOLDS,
+        "FCF Margin":                FCF_MARGIN_THRESHOLDS,
+        "Rev CAGR (3Y)":             REV_GROWTH_THRESHOLDS,
+        "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
+        "GM Trend (3Y)":             GM_TREND_THRESHOLDS,
     },
     "valuation_metric":     "EV/Revenue",
     "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
