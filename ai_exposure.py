@@ -67,6 +67,7 @@ AI_EXPOSURE = {
     "GDDY": "Neutral",
     "FFIV": "Neutral",
     "VRSN": "Neutral",
+    "ANET": "Enabler",
     # Enterprise SaaS
     "CRM":  "Compounder",
     "HUBS": "Compounder",
@@ -108,6 +109,9 @@ AI_EXPOSURE = {
     # Ad Platform
     "APP":  "Disruptor",
     "TTD":  "Compounder",
+    # Payment Network
+    "V":    "Neutral",
+    "MA":   "Neutral",
     # Enterprise AI
     "PLTR": "Disruptor",
     "SNOW": "Disruptor",

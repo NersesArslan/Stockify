@@ -492,6 +492,27 @@ SCORING_CONFIG = {
         "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
     },
 
+    "Network_Hardware": {
+        "quality_weights": {
+            "Rule of 40":       0.25,  # growth/profit blend
+            "Op Margin":        0.20,  # software-like margins on hardware
+            "FCF Margin":       0.20,  # cash generation
+            "Rev CAGR (3Y)":    0.15,  # AI-driven demand trajectory
+            "GM Trend (3Y)":    0.10,  # margin expansion = moat strengthening
+            "Gross Margin":     0.10,  # lower baseline than SaaS, weighted accordingly
+        },
+        "quality_thresholds": {
+            "Rule of 40":       RULE_OF_40_THRESHOLDS,
+            "Op Margin":        OP_MARGIN_THRESHOLDS,
+            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+        },
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+    },
+
     # --- SaaS ---
 "Enterprise_SaaS": {
     "quality_weights": {
@@ -631,6 +652,26 @@ SCORING_CONFIG = {
     },
     "valuation_metric":     "EV/Revenue",
     "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+},
+"Payment_Network": {
+    "quality_weights": {
+        "Op Margin":        0.30,  # network moat visible here
+        "FCF Margin":       0.25,  # cash conversion
+        "Gross Margin":     0.15,  # near-perfect for both, low differentiation
+        "Rule of 40":       0.15,  # growth/profit balance
+        "Rev CAGR (3Y)":    0.10,  # steady growth
+        "GM Trend (3Y)":    0.05,  # stable, low differentiation
+    },
+    "quality_thresholds": {
+        "Op Margin":        OP_MARGIN_THRESHOLDS,
+        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+        "Rule of 40":       RULE_OF_40_THRESHOLDS,
+        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+    },
+    "valuation_metric":     "EV/FCF",
+    "valuation_thresholds": EV_FCF_THRESHOLDS,
 },
 "DevOps": {
     "quality_weights": {

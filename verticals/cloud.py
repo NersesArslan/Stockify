@@ -13,10 +13,12 @@ HYPERSCALERS = [
 ]
 
 CLOUD_DATA = ["ESTC", "AKAM", "GDDY", "FFIV", "VRSN"]  # SNOW, DDOG, MDB moved to Enterprise_AI in SaaS
+NETWORK_HARDWARE = ["ANET"]
 
 UNIVERSE = {
-    "Hyperscaler": HYPERSCALERS,
-    "Cloud_Data":  CLOUD_DATA,
+    "Hyperscaler":      HYPERSCALERS,
+    "Cloud_Data":       CLOUD_DATA,
+    "Network_Hardware": NETWORK_HARDWARE,
 }
 
 
