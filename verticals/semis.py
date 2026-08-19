@@ -7,7 +7,8 @@ import time
 FOUNDRIES = ["TSM", "UMC"]
 FABLESS = ["NVDA", "AMD", "QCOM", "AVGO", "MRVL", "MPWR",
            "MCHP", "QRVO", "SWKS", "ARM", "SLAB", "ALGM",
-           "MTSI", "CRUS", "SIMO", "MXL", "RMBS"]
+           "MTSI", "CRUS", "SIMO", "MXL", "RMBS",
+           "SITM", "PI", "AMBA"]
 EQUIPMENT = ["ASML", "LRCX", "KLAC", "AMAT", "ENTG", "MKSI",
              "ACLS", "UCTT", "ICHR", "COHU", "FORM", "ONTO",
              "NVMI", "CAMT", "TER", "KEYS"]

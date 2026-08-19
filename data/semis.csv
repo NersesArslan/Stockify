@@ -1,6 +1,6 @@
 Ticker,Archetype,Name,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,GM Trend (3Y),Rev CAGR (3Y),Rev Growth (YoY),ROIC,ROIC Trend (3Y),FCF Margin Trend (3Y),R&D Intensity,Revenue per Employee ($K),Net Debt/EBITDA,Interest Coverage,Last Updated
-TSM,Foundry,Taiwan Semiconductor Manufactur,90.18,14.84,16.5,60.3,64.2,0.3,18.9,36.0,25.2,-0.7,3.0,5.5,1811.2,-0.77,,2026-08-18
-UMC,Foundry,United Microelectronics Corpora,37.77,5.56,14.7,21.7,30.6,-16.1,-5.2,17.0,8.7,-14.9,-1.9,7.1,393.2,-0.76,71.83,2026-08-18
+TSM,Foundry,Taiwan Semiconductor Manufactur,90.1,14.83,16.5,60.3,64.2,0.3,18.9,36.0,25.2,-0.7,3.0,5.5,1812.6,-0.77,,2026-08-18
+UMC,Foundry,United Microelectronics Corpora,37.74,5.55,14.7,21.7,30.6,-16.1,-5.2,17.0,8.7,-14.9,-1.9,7.1,393.5,-0.76,71.83,2026-08-18
 NVDA,Fabless,NVIDIA Corporation,113.99,20.84,18.3,65.6,74.1,14.1,100.0,85.2,66.8,53.4,30.7,7.3,6035.5,-0.24,639.05,2026-08-18
 AMD,Fabless,"Advanced Micro Devices, Inc.",88.44,18.93,21.4,17.2,55.7,4.6,13.6,50.1,4.4,2.7,6.2,19.6,1332.4,-0.92,72.99,2026-08-18
 QCOM,Fabless,QUALCOMM Incorporated,17.11,3.98,23.2,18.5,54.2,-2.4,0.1,-4.0,27.2,-14.0,13.5,20.5,847.5,0.58,18.07,2026-08-18
@@ -18,7 +18,10 @@ CRUS,Fabless,"Cirrus Logic, Inc.",11.3,2.49,22.0,18.4,52.8,2.3,1.7,12.9,18.0,3.6
 SIMO,Fabless,Silicon Motion Technology Corpo,,6.5,-15.0,22.4,48.9,-1.0,-2.2,127.0,9.8,-14.0,-4.7,20.0,653.8,-0.01,,2026-08-18
 MXL,Fabless,"MaxLinear, Inc",463.07,11.72,2.5,-2.4,57.5,-1.2,-25.3,55.2,-17.3,-33.9,-30.1,36.7,510.3,,-2.23,2026-08-18
 RMBS,Fabless,"Rambus, Inc.",46.12,12.34,26.7,36.7,80.4,3.2,15.9,20.4,15.6,7.6,0.9,24.8,956.2,-2.54,230.52,2026-08-18
-ASML,Equipment,ASML Holding N.V. - New York Re,70.17,16.76,23.9,37.1,52.7,2.3,15.6,21.3,38.7,-3.5,-0.1,13.3,931.7,-0.41,114.02,2026-08-18
+SITM,Fabless,SiTime Corporation,802.33,42.44,5.3,10.6,58.7,-10.9,4.8,126.5,-4.1,-6.4,9.2,25.4,1060.9,-12.97,,2026-08-18
+PI,Fabless,"Impinj, Inc.",93.78,14.18,15.1,9.7,52.9,-1.0,11.9,10.7,-0.1,5.1,17.1,27.6,813.0,15.12,2.89,2026-08-18
+AMBA,Fabless,"Ambarella, Inc.",63.65,7.45,11.7,-19.3,58.8,-2.7,5.0,16.9,-8.3,3.0,6.2,58.9,422.5,,,2026-08-18
+ASML,Equipment,ASML Holding N.V. - New York Re,70.15,16.76,23.9,37.1,52.7,2.3,15.6,21.3,38.7,-3.5,-0.1,13.3,931.9,-0.41,114.02,2026-08-18
 LRCX,Equipment,Lam Research Corporation,132.3,17.6,13.3,37.4,50.5,5.8,10.1,30.0,44.5,9.5,-5.8,10.2,997.1,-0.17,55.08,2026-08-18
 KLAC,Equipment,KLA Corporation,97.44,18.83,19.3,42.5,61.3,1.5,9.0,15.2,39.9,-0.7,-4.0,11.3,798.8,0.21,21.29,2026-08-18
 AMAT,Equipment,"Applied Materials, Inc.",126.95,13.16,10.4,33.7,49.4,2.2,3.2,24.8,23.7,-14.2,2.2,11.6,792.7,-0.26,37.75,2026-08-18
