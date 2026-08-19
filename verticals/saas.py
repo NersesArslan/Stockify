@@ -12,13 +12,14 @@ ENTERPRISE_SAAS = [
     # SMAR — removed, yfinance/Yahoo Finance returns no quote for this symbol
     # (taken private by Blackstone/Vista Equity Partners, early 2025)
 ]
-DEVOPS        = ["GTLB", "PD"]
+DEVOPS = ["GTLB", "PD"]
 ENTERPRISE_AI = ["PLTR", "SNOW", "DDOG", "MDB", "ZS"]
-VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL", "ADSK", "JKHY", "BR", "TRMB", "MSI", "PCOR", "NCNO", "SHOP"]
-COLLABORATION = ["ZM", "DBX", "BOX"]
+VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL", "ADSK",
+                 "JKHY", "BR", "TRMB", "MSI", "PCOR", "NCNO", "SHOP"]
+ÍCOLLABORATION = ["ZM", "DBX", "BOX"]
 DATA_ANALYTICS = ["MSCI", "FICO", "VRSK", "SPGI", "MCO", "CSGP"]
-IT_SERVICES   = ["ACN", "CTSH"]
-AD_PLATFORM   = ["APP", "TTD"]
+IT_SERVICES = ["ACN", "CTSH"]
+AD_PLATFORM = ["APP", "TTD"]
 PAYMENT_NETWORK = ["V", "MA"]
 
 UNIVERSE = {
@@ -34,17 +35,19 @@ UNIVERSE = {
 }
 
 # --- Fetcher ---
+
+
 def get_metrics(ticker_symbol, archetype):
     for attempt in range(3):
         try:
             t = yf.Ticker(ticker_symbol)
             info = t.info
 
-            market_cap    = info.get("marketCap", 0) or 0
-            total_debt    = info.get("totalDebt", 0) or 0
-            cash          = info.get("totalCash", 0) or 0
-            ebitda        = info.get("ebitda") or None
-            revenue       = info.get("totalRevenue") or None
+            market_cap = info.get("marketCap", 0) or 0
+            total_debt = info.get("totalDebt", 0) or 0
+            cash = info.get("totalCash", 0) or 0
+            ebitda = info.get("ebitda") or None
+            revenue = info.get("totalRevenue") or None
             free_cashflow = info.get("freeCashflow") or None
 
             income = t.financials
@@ -53,25 +56,27 @@ def get_metrics(ticker_symbol, archetype):
                 if "Total Revenue" in income.index:
                     rev_hist = income.loc["Total Revenue"].dropna()
                     if len(rev_hist) >= 4:
-                        recent   = float(rev_hist.iloc[0])
-                        older    = float(rev_hist.iloc[3])
-                        rev_cagr = round(((recent / older) ** (1/3) - 1) * 100, 1)
+                        recent = float(rev_hist.iloc[0])
+                        older = float(rev_hist.iloc[3])
+                        rev_cagr = round(
+                            ((recent / older) ** (1/3) - 1) * 100, 1)
                     else:
                         rev_cagr = None
                 else:
                     rev_cagr = None
             except Exception:
                 rev_cagr = None
-    
+
             balance = t.balance_sheet
             try:
                 income_hist = income
                 if "Gross Profit" in income_hist.index and "Total Revenue" in income_hist.index:
-                    gp  = income_hist.loc["Gross Profit"]
+                    gp = income_hist.loc["Gross Profit"]
                     rev = income.loc["Total Revenue"]
                     margins = (gp / rev * 100).dropna()
                     if len(margins) >= 2:
-                        gm_trend = round(float(margins.iloc[0]) - float(margins.iloc[-1]), 1)
+                        gm_trend = round(
+                            float(margins.iloc[0]) - float(margins.iloc[-1]), 1)
                     else:
                         gm_trend = None
                 else:
@@ -86,7 +91,8 @@ def get_metrics(ticker_symbol, archetype):
                     if "Tax Rate For Calcs" in income.index:
                         tax_rate_hist = income.loc["Tax Rate For Calcs"]
                     else:
-                        tax_rate_hist = pd.Series(0.21, index=op_income_hist.index)
+                        tax_rate_hist = pd.Series(
+                            0.21, index=op_income_hist.index)
                     roic_hist = []
                     for date in op_income_hist.index:
                         oi = op_income_hist.get(date)
@@ -117,7 +123,8 @@ def get_metrics(ticker_symbol, archetype):
                         if pd.notna(fcf_val) and pd.notna(rev_val) and rev_val != 0:
                             fcf_margin_hist.append(fcf_val / rev_val * 100)
                     if len(fcf_margin_hist) >= 4:
-                        fcf_margin_trend = round(fcf_margin_hist[0] - fcf_margin_hist[3], 1)
+                        fcf_margin_trend = round(
+                            fcf_margin_hist[0] - fcf_margin_hist[3], 1)
                     else:
                         fcf_margin_trend = None
                 else:
@@ -127,24 +134,36 @@ def get_metrics(ticker_symbol, archetype):
             ev = market_cap + total_debt - cash
 
             operating_income = income.loc["Operating Income"].iloc[0] if "Operating Income" in income.index else None
-            tax_rate         = income.loc["Tax Rate For Calcs"].iloc[0] if "Tax Rate For Calcs" in income.index else 0.21
-            interest_exp     = income.loc["Interest Expense Non Operating"].iloc[0] if "Interest Expense Non Operating" in income.index else None
-            rnd_expense      = income.loc["Research And Development"].iloc[0] if "Research And Development" in income.index else None
-            employees        = info.get("fullTimeEmployees") or None
+            tax_rate = income.loc["Tax Rate For Calcs"].iloc[0] if "Tax Rate For Calcs" in income.index else 0.21
+            interest_exp = income.loc["Interest Expense Non Operating"].iloc[
+                0] if "Interest Expense Non Operating" in income.index else None
+            rnd_expense = income.loc["Research And Development"].iloc[0] if "Research And Development" in income.index else None
+            employees = info.get("fullTimeEmployees") or None
 
-            ev_fcf          = round(ev / free_cashflow, 2)            if free_cashflow and free_cashflow > 0 else None
-            ev_revenue      = round(ev / revenue, 2)                  if revenue and revenue > 0 else None
-            fcf_margin      = round(free_cashflow / revenue * 100, 1) if free_cashflow and revenue else None
-            op_margin       = round(info.get("operatingMargins") * 100, 1) if info.get("operatingMargins") else None
-            gross_margin    = round(info.get("grossMargins") * 100, 1)     if info.get("grossMargins") else None
-            revenue_growth  = round(info.get("revenueGrowth") * 100, 1)   if info.get("revenueGrowth") else None
-            net_debt        = total_debt - cash
-            net_debt_ebitda = round(net_debt / ebitda, 2)             if ebitda and ebitda > 0 else None
-            interest_cov    = round(ebitda / abs(interest_exp), 2)    if ebitda and interest_exp and interest_exp != 0 else None
-            nrr             = None  # requires manual data from filings
-            rule_of_40      = round(revenue_growth + fcf_margin, 1)   if revenue_growth is not None and fcf_margin is not None else None
-            rnd_intensity   = round(rnd_expense / revenue * 100, 1)   if rnd_expense and revenue else None
-            rev_per_employee = round(revenue / employees / 1000, 1)  if revenue and employees else None
+            ev_fcf = round(ev / free_cashflow,
+                           2) if free_cashflow and free_cashflow > 0 else None
+            ev_revenue = round(
+                ev / revenue, 2) if revenue and revenue > 0 else None
+            fcf_margin = round(free_cashflow / revenue * 100,
+                               1) if free_cashflow and revenue else None
+            op_margin = round(info.get("operatingMargins") *
+                              100, 1) if info.get("operatingMargins") else None
+            gross_margin = round(info.get("grossMargins")
+                                 * 100, 1) if info.get("grossMargins") else None
+            revenue_growth = round(
+                info.get("revenueGrowth") * 100, 1) if info.get("revenueGrowth") else None
+            net_debt = total_debt - cash
+            net_debt_ebitda = round(
+                net_debt / ebitda, 2) if ebitda and ebitda > 0 else None
+            interest_cov = round(
+                ebitda / abs(interest_exp), 2) if ebitda and interest_exp and interest_exp != 0 else None
+            nrr = None  # requires manual data from filings
+            rule_of_40 = round(revenue_growth + fcf_margin,
+                               1) if revenue_growth is not None and fcf_margin is not None else None
+            rnd_intensity = round(rnd_expense / revenue *
+                                  100, 1) if rnd_expense and revenue else None
+            rev_per_employee = round(
+                revenue / employees / 1000, 1) if revenue and employees else None
 
             return {
                 "Ticker":            ticker_symbol,
@@ -170,9 +189,9 @@ def get_metrics(ticker_symbol, archetype):
 
         except Exception as e:
             if attempt < 2:           # 12 spaces
-                print(f"Retrying...") # 16 spaces
-                time.sleep(2)     
-            else:       
+                print(f"Retrying...")  # 16 spaces
+                time.sleep(2)
+            else:
                 return {
                     "Ticker":    ticker_symbol,
                     "Archetype": archetype,
@@ -180,6 +199,8 @@ def get_metrics(ticker_symbol, archetype):
                 }
 
 # --- Run ---
+
+
 def run():
     tasks = [
         (ticker, archetype)
