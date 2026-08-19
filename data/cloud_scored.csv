@@ -1,10 +1,10 @@
 Ticker,Archetype,Name,EV/FCF,FCF Margin,Op Margin,Gross Margin,Rev CAGR (3Y),Rev Growth (YoY),GM Trend (3Y),ROIC Trend (3Y),FCF Margin Trend (3Y),EV/Revenue,R&D Intensity,Revenue per Employee ($K),Net Debt/EBITDA,Interest Coverage,Rule of 40,Last Updated,Quality Score,Valuation Score,Verdict,AI Exposure
-AMZN,Hyperscaler,"Amazon.com, Inc.",928.33,0.4,13.7,50.8,11.7,19.6,6.5,8.9,4.4,3.85,,486.3,0.76,74.28,20.0,2026-08-13,62.6,80,Buy,Enabler
-MSFT,Hyperscaler,Microsoft Corporation,226.14,5.0,45.1,67.9,16.1,17.7,-1.0,-2.4,-7.9,11.28,10.7,1488.1,0.27,63.66,22.7,2026-08-13,70.4,40,Watch,Compounder
-GOOGL,Hyperscaler,Alphabet Inc.,181.53,5.1,34.0,60.9,12.5,24.2,4.3,-0.2,-3.0,9.23,13.7,2241.3,-0.7,235.28,29.3,2026-08-13,67.4,60,Buy,Compounder
-ORCL,Hyperscaler,Oracle Corporation,,-36.4,36.2,65.8,10.5,20.6,-7.0,-2.3,-52.1,8.69,15.3,477.7,4.44,6.63,-15.8,2026-08-13,53.2,60,Avoid,Compounder
-ESTC,Cloud_Data,Elastic N.V.,17.83,26.5,-3.5,76.2,17.6,16.0,3.8,14.3,15.4,4.73,26.0,432.8,,-1.14,42.5,2026-08-13,70.3,100,Buy,Compounder
-AKAM,Cloud_Data,"Akamai Technologies, Inc.",33.79,16.4,7.6,57.5,5.2,5.4,-2.8,-3.4,-6.0,5.55,11.9,393.0,5.54,35.11,21.8,2026-08-13,50.2,80,Avoid,Neutral
-GDDY,Cloud_Data,GoDaddy Inc.,12.75,23.6,27.1,63.8,6.6,6.6,-0.1,9.9,9.3,3.01,16.5,873.2,1.91,9.13,30.2,2026-08-13,64.0,100,Buy,Neutral
-FFIV,Cloud_Data,"F5, Inc.",30.96,21.7,24.6,81.9,4.6,10.9,1.4,6.7,14.2,6.71,16.3,508.2,-1.47,,32.6,2026-08-13,70.0,80,Buy,Neutral
-VRSN,Cloud_Data,"VeriSign, Inc.",32.74,48.8,68.2,88.5,5.2,6.0,2.2,-558.5,8.1,15.96,6.1,1844.4,1.1,15.4,54.8,2026-08-13,84.8,60,Buy,Neutral
+AMZN,Hyperscaler,"Amazon.com, Inc.",909.3,0.4,13.7,50.8,11.7,19.6,6.5,8.9,4.4,3.77,,486.3,0.76,74.28,20.0,2026-08-18,62.6,80,Buy,Enabler
+MSFT,Hyperscaler,Microsoft Corporation,219.29,5.0,45.1,67.9,16.1,17.7,-1.0,-2.4,-7.9,10.93,10.7,1488.1,0.27,63.66,22.7,2026-08-18,70.4,40,Watch,Compounder
+GOOGL,Hyperscaler,Alphabet Inc.,180.36,5.1,34.0,60.9,12.5,24.2,4.3,-0.2,-3.0,9.17,13.7,2241.3,-0.7,235.28,29.3,2026-08-18,67.4,60,Buy,Compounder
+ORCL,Hyperscaler,Oracle Corporation,,-36.4,36.2,65.8,10.5,20.6,-7.0,-2.3,-52.1,8.12,15.3,477.7,4.44,6.63,-15.8,2026-08-18,53.2,60,Avoid,Compounder
+ESTC,Cloud_Data,Elastic N.V.,17.6,26.5,-3.5,76.2,17.6,16.0,3.8,14.3,15.4,4.67,26.0,432.8,,-1.14,42.5,2026-08-18,70.3,100,Buy,Compounder
+AKAM,Cloud_Data,"Akamai Technologies, Inc.",31.74,16.4,7.6,57.5,5.2,5.4,-2.8,-3.4,-6.0,5.21,11.9,393.0,5.54,35.11,21.8,2026-08-18,50.2,80,Avoid,Neutral
+GDDY,Cloud_Data,GoDaddy Inc.,12.26,23.6,27.1,63.8,6.6,6.6,-0.1,9.9,9.3,2.89,16.5,873.2,1.91,9.13,30.2,2026-08-18,64.0,100,Buy,Neutral
+FFIV,Cloud_Data,"F5, Inc.",29.19,21.7,24.6,81.9,4.6,10.9,1.4,6.7,14.2,6.33,16.3,508.2,-1.47,,32.6,2026-08-18,70.0,80,Buy,Neutral
+VRSN,Cloud_Data,"VeriSign, Inc.",31.61,48.8,68.2,88.5,5.2,6.0,2.2,-558.5,8.1,15.41,6.1,1844.4,1.1,15.4,54.8,2026-08-18,84.8,60,Buy,Neutral

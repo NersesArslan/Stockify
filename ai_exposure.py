@@ -102,6 +102,12 @@ AI_EXPOSURE = {
     "SPGI": "Compounder",
     "MCO":  "Compounder",
     "CSGP": "Compounder",
+    # IT Services
+    "ACN":  "Compounder",
+    "CTSH": "Exposed",
+    # Ad Platform
+    "APP":  "Disruptor",
+    "TTD":  "Compounder",
     # Enterprise AI
     "PLTR": "Disruptor",
     "SNOW": "Disruptor",
