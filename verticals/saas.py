@@ -8,11 +8,13 @@ import time
 ENTERPRISE_SAAS = [
     "CRM", "HUBS", "WDAY", "INTU", "NOW",
     "ADBE", "TEAM", "SAP", "PAYC", "PCTY", "NICE",
-    "ADP", "PAYX"
+    "ADP", "PAYX", "FIVN", "SSNC", "MANH"
+    # SMAR — removed, yfinance/Yahoo Finance returns no quote for this symbol
+    # (taken private by Blackstone/Vista Equity Partners, early 2025)
 ]
 DEVOPS        = ["GTLB", "PD"]
 ENTERPRISE_AI = ["PLTR", "SNOW", "DDOG", "MDB", "ZS"]
-VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL", "ADSK", "JKHY", "BR", "TRMB", "MSI"]
+VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL", "ADSK", "JKHY", "BR", "TRMB", "MSI", "PCOR", "NCNO", "SHOP"]
 COLLABORATION = ["ZM", "DBX", "BOX"]
 DATA_ANALYTICS = ["MSCI", "FICO", "VRSK", "SPGI", "MCO", "CSGP"]
 IT_SERVICES   = ["ACN", "CTSH"]

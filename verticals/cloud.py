@@ -12,7 +12,7 @@ HYPERSCALERS = [
     "ORCL",  # Oracle Cloud — conglomerate, scored as hyperscaler pending multi-segment handling
 ]
 
-CLOUD_DATA = ["ESTC", "AKAM", "GDDY", "FFIV", "VRSN"]  # SNOW, DDOG, MDB moved to Enterprise_AI in SaaS
+CLOUD_DATA = ["ESTC", "AKAM", "GDDY", "FFIV", "VRSN", "FSLY"]  # SNOW, DDOG, MDB moved to Enterprise_AI in SaaS
 NETWORK_HARDWARE = ["ANET"]
 
 UNIVERSE = {
