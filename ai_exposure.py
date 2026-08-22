@@ -49,6 +49,8 @@ AI_EXPOSURE = {
     "ORCL": "Compounder",
     "ANET": "Enabler",
     "VRT":  "Enabler",
+    "SMCI": "Enabler",
+    "CLS":  "Enabler",
     # Enterprise SaaS
     "CRM":  "Compounder",
     "HUBS": "Compounder",

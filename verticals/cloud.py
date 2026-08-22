@@ -16,7 +16,10 @@ HYPERSCALERS = [
 # domain-registry businesses, not directly AI-infrastructure exposure.
 # SNOW, DDOG, MDB moved to Enterprise_AI in SaaS
 NETWORK_HARDWARE = ["ANET"]
-DATA_CENTER_INFRA = ["VRT"]  # Vertiv — data center power/thermal management
+DATA_CENTER_INFRA = ["VRT", "SMCI", "CLS"]
+# VRT (Vertiv) — power/thermal management
+# SMCI (Super Micro) — AI/data-center server systems
+# CLS (Celestica) — hyperscaler networking switches, liquid-cooled rack systems
 
 UNIVERSE = {
     "Hyperscaler":         HYPERSCALERS,
