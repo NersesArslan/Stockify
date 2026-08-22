@@ -14,24 +14,16 @@ ENTERPRISE_SAAS = [
 ]
 DEVOPS = ["GTLB", "PD"]
 ENTERPRISE_AI = ["PLTR", "SNOW", "DDOG", "MDB", "ZS"]
-VERTICAL_SAAS = ["VEEV", "IOT", "PTC", "TYL", "ADSK",
-                 "JKHY", "BR", "TRMB", "MSI", "PCOR", "NCNO", "SHOP"]
-ÍCOLLABORATION = ["ZM", "DBX", "BOX"]
-DATA_ANALYTICS = ["MSCI", "FICO", "VRSK", "SPGI", "MCO", "CSGP"]
-IT_SERVICES = ["ACN", "CTSH"]
-AD_PLATFORM = ["APP", "TTD"]
-PAYMENT_NETWORK = ["V", "MA"]
+# VERTICAL_SAAS (VEEV, IOT, PTC, TYL, ADSK, JKHY, BR, TRMB, MSI, PCOR, NCNO, SHOP),
+# COLLABORATION (ZM, DBX, BOX), DATA_ANALYTICS (MSCI, FICO, VRSK, SPGI, MCO, CSGP),
+# IT_SERVICES (ACN, CTSH), AD_PLATFORM (APP, TTD), PAYMENT_NETWORK (V, MA) —
+# removed 2026-08-21: excellent businesses, but not directly involved in the AI
+# infrastructure buildout/maintenance thesis. See CLAUDE.md scope note.
 
 UNIVERSE = {
     "Enterprise_SaaS": ENTERPRISE_SAAS,
     "DevOps":          DEVOPS,
     "Enterprise_AI":   ENTERPRISE_AI,
-    "Vertical_SaaS":   VERTICAL_SAAS,
-    "Collaboration":   COLLABORATION,
-    "Data_Analytics":  DATA_ANALYTICS,
-    "IT_Services":     IT_SERVICES,
-    "Ad_Platform":     AD_PLATFORM,
-    "Payment_Network": PAYMENT_NETWORK,
 }
 
 # --- Fetcher ---

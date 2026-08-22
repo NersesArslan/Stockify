@@ -132,14 +132,6 @@ DEVOPS_EV_REVENUE_THRESHOLDS = [
     (10, float("inf"),  1),
 ]
 
-COLLABORATION_EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 2,   5),
-    (2,             4,   4),
-    (4,             6,   3),
-    (6,             10,  2),
-    (10, float("inf"),  1),
-]
-
 # R&D Intensity: banded, not monotonic — too low risks moat erosion, too high
 # signals spend outpacing monetization. Split by hardware vs. software norms.
 SEMIS_RND_THRESHOLDS = [
@@ -189,17 +181,9 @@ REV_PER_EMPLOYEE_THRESHOLDS = [
     (900, float("inf"),  5),
 ]
 
-# Revenue per Employee ($K), IT services scale: staffing-heavy consulting/
-# outsourcing firms (e.g. ACN, CTSH) run at a fraction of software companies'
-# per-employee revenue by business-model design — REV_PER_EMPLOYEE_THRESHOLDS
-# above would bottom both out at 1 with no differentiation.
-IT_SERVICES_REV_PER_EMPLOYEE_THRESHOLDS = [
-    (-float("inf"), 50,   1),  # very low efficiency
-    (50,            70,   2),  # below average — CTSH territory
-    (70,            90,   3),  # average — ACN territory
-    (90,            120,  4),  # strong
-    (120, float("inf"),  5),  # exceptional for IT services
-]
+# IT_SERVICES_REV_PER_EMPLOYEE_THRESHOLDS removed 2026-08-21 along with the
+# IT_Services archetype (ACN, CTSH) — see verticals/saas.py
+
 # --- Config registry ---
 
 SCORING_CONFIG = {
@@ -410,35 +394,7 @@ SCORING_CONFIG = {
         "valuation_thresholds": EV_FCF_THRESHOLDS,
     },
 
-    "SUPPLY_CHAIN": {
-"quality_weights": {
-    # Distributor, not an IP-driven tech co (AVT, ARW) — Revenue per Employee
-    # and R&D Intensity excluded since headcount leverage and R&D spend aren't
-    # quality signals for a distribution business.
-    "ROIC":             0.22,
-    "FCF Margin":       0.18,
-    "Gross Margin":     0.13,
-    "Op Margin":        0.13,
-    "GM Trend (3Y)":    0.08,
-    "ROIC Trend (3Y)":  0.07,
-    "Rev CAGR (3Y)":    0.08,
-    "Net Debt/EBITDA":  0.05,
-    "FCF Margin Trend (3Y)": 0.06,
-},
-"quality_thresholds": {
-    "ROIC":             ROIC_THRESHOLDS,
-    "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-    "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-    "GM Trend (3Y)":    GM_TREND_THRESHOLDS,  # NEW
-    "ROIC Trend (3Y)":  ROIC_TREND_THRESHOLDS,  # NEW
-    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
-    "Op Margin":        OP_MARGIN_THRESHOLDS,
-    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-    "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-},
-        "valuation_metric":     "EV/FCF",
-        "valuation_thresholds": EV_FCF_THRESHOLDS,
-    },
+    # SUPPLY_CHAIN (AVT, ARW, CDW) archetype removed 2026-08-21 — see verticals/semis.py
 
     # --- Cloud ---
     "Hyperscaler": {
@@ -467,29 +423,37 @@ SCORING_CONFIG = {
         "valuation_thresholds": HYPERSCALER_EV_REVENUE_THRESHOLDS,
     },
 
-    "Cloud_Data": {
+    # Cloud_Data (ESTC, AKAM, GDDY, FFIV, VRSN, FSLY) archetype removed 2026-08-21
+    # — see verticals/cloud.py
+
+    "Data_Center_Infra": {
 "quality_weights": {
-    "Rule of 40":       0.24,
-    "FCF Margin":       0.19,
-    "Gross Margin":     0.14,
-    "GM Trend (3Y)":    0.09,
-    "Op Margin":        0.14,
-    "Rev CAGR (3Y)":    0.09,
-    "Net Debt/EBITDA":  0.05,
+    # Single-name archetype for now (VRT only) — industrial power/thermal
+    # manufacturer riding AI-datacenter capex, not an asset-light SaaS business.
+    # Gross Margin de-weighted: SaaS-calibrated bands (GROSS_MARGIN_THRESHOLDS)
+    # understate what's actually a strong margin for a hardware manufacturer.
+    # Rev CAGR weighted heavily — AI-driven demand acceleration is the core
+    # quality signal here. Net Debt/EBITDA weighted for real leverage risk
+    # (VRT's LBO/buyout history), unlike most SaaS archetypes.
+    "FCF Margin":       0.22,
+    "Op Margin":        0.20,
+    "Rev CAGR (3Y)":    0.20,
+    "Net Debt/EBITDA":  0.14,
+    "GM Trend (3Y)":    0.12,
+    "Gross Margin":     0.06,
     "FCF Margin Trend (3Y)": 0.06,
 },
-        "quality_thresholds": {
-            "Rule of 40":       RULE_OF_40_THRESHOLDS,
-            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
-            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
-            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-        },
-        "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
+"quality_thresholds": {
+    "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+    "Op Margin":        OP_MARGIN_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+    "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+    "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+    "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,
+},
+        "valuation_metric":     "EV/FCF",
+        "valuation_thresholds": EV_FCF_THRESHOLDS,
     },
 
     "Network_Hardware": {
@@ -566,113 +530,8 @@ SCORING_CONFIG = {
     "valuation_metric":     "EV/Revenue",
     "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
 },
-"Vertical_SaaS": {
-    "quality_weights": {
-        "Gross Margin":     0.24,  # vertical moat signal
-        "FCF Margin":       0.23,  # cash generation validates moat
-        "Op Margin":        0.19,  # operational efficiency
-        "GM Trend (3Y)":    0.14,  # moat durability over time
-        "Rule of 40":       0.09,  # growth/profitability balance
-        "Rev CAGR (3Y)":    0.05,  # durability > growth for verticals
-        "FCF Margin Trend (3Y)": 0.06,
-    },
-    "quality_thresholds": {
-        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-        "Op Margin":        OP_MARGIN_THRESHOLDS,
-        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
-        "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
-        "Rule of 40":       RULE_OF_40_THRESHOLDS,
-        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-    },
-    "valuation_metric":     "EV/Revenue",
-    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
-},
-"Data_Analytics": {
-    "quality_weights": {
-        # Asset-light data/index/analytics subscriptions (e.g. MSCI) — elite,
-        # durable margins and moat trend matter more than growth rate; some
-        # leverage tolerance since these businesses fund buybacks with debt.
-        "Gross Margin":     0.22,
-        "FCF Margin":       0.22,
-        "Op Margin":        0.18,
-        "GM Trend (3Y)":    0.12,
-        "Net Debt/EBITDA":  0.10,
-        "Rev CAGR (3Y)":    0.10,
-        "FCF Margin Trend (3Y)": 0.06,
-    },
-    "quality_thresholds": {
-        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-        "Op Margin":        OP_MARGIN_THRESHOLDS,
-        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
-        "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
-        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-        "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,
-    },
-    "valuation_metric":     "EV/Revenue",
-    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
-},
-"IT_Services": {
-    "quality_weights": {
-        "Revenue per Employee ($K)": 0.30,  # primary signal — staffing efficiency
-        "FCF Margin":                0.20,
-        "Op Margin":                 0.20,
-        "Rev CAGR (3Y)":             0.15,
-        "Gross Margin":              0.10,
-        "Net Debt/EBITDA":           0.05,
-    },
-    "quality_thresholds": {
-        "Revenue per Employee ($K)": IT_SERVICES_REV_PER_EMPLOYEE_THRESHOLDS,
-        "FCF Margin":                FCF_MARGIN_THRESHOLDS,
-        "Op Margin":                 OP_MARGIN_THRESHOLDS,
-        "Rev CAGR (3Y)":             REV_GROWTH_THRESHOLDS,
-        "Gross Margin":              GROSS_MARGIN_THRESHOLDS,
-        "Net Debt/EBITDA":           NET_DEBT_EBITDA_THRESHOLDS,
-    },
-    "valuation_metric":     "EV/Revenue",
-    "valuation_thresholds": ENTERPRISE_SAAS_EV_REVENUE_THRESHOLDS,
-},
-"Ad_Platform": {
-    "quality_weights": {
-        "Gross Margin":              0.25,  # platform take rate — APP 88.5% vs TTD 76.9%
-        "Rule of 40":                0.25,  # growth/profit blend
-        "FCF Margin":                0.20,  # cash generation
-        "Rev CAGR (3Y)":             0.15,  # platform adoption
-        "Revenue per Employee ($K)": 0.10,  # platform efficiency
-        "GM Trend (3Y)":             0.05,  # moat durability
-    },
-    "quality_thresholds": {
-        "Gross Margin":              GROSS_MARGIN_THRESHOLDS,
-        "Rule of 40":                RULE_OF_40_THRESHOLDS,
-        "FCF Margin":                FCF_MARGIN_THRESHOLDS,
-        "Rev CAGR (3Y)":             REV_GROWTH_THRESHOLDS,
-        "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
-        "GM Trend (3Y)":             GM_TREND_THRESHOLDS,
-    },
-    "valuation_metric":     "EV/Revenue",
-    "valuation_thresholds": SAAS_EV_REVENUE_THRESHOLDS,
-},
-"Payment_Network": {
-    "quality_weights": {
-        "Op Margin":        0.30,  # network moat visible here
-        "FCF Margin":       0.25,  # cash conversion
-        "Gross Margin":     0.15,  # near-perfect for both, low differentiation
-        "Rule of 40":       0.15,  # growth/profit balance
-        "Rev CAGR (3Y)":    0.10,  # steady growth
-        "GM Trend (3Y)":    0.05,  # stable, low differentiation
-    },
-    "quality_thresholds": {
-        "Op Margin":        OP_MARGIN_THRESHOLDS,
-        "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-        "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-        "Rule of 40":       RULE_OF_40_THRESHOLDS,
-        "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-        "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
-    },
-    "valuation_metric":     "EV/FCF",
-    "valuation_thresholds": EV_FCF_THRESHOLDS,
-},
+# Vertical_SaaS, Data_Analytics, IT_Services, Ad_Platform, Payment_Network
+# archetypes removed 2026-08-21 — see verticals/saas.py
 "DevOps": {
     "quality_weights": {
         "Rule of 40":       0.26,  # primary quality signal
@@ -699,31 +558,7 @@ SCORING_CONFIG = {
 },
 
 
-    "Collaboration": {
-"quality_weights": {
-"FCF Margin":       0.22,  # cash generation is the only thesis
-"Op Margin":        0.22,
-"Gross Margin":     0.18,
-"GM Trend (3Y)":    0.08,
-"Rule of 40":       0.08,  # less relevant for slow growers
-"Rev CAGR (3Y)":    0.08,  # growth is minimal, weight it low
-"Revenue per Employee ($K)": 0.08,
-"FCF Margin Trend (3Y)": 0.06,
-},
-        "quality_thresholds": {
-            "Rule of 40":       RULE_OF_40_THRESHOLDS,
-            "FCF Margin":       FCF_MARGIN_THRESHOLDS,
-            "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
-            "Op Margin":        OP_MARGIN_THRESHOLDS,
-            "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
-            "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,  # NEW
-            "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
-            "Revenue per Employee ($K)": REV_PER_EMPLOYEE_THRESHOLDS,
-
-        },
-        "valuation_metric":     "EV/Revenue",
-        "valuation_thresholds": COLLABORATION_EV_REVENUE_THRESHOLDS
-    },
+    # Collaboration (ZM, DBX, BOX) archetype removed 2026-08-21 — see verticals/saas.py
 
     # --- Cybersecurity ---
     "ENDPOINT": {

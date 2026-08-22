@@ -5,19 +5,22 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 # --- Universe ---
 FOUNDRIES = ["TSM", "UMC"]
-FABLESS = ["NVDA", "AMD", "QCOM", "AVGO", "MRVL", "MPWR",
-           "MCHP", "QRVO", "SWKS", "ARM", "SLAB", "ALGM",
-           "MTSI", "CRUS", "SIMO", "MXL", "RMBS",
-           "SITM", "PI", "AMBA"]
+FABLESS = ["NVDA", "AMD", "AVGO", "MRVL", "MPWR", "ARM",
+           "MTSI", "SIMO", "RMBS", "SITM", "AMBA"]
+# QCOM, MCHP, QRVO, SWKS, SLAB, ALGM, CRUS, MXL, PI — removed 2026-08-21:
+# mobile/auto/industrial-first revenue, not directly AI-infrastructure exposure
 EQUIPMENT = ["ASML", "LRCX", "KLAC", "AMAT", "ENTG", "MKSI",
              "ACLS", "UCTT", "ICHR", "COHU", "FORM", "ONTO",
              "NVMI", "CAMT", "TER", "KEYS"]
-IDMS = ["INTC", "TXN", "NXPI", "STM", "ADI", "ON", "WOLF"]
+IDMS = ["INTC"]
+# TXN, NXPI, STM, ADI, ON, WOLF — removed 2026-08-21: analog/auto/industrial-first
+# revenue, not directly AI-infrastructure exposure
 MEMORY = ["MU", "WDC", "STX"]
 # PSTG — removed, yfinance/Yahoo Finance returns no quote for this symbol (likely delisted)
 EDA_IP = ["SNPS", "CDNS"]
 # ANSS — removed, yfinance/Yahoo Finance returns no quote for this symbol (likely delisted, e.g. post-acquisition)
-SUPPLY_CHAIN = ["AVT", "ARW", "CDW"]
+# SUPPLY_CHAIN (AVT, ARW, CDW) — removed 2026-08-21: generic component distribution,
+# not directly AI-infrastructure exposure
 UNIVERSE = {
     "Foundry": FOUNDRIES,
     "Fabless": FABLESS,
@@ -25,7 +28,6 @@ UNIVERSE = {
     "IDM": IDMS,
     "Memory": MEMORY,
     "EDA_IP": EDA_IP,
-    "SUPPLY_CHAIN": SUPPLY_CHAIN
 }
 
 # --- FX handling for foreign filers (e.g. TSM, UMC report financials in TWD

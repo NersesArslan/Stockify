@@ -228,7 +228,7 @@ with tab0:
     col1, col2, col3 = st.columns(3)
     with col1:
         st.subheader("Quality First")
-        st.markdown("Companies scored on profitability, cash generation, moat durability and trajectory across 18 industry archetypes.")
+        st.markdown("Companies scored on profitability, cash generation, moat durability and trajectory across 16 industry archetypes.")
     with col2:
         st.subheader("Valuation Second")
         st.markdown("Quality score must clear 60 before valuation matters. High quality at a fair price beats cheap mediocrity every time.")

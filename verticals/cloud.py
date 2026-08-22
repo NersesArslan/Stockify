@@ -12,13 +12,16 @@ HYPERSCALERS = [
     "ORCL",  # Oracle Cloud — conglomerate, scored as hyperscaler pending multi-segment handling
 ]
 
-CLOUD_DATA = ["ESTC", "AKAM", "GDDY", "FFIV", "VRSN", "FSLY"]  # SNOW, DDOG, MDB moved to Enterprise_AI in SaaS
+# CLOUD_DATA (ESTC, AKAM, GDDY, FFIV, VRSN, FSLY) — removed 2026-08-21: CDN/edge/
+# domain-registry businesses, not directly AI-infrastructure exposure.
+# SNOW, DDOG, MDB moved to Enterprise_AI in SaaS
 NETWORK_HARDWARE = ["ANET"]
+DATA_CENTER_INFRA = ["VRT"]  # Vertiv — data center power/thermal management
 
 UNIVERSE = {
-    "Hyperscaler":      HYPERSCALERS,
-    "Cloud_Data":       CLOUD_DATA,
-    "Network_Hardware": NETWORK_HARDWARE,
+    "Hyperscaler":         HYPERSCALERS,
+    "Network_Hardware":    NETWORK_HARDWARE,
+    "Data_Center_Infra":   DATA_CENTER_INFRA,
 }
 
 
