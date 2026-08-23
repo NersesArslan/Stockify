@@ -42,3 +42,6 @@ Thumbs.db
 
 # Historical score snapshots (append-only, grows unbounded)
 data/history.csv
+
+# Quarterly backlog/book-to-bill research notes (append-only, grows unbounded)
+data/backlog_notes.csv

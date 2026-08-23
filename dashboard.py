@@ -19,6 +19,19 @@ cyber["Vertical"] = "Cybersecurity"
 
 all_df = pd.concat([semis, cloud, saas, cyber], ignore_index=True)
 
+# Backlog/book-to-bill research notes (Data_Center_Infra archetype only, quarterly,
+# populated by backlog.py — file may not exist yet if it's never been run)
+try:
+    backlog_notes = pd.read_csv("data/backlog_notes.csv")
+    backlog_notes = (
+        backlog_notes.sort_values("run_date")
+        .groupby("Ticker", as_index=False)
+        .last()
+        .set_index("Ticker")
+    )
+except (FileNotFoundError, KeyError):
+    backlog_notes = pd.DataFrame()
+
 # --- Header: title + ticker search, always visible above the tabs ---
 title_col, search_col = st.columns([3, 1])
 with title_col:
@@ -87,6 +100,21 @@ if search_ticker:
                 st.divider()
                 st.markdown("**AI Analysis**")
                 st.markdown(analysis)
+
+            if row["Ticker"] in backlog_notes.index:
+                note = backlog_notes.loc[row["Ticker"]]
+                # st.markdown renders `$...$` as LaTeX math — escape dollar signs
+                # in free-text fields so "$9.5 billion" doesn't get mangled.
+                esc = lambda s: str(s).replace("$", "\\$") if pd.notna(s) else "Not disclosed"
+                st.divider()
+                st.markdown(f"**Backlog** (as of {esc(note['As_Of'])}, researched {note['run_date']})")
+                bl_col1, bl_col2 = st.columns(2)
+                bl_col1.markdown(f"**Backlog:** {esc(note['Backlog'])}")
+                bl_col2.markdown(f"**Book-to-Bill:** {esc(note['Book_to_Bill'])}")
+                if pd.notna(note["Summary"]):
+                    st.markdown(esc(note["Summary"]))
+                if pd.notna(note["Source"]):
+                    st.caption(f"Source: {note['Source']}")
 
 st.divider()
 
