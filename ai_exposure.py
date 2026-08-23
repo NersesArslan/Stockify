@@ -51,6 +51,8 @@ AI_EXPOSURE = {
     "VRT":  "Enabler",
     "SMCI": "Enabler",
     "CLS":  "Enabler",
+    "NBIS": "Enabler",
+    "CRWV": "Enabler",
     # Enterprise SaaS
     "CRM":  "Compounder",
     "HUBS": "Compounder",

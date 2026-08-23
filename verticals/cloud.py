@@ -21,10 +21,24 @@ DATA_CENTER_INFRA = ["VRT", "SMCI", "CLS"]
 # SMCI (Super Micro) — AI/data-center server systems
 # CLS (Celestica) — hyperscaler networking switches, liquid-cooled rack systems
 
+NEOCLOUD = ["NBIS", "CRWV"]
+# NBIS (Nebius) — GPU cloud, full-stack AI infrastructure platform
+# CRWV (CoreWeave) — GPU cloud, same business model, close comp to NBIS
+# Growth-stage pure-play GPU cloud providers — distinct from Hyperscaler (mature,
+# highly profitable) despite the thematic overlap. See scoring.py for why.
+#
+# Considered and left out for now: IREN, APLD (deliver/lease powered data-center
+# capacity to others rather than operating a full-stack cloud service themselves —
+# a different, landlord-like business model, not a clean fit here); WULF, CIFR,
+# HUT (still substantially bitcoin-mining-legacy revenue transitioning to AI
+# hosting — same conglomerate-style caution as SPGI/MCO earlier); AGPU (too new/
+# thinly-covered to responsibly include yet).
+
 UNIVERSE = {
     "Hyperscaler":         HYPERSCALERS,
     "Network_Hardware":    NETWORK_HARDWARE,
     "Data_Center_Infra":   DATA_CENTER_INFRA,
+    "Neocloud":            NEOCLOUD,
 }
 
 

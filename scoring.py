@@ -92,6 +92,19 @@ HYPERSCALER_EV_REVENUE_THRESHOLDS = [
     (15,  float("inf"),  1),
 ]
 
+# Neocloud (NBIS, CRWV): unlike mature Hyperscaler names, these trade on a
+# hypergrowth premium off a small revenue base — Hyperscaler's bands would
+# read them as "expensive" by default. Bands widened accordingly. Provisional:
+# only 2 names to calibrate against, revisit once a few quarters of real
+# trading data come in (same as Data_Center_Infra's weights).
+NEOCLOUD_EV_REVENUE_THRESHOLDS = [
+    (-float("inf"), 8,   5),
+    (8,             15,  4),
+    (15,            25,  3),
+    (25,            40,  2),
+    (40,  float("inf"),  1),
+]
+
 SAAS_EV_REVENUE_THRESHOLDS = [
     (-float("inf"), 5,   5),
     (5,             10,  4),
@@ -428,8 +441,8 @@ SCORING_CONFIG = {
 
     "Data_Center_Infra": {
 "quality_weights": {
-    # Single-name archetype for now (VRT only) — industrial power/thermal
-    # manufacturer riding AI-datacenter capex, not an asset-light SaaS business.
+    # Industrial power/thermal/hardware manufacturers riding AI-datacenter
+    # capex, not asset-light SaaS businesses.
     # Gross Margin de-weighted: SaaS-calibrated bands (GROSS_MARGIN_THRESHOLDS)
     # understate what's actually a strong margin for a hardware manufacturer.
     # Rev CAGR weighted heavily — AI-driven demand acceleration is the core
@@ -454,6 +467,38 @@ SCORING_CONFIG = {
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    "Neocloud": {
+"quality_weights": {
+    # Growth-stage, pure-play GPU cloud providers (NBIS, CRWV) — closer in
+    # margin shape to Hyperscaler (infra-as-a-service, not hardware assembly)
+    # but far earlier-stage: still building out gigawatt-scale capacity, so
+    # thin/negative FCF and Op Margin are expected at this stage, not a red
+    # flag the way they'd be for a mature archetype — de-weighted accordingly.
+    # Rev CAGR dominates: revenue growth off a small base is the core signal
+    # of whether the capacity buildout is finding real demand. Net Debt/EBITDA
+    # weighted heavily — both names are financing GPU clusters with real
+    # leverage, the single biggest risk specific to this business model.
+    "Rev CAGR (3Y)":    0.28,
+    "Net Debt/EBITDA":  0.20,
+    "Gross Margin":     0.16,
+    "GM Trend (3Y)":    0.10,
+    "FCF Margin":       0.10,
+    "Op Margin":        0.08,
+    "FCF Margin Trend (3Y)": 0.08,
+},
+"quality_thresholds": {
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+    "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+    "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+    "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+    "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+    "Op Margin":        OP_MARGIN_THRESHOLDS,
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,
+},
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": NEOCLOUD_EV_REVENUE_THRESHOLDS,
     },
 
     "Network_Hardware": {
