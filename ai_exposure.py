@@ -53,6 +53,8 @@ AI_EXPOSURE = {
     "CLS":  "Enabler",
     "NBIS": "Enabler",
     "CRWV": "Enabler",
+    "IREN": "Enabler",
+    "APLD": "Enabler",
     # Enterprise SaaS
     "CRM":  "Compounder",
     "HUBS": "Compounder",

@@ -105,6 +105,22 @@ NEOCLOUD_EV_REVENUE_THRESHOLDS = [
     (40,  float("inf"),  1),
 ]
 
+# Power_Campus (IREN, APLD): trailing revenue understates the real opportunity
+# even more than Neocloud does — both names trade primarily on *contracted*
+# backlog (multi-year take-or-pay leases, ARR-under-contract) that current
+# trailing revenue is nowhere near yet, since campuses/GPU fleets are still
+# ramping into service. Bands widened further than Neocloud's. Treat this
+# valuation score as the weakest signal in the archetype — the contracted-
+# backlog figure (qualitative, not fetchable from trailing financials) is the
+# more meaningful check for these two specifically. Provisional, 2 names.
+POWER_CAMPUS_EV_REVENUE_THRESHOLDS = [
+    (-float("inf"), 15,  5),
+    (15,            30,  4),
+    (30,            50,  3),
+    (50,            80,  2),
+    (80,  float("inf"),  1),
+]
+
 SAAS_EV_REVENUE_THRESHOLDS = [
     (-float("inf"), 5,   5),
     (5,             10,  4),
@@ -467,6 +483,42 @@ SCORING_CONFIG = {
 },
         "valuation_metric":     "EV/FCF",
         "valuation_thresholds": EV_FCF_THRESHOLDS,
+    },
+
+    "Power_Campus": {
+"quality_weights": {
+    # Capital-intensive AI data-center capacity developers (IREN, APLD) —
+    # building/financing campuses whose eventual revenue (contracted leases,
+    # ARR-under-contract) dwarfs current trailing financials, so this archetype
+    # trusts trailing margins even less than Neocloud does. Net Debt/EBITDA
+    # weighted above every other archetype in this file — construction-phase
+    # debt against not-yet-fully-ramped revenue is the central risk here.
+    # Rev CAGR still carries real weight as the best available trailing signal
+    # of the AI transition actually ramping, despite being noisy (IREN in
+    # particular is still shedding legacy bitcoin-mining revenue, which can
+    # distort growth optics independent of the AI buildout's progress). FCF/Op
+    # Margin de-weighted hardest of any archetype — deeply negative readings
+    # are the expected, structural state during this build-out phase, not a
+    # standalone red flag.
+    "Net Debt/EBITDA":  0.26,
+    "Rev CAGR (3Y)":    0.24,
+    "Gross Margin":     0.14,
+    "GM Trend (3Y)":    0.12,
+    "FCF Margin":       0.10,
+    "FCF Margin Trend (3Y)": 0.08,
+    "Op Margin":        0.06,
+},
+"quality_thresholds": {
+    "Net Debt/EBITDA":  NET_DEBT_EBITDA_THRESHOLDS,
+    "Rev CAGR (3Y)":    REV_GROWTH_THRESHOLDS,
+    "Gross Margin":     GROSS_MARGIN_THRESHOLDS,
+    "GM Trend (3Y)":    GM_TREND_THRESHOLDS,
+    "FCF Margin":       FCF_MARGIN_THRESHOLDS,
+    "FCF Margin Trend (3Y)": FCF_MARGIN_TREND_THRESHOLDS,
+    "Op Margin":        OP_MARGIN_THRESHOLDS,
+},
+        "valuation_metric":     "EV/Revenue",
+        "valuation_thresholds": POWER_CAMPUS_EV_REVENUE_THRESHOLDS,
     },
 
     "Neocloud": {

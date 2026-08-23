@@ -24,21 +24,36 @@ DATA_CENTER_INFRA = ["VRT", "SMCI", "CLS"]
 NEOCLOUD = ["NBIS", "CRWV"]
 # NBIS (Nebius) — GPU cloud, full-stack AI infrastructure platform
 # CRWV (CoreWeave) — GPU cloud, same business model, close comp to NBIS
-# Growth-stage pure-play GPU cloud providers — distinct from Hyperscaler (mature,
-# highly profitable) despite the thematic overlap. See scoring.py for why.
+# Growth-stage pure-play GPU cloud providers, already at meaningful realized
+# consumption revenue — distinct from Hyperscaler (mature, highly profitable)
+# despite the thematic overlap. See scoring.py for why.
+
+POWER_CAMPUS = ["IREN", "APLD"]
+# IREN — vertically integrated: owns power + data centers + GPUs, runs its own
+# AI Cloud GPU-rental revenue (closer to Neocloud in that respect), still
+# transitioning off legacy bitcoin-mining revenue.
+# APLD — pure capacity developer: builds/owns AI data-center campuses and
+# leases them to CoreWeave/hyperscalers under long-term (15Y), take-or-pay,
+# non-cancellable contracts — landlord/developer economics, not a cloud
+# operator at all.
+# Not identical business models, but grouped together because both share the
+# defining characteristic that separates this archetype from Neocloud: massive
+# *contracted/signed* revenue (IREN's ARR-under-contract, APLD's $30B+ lease
+# backlog) that dwarfs current trailing revenue, financed by real construction-
+# phase debt. Trailing financials understate the real investment case here even
+# more than for Neocloud — see scoring.py's valuation caveat.
 #
-# Considered and left out for now: IREN, APLD (deliver/lease powered data-center
-# capacity to others rather than operating a full-stack cloud service themselves —
-# a different, landlord-like business model, not a clean fit here); WULF, CIFR,
-# HUT (still substantially bitcoin-mining-legacy revenue transitioning to AI
-# hosting — same conglomerate-style caution as SPGI/MCO earlier); AGPU (too new/
-# thinly-covered to responsibly include yet).
+# Considered and left out for now: WULF, CIFR, HUT (still substantially
+# bitcoin-mining-legacy revenue transitioning to AI hosting — same
+# conglomerate-style caution as SPGI/MCO earlier); AGPU (too new/thinly-covered
+# to responsibly include yet).
 
 UNIVERSE = {
     "Hyperscaler":         HYPERSCALERS,
     "Network_Hardware":    NETWORK_HARDWARE,
     "Data_Center_Infra":   DATA_CENTER_INFRA,
     "Neocloud":            NEOCLOUD,
+    "Power_Campus":        POWER_CAMPUS,
 }
 
 
