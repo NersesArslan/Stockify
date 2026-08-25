@@ -41,8 +41,10 @@ Thumbs.db
 .env
 .env.local
 
-# Historical score snapshots (append-only, grows unbounded)
-data/history.csv
+# data/history.csv is intentionally tracked (not ignored): it's the
+# append-only daily price+score log the GitHub Actions pipeline commits to
+# (.github/workflows/daily_pipeline.yml) — an ephemeral CI runner needs it
+# committed to accumulate history across runs. Grows slowly (~80-90 rows/day).
 
 # Quarterly backlog/book-to-bill research notes (append-only, grows unbounded)
 data/backlog_notes.csv

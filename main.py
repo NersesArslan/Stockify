@@ -20,7 +20,7 @@ VERTICAL_LABELS = {
 
 HISTORY_COLUMNS = [
     "run_date", "Ticker", "Archetype", "Vertical",
-    "Quality Score", "Valuation Score", "Verdict", "AI Exposure",
+    "Quality Score", "Valuation Score", "Verdict", "AI Exposure", "Price",
 ]
 
 def add_ai_exposure(df):
@@ -112,5 +112,26 @@ if SCORE["cyber"]:
 if history_frames:
     snapshot = pd.concat(history_frames, ignore_index=True)
     history_path = "data/history.csv"
+
+    # Migrate an existing file whose header predates a HISTORY_COLUMNS change
+    # (e.g. an older history.csv missing a newly added column like "Price")
+    # before appending — plain mode="a" would otherwise write rows with a
+    # different column count than the existing header, corrupting the CSV.
+    if os.path.exists(history_path):
+        existing = pd.read_csv(history_path)
+        if list(existing.columns) != HISTORY_COLUMNS:
+            existing = existing.reindex(columns=HISTORY_COLUMNS)
+            existing.to_csv(history_path, index=False)
+            print(f"Migrated {history_path} schema to {HISTORY_COLUMNS}")
+
     snapshot.to_csv(history_path, mode="a", header=not os.path.exists(history_path), index=False)
     print(f"\nAppended {len(snapshot)} rows to {history_path}")
+
+    # Self-heal duplicate rows from same-day re-runs: keep the latest write
+    # per (run_date, Ticker, Vertical) instead of letting them accumulate.
+    history_df = pd.read_csv(history_path)
+    before = len(history_df)
+    history_df = history_df.drop_duplicates(subset=["run_date", "Ticker", "Vertical"], keep="last")
+    if len(history_df) < before:
+        history_df.to_csv(history_path, index=False)
+        print(f"Deduped {history_path}: {before} -> {len(history_df)} rows")
