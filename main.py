@@ -5,6 +5,7 @@ from verticals import semis, cloud, saas, cyber
 from scoring import score_dataframe
 from analyst import analyze_dataframe
 from ai_exposure import AI_EXPOSURE
+from growth_stage import GROWTH_STAGE
 
 FETCH  = {"semis": True, "cloud": True, "saas": True, "cyber": True}
 SCORE  = {"semis": True,  "cloud": True,  "saas": True,  "cyber": True}
@@ -19,12 +20,17 @@ VERTICAL_LABELS = {
 
 HISTORY_COLUMNS = [
     "run_date", "Ticker", "Archetype", "Vertical",
-    "Quality Score", "Valuation Score", "Verdict", "AI Exposure",
+    "Quality Score", "Valuation Score", "Verdict", "AI Exposure", "Price",
 ]
 
 def add_ai_exposure(df):
     df = df.copy()
     df["AI Exposure"] = df["Ticker"].map(AI_EXPOSURE).fillna("Unknown")
+    return df
+
+def add_growth_stage(df):
+    df = df.copy()
+    df["Growth Stage"] = df["Ticker"].map(GROWTH_STAGE).fillna(False)
     return df
 
 def validate_ai_exposure(df, vertical_name):
@@ -51,6 +57,7 @@ if SCORE["semis"]:
     df_semis = pd.read_csv("data/semis.csv")
     df_semis = score_dataframe(df_semis)
     df_semis = add_ai_exposure(df_semis)
+    df_semis = add_growth_stage(df_semis)
     validate_ai_exposure(df_semis, "semis")
     if ANALYZE["semis"]:
         df_semis["Vertical"] = "Semiconductors"
@@ -64,6 +71,7 @@ if SCORE["cloud"]:
     df_cloud = pd.read_csv("data/cloud.csv")
     df_cloud = score_dataframe(df_cloud)
     df_cloud = add_ai_exposure(df_cloud)
+    df_cloud = add_growth_stage(df_cloud)
     validate_ai_exposure(df_cloud, "cloud")
     if ANALYZE["cloud"]:
         df_cloud["Vertical"] = "Cloud"
@@ -77,6 +85,7 @@ if SCORE["saas"]:
     df_saas = pd.read_csv("data/saas.csv")
     df_saas = score_dataframe(df_saas)
     df_saas = add_ai_exposure(df_saas)
+    df_saas = add_growth_stage(df_saas)
     validate_ai_exposure(df_saas, "saas")
     if ANALYZE["saas"]:
         df_saas["Vertical"] = "SaaS"
@@ -90,6 +99,7 @@ if SCORE["cyber"]:
     df_cyber = pd.read_csv("data/cyber.csv")
     df_cyber = score_dataframe(df_cyber)
     df_cyber = add_ai_exposure(df_cyber)
+    df_cyber = add_growth_stage(df_cyber)
     validate_ai_exposure(df_cyber, "cyber")
     if ANALYZE["cyber"]:
         df_cyber["Vertical"] = "Cybersecurity"
@@ -102,5 +112,26 @@ if SCORE["cyber"]:
 if history_frames:
     snapshot = pd.concat(history_frames, ignore_index=True)
     history_path = "data/history.csv"
+
+    # Migrate an existing file whose header predates a HISTORY_COLUMNS change
+    # (e.g. an older history.csv missing a newly added column like "Price")
+    # before appending — plain mode="a" would otherwise write rows with a
+    # different column count than the existing header, corrupting the CSV.
+    if os.path.exists(history_path):
+        existing = pd.read_csv(history_path)
+        if list(existing.columns) != HISTORY_COLUMNS:
+            existing = existing.reindex(columns=HISTORY_COLUMNS)
+            existing.to_csv(history_path, index=False)
+            print(f"Migrated {history_path} schema to {HISTORY_COLUMNS}")
+
     snapshot.to_csv(history_path, mode="a", header=not os.path.exists(history_path), index=False)
     print(f"\nAppended {len(snapshot)} rows to {history_path}")
+
+    # Self-heal duplicate rows from same-day re-runs: keep the latest write
+    # per (run_date, Ticker, Vertical) instead of letting them accumulate.
+    history_df = pd.read_csv(history_path)
+    before = len(history_df)
+    history_df = history_df.drop_duplicates(subset=["run_date", "Ticker", "Vertical"], keep="last")
+    if len(history_df) < before:
+        history_df.to_csv(history_path, index=False)
+        print(f"Deduped {history_path}: {before} -> {len(history_df)} rows")
