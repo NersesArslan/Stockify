@@ -71,6 +71,12 @@ if search_ticker:
             with verdict_col:
                 st.markdown(f"#### Verdict: :{color}[{row['Verdict']}]")
 
+            if row.get("Growth Stage") in (True, "True"):
+                st.warning(
+                    "🚧 **Growth-stage company** — trailing financial metrics may understate "
+                    "investment case. Contracted/backlog revenue not reflected in scores."
+                )
+
             score_col1, score_col2 = st.columns(2)
             score_col1.metric("Quality Score", row["Quality Score"])
             score_col2.metric("Valuation Score", row["Valuation Score"])
