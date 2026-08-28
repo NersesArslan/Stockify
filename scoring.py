@@ -69,7 +69,7 @@ NET_DEBT_EBITDA_THRESHOLDS = [
 ]
 
 EV_FCF_THRESHOLDS = [
-    (-float("inf"), 20,  5),
+    (0,             20,  5),
     (20,            35,  4),
     (35,            60,  3),
     (60,            100, 2),
@@ -85,7 +85,7 @@ RULE_OF_40_THRESHOLDS = [
 ]
 
 HYPERSCALER_EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 3,   5),
+    (0,             3,   5),
     (3,             6,   4),
     (6,             10,  3),
     (10,            15,  2),
@@ -98,7 +98,7 @@ HYPERSCALER_EV_REVENUE_THRESHOLDS = [
 # only 2 names to calibrate against, revisit once a few quarters of real
 # trading data come in (same as Data_Center_Infra's weights).
 NEOCLOUD_EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 8,   5),
+    (0,             8,   5),
     (8,             15,  4),
     (15,            25,  3),
     (25,            40,  2),
@@ -114,7 +114,7 @@ NEOCLOUD_EV_REVENUE_THRESHOLDS = [
 # backlog figure (qualitative, not fetchable from trailing financials) is the
 # more meaningful check for these two specifically. Provisional, 2 names.
 POWER_CAMPUS_EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 15,  5),
+    (0,             15,  5),
     (15,            30,  4),
     (30,            50,  3),
     (50,            80,  2),
@@ -122,7 +122,7 @@ POWER_CAMPUS_EV_REVENUE_THRESHOLDS = [
 ]
 
 SAAS_EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 5,   5),
+    (0,             5,   5),
     (5,             10,  4),
     (10,            20,  3),
     (20,            40,  2),
@@ -130,7 +130,7 @@ SAAS_EV_REVENUE_THRESHOLDS = [
 ]
 
 SEMIS_EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 3,   5),  # cheap for semis
+    (0,             3,   5),  # cheap for semis
     (3,             6,   4),  # reasonable
     (6,             10,  3),  # fair value
     (10,            15,  2),  # expensive
@@ -138,7 +138,7 @@ SEMIS_EV_REVENUE_THRESHOLDS = [
 ]
 
 ENTERPRISE_SAAS_EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 2,   5),
+    (0,             2,   5),
     (2,             4,   4),
     (4,             7,   3),
     (7,             12,  2),
@@ -154,7 +154,7 @@ GM_TREND_THRESHOLDS = [
 ]
 
 DEVOPS_EV_REVENUE_THRESHOLDS = [
-    (-float("inf"), 2,   5),
+    (0,             2,   5),
     (2,             4,   4),
     (4,             6,   3),
     (6,             10,  2),

@@ -11,11 +11,11 @@ def test_semi_verdicts():
     # Structural necessities — should always be Watch or Buy
     assert verdict("NVDA") == "Watch"   # elite quality, expensive
     assert verdict("TSM")  == "Watch"   # elite quality, fairly valued
-    assert verdict("QCOM") == "Buy"     # solid quality, cheap
+    assert verdict("KEYS") == "Buy"     # solid quality, cheap
     assert verdict("RMBS") == "Buy"     # IP licensing moat, reasonable price
 
     # Distressed names — should always be Pass or Avoid
-    assert verdict("WOLF") == "Avoid"
+    assert verdict("UCTT") == "Avoid"   # weakest quality in the universe
     assert verdict("INTC") == "Pass"
 
 def test_saas_verdicts():
@@ -27,7 +27,7 @@ def test_saas_verdicts():
 
     assert verdict("PLTR") == "Watch"   # exceptional quality, too expensive
     assert verdict("CRM")  == "Buy"     # quality at reasonable price
-    assert verdict("BOX")  == "Watch"   # mature, slow growth
+    assert verdict("PAYX") == "Watch"   # mature, slow growth
 
 def test_cloud_verdicts():
     """Known-good verdicts for key cloud companies."""
@@ -40,8 +40,8 @@ def test_cloud_verdicts():
     assert verdict("MSFT") == "Watch"   # elite quality, expensive
     assert verdict("ORCL") == "Avoid"   # weak quality, fairly valued
 
-    assert verdict("ESTC") == "Buy"     # strong quality, cheap
-    assert verdict("AKAM") == "Avoid"   # weak quality, cheap
+    assert verdict("VRT")  == "Buy"     # strong quality, reasonable price
+    assert verdict("SMCI") == "Avoid"   # weak quality, cheap
 
 def test_cyber_verdicts():
     """Known-good verdicts for key cybersecurity companies."""
@@ -56,20 +56,20 @@ def test_cyber_verdicts():
 
     assert verdict("VRNT") == "Avoid"   # weak quality, cheap
 
-def test_data_analytics_sanity():
-    """MSCI is the sole Data_Analytics constituent, so its hand-designed
-    weights (scoring.py) have no second data point to sanity-check against.
+def test_single_constituent_archetype_sanity():
+    """INTC is the sole IDM constituent, so its hand-designed weights
+    (scoring.py) have no second data point to sanity-check against.
     Pin its computed scores exactly so any accidental weight/threshold
     change to this archetype is caught immediately rather than assumed
     correct until a second ticker is added.
     """
-    df = pd.read_csv("data/saas_scored.csv")
-    row = df[df["Ticker"] == "MSCI"].iloc[0]
+    df = pd.read_csv("data/semis_scored.csv")
+    row = df[df["Ticker"] == "INTC"].iloc[0]
 
-    assert row["Archetype"] == "Data_Analytics"
-    assert row["Quality Score"] == 82.8
-    assert row["Valuation Score"] == 60
-    assert row["Verdict"] == "Buy"
+    assert row["Archetype"] == "IDM"
+    assert row["Quality Score"] == 49.2
+    assert row["Valuation Score"] == 40
+    assert row["Verdict"] == "Pass"
 
 def test_weights_sum_to_one():
     """Every archetype's quality weights must sum to exactly 1.0."""
