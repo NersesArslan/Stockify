@@ -1,24 +1,24 @@
 Ticker,Archetype,Name,Price,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,GM Trend (3Y),Rev CAGR (3Y),Rev Growth (YoY),ROIC Trend (3Y),FCF Margin Trend (3Y),Rule of 40,NRR,R&D Intensity,Revenue per Employee ($K),Net Debt/EBITDA,Interest Coverage,Last Updated,Quality Score,Valuation Score,Verdict,AI Exposure,Growth Stage
-CRM,Enterprise_SaaS,"Salesforce, Inc.",243.0,13.03,5.26,40.4,21.4,77.3,4.3,9.8,10.8,7.4,14.5,51.2,,13.6,527.3,2.4,,2026-09-10,83.0,60,Buy,Compounder,False
-HUBS,Enterprise_SaaS,"HubSpot, Inc.",223.55,15.51,3.0,19.3,4.9,83.2,1.6,21.8,19.8,6.0,7.9,39.1,,26.3,382.5,-7.03,178.84,2026-09-10,65.8,80,Buy,Compounder,False
-WDAY,Enterprise_SaaS,"Workday, Inc.",185.09,14.76,4.43,30.0,11.8,75.8,3.2,15.4,12.8,8.2,8.3,42.8,,26.4,486.0,0.23,13.91,2026-09-10,79.4,60,Buy,Exposed,False
-INTU,Enterprise_SaaS,Intuit Inc.,312.77,13.46,4.04,30.0,17.6,81.0,-1.5,14.0,13.7,6.5,3.5,43.7,,13.7,,0.17,27.73,2026-09-10,75.9,60,Buy,Compounder,False
-NOW,Enterprise_SaaS,"ServiceNow, Inc.",131.17,27.07,9.46,35.0,4.1,74.8,-0.8,22.4,24.0,5.3,4.1,59.0,,20.1,504.7,1.31,125.96,2026-09-10,76.0,40,Watch,Compounder,False
-ADBE,Enterprise_SaaS,Adobe Inc.,248.83,10.89,3.98,36.6,35.3,89.4,1.6,10.5,12.7,13.5,-0.6,49.3,,17.0,803.5,0.15,36.99,2026-09-10,81.8,80,Buy,Compounder,False
-TEAM,Enterprise_SaaS,Atlassian Corporation,179.57,27.45,6.92,25.2,12.3,85.6,2.8,23.0,27.6,16.8,-3.8,52.8,,49.7,494.1,-0.02,8.82,2026-09-10,75.4,60,Buy,Compounder,False
-SAP,Enterprise_SaaS,SAP  SE,205.95,25.96,6.18,23.8,27.6,73.7,0.1,7.6,9.4,5.6,6.7,33.2,,17.4,340.9,-0.14,23.9,2026-09-10,70.4,60,Buy,Exposed,False
-PAYC,Enterprise_SaaS,"Paycom Software, Inc.",216.04,24.83,4.92,19.8,31.7,88.1,-1.4,14.3,9.8,1.5,3.1,29.6,,13.2,371.0,1.07,216.21,2026-09-10,62.4,60,Buy,Neutral,False
-PCTY,Enterprise_SaaS,Paylocity Holding Corporation,142.86,21.59,4.39,20.3,19.1,69.3,0.4,14.7,11.0,4.3,5.8,31.3,,12.5,256.7,-0.32,,2026-09-10,66.2,60,Buy,Neutral,False
-NICE,Enterprise_SaaS,NICE Ltd,98.04,8.9,1.78,20.0,13.8,65.1,-2.2,10.5,7.6,7.5,2.9,27.6,,11.7,318.9,-0.33,,2026-09-10,65.0,100,Buy,Compounder,False
-ADP,Enterprise_SaaS,"Automatic Data Processing, Inc.",267.33,20.5,4.9,23.9,23.5,48.7,1.7,6.8,6.8,-12.9,1.6,30.7,,,327.6,0.2,13.96,2026-09-10,63.0,60,Buy,Neutral,False
-PAYX,Enterprise_SaaS,"Paychex, Inc.",115.18,,11.21,,38.3,67.2,3.3,9.2,12.5,-12.8,4.4,,,,225.5,2.17,5.97,2026-09-10,74.8,40,Watch,Neutral,False
-FIVN,Enterprise_SaaS,"Five9, Inc.",30.25,9.4,2.03,21.6,3.3,55.1,2.3,13.8,10.3,8.3,9.9,31.9,,12.7,413.7,1.25,10.76,2026-09-10,60.6,80,Buy,Exposed,False
-SSNC,Enterprise_SaaS,"SS&C Technologies Holdings, Inc",78.92,19.87,3.94,19.8,24.6,48.1,0.6,5.9,10.3,1.8,5.5,30.1,,7.7,227.9,3.48,4.85,2026-09-10,56.2,80,Avoid,Neutral,False
-MANH,Enterprise_SaaS,"Manhattan Associates, Inc.",205.02,36.81,10.5,28.5,25.0,55.8,3.0,12.1,9.3,14.1,12.0,37.8,,12.9,274.7,-0.46,,2026-09-10,72.4,40,Watch,Neutral,False
-GTLB,DevOps,GitLab Inc.,47.3,23.16,6.28,27.1,-11.5,85.9,-0.5,31.1,21.3,17.4,42.9,48.4,,26.0,409.0,,,2026-09-10,78.2,40,Watch,Compounder,False
-PD,DevOps,"PagerDuty, Inc.",13.75,8.75,2.07,23.6,8.2,85.0,3.9,9.9,0.8,25.1,18.6,24.4,,25.7,428.3,-1.25,7.23,2026-09-10,70.4,80,Buy,Neutral,False
-PLTR,Enterprise_AI,Palantir Technologies Inc.,165.86,180.34,63.25,35.1,47.1,84.8,3.8,32.9,92.8,23.8,37.3,127.9,,9.1,1398.8,-3.45,,2026-09-10,94.4,20,Watch,Disruptor,False
-SNOW,Enterprise_AI,Snowflake Inc.,329.72,67.11,21.48,32.0,-17.0,67.0,1.9,31.4,35.1,-5.4,-0.2,67.1,,36.2,578.5,,-124.88,2026-09-10,82.6,40,Watch,Disruptor,False
-DDOG,Enterprise_AI,"Datadog, Inc.",221.72,72.19,19.14,26.5,0.7,79.5,0.7,26.9,35.6,1.4,5.6,62.1,,39.0,489.7,-44.73,7.5,2026-09-10,79.2,60,Buy,Compounder,False
-MDB,Enterprise_AI,"MongoDB, Inc.",373.87,49.37,9.96,20.2,3.7,72.7,-1.0,24.3,30.5,11.8,21.9,50.7,,25.7,481.2,-170.08,4.43,2026-09-10,80.4,80,Buy,Compounder,False
-ZS,Enterprise_AI,"Zscaler, Inc.",163.48,23.3,7.47,32.1,-1.0,76.9,-0.8,27.5,24.9,8.3,2.6,57.0,,26.9,385.3,-36.63,12.09,2026-09-10,78.0,80,Buy,Compounder,False
+CRM,Enterprise_SaaS,"Salesforce, Inc.",247.72,13.24,5.34,40.4,21.4,77.3,4.3,9.8,10.8,7.4,14.5,51.2,,13.6,527.3,2.4,,2026-09-11,83.0,60,Buy,Compounder,False
+HUBS,Enterprise_SaaS,"HubSpot, Inc.",225.33,15.65,3.03,19.3,4.9,83.2,1.6,21.8,19.8,6.0,7.9,39.1,,26.3,382.5,-7.03,178.84,2026-09-11,65.8,80,Buy,Compounder,False
+WDAY,Enterprise_SaaS,"Workday, Inc.",185.7,14.81,4.44,30.0,11.8,75.8,3.2,15.4,12.8,8.2,8.3,42.8,,26.4,486.0,0.23,13.91,2026-09-11,79.4,60,Buy,Exposed,False
+INTU,Enterprise_SaaS,Intuit Inc.,321.57,13.72,4.06,29.6,17.6,81.0,2.0,14.3,13.7,6.9,6.9,43.3,,15.7,1153.1,0.18,26.75,2026-09-11,75.0,60,Buy,Compounder,False
+NOW,Enterprise_SaaS,"ServiceNow, Inc.",132.53,27.34,9.56,35.0,4.1,74.8,-0.8,22.4,24.0,5.3,4.1,59.0,,20.1,504.7,1.31,125.96,2026-09-11,76.0,40,Watch,Compounder,False
+ADBE,Enterprise_SaaS,Adobe Inc.,252.23,11.03,4.04,36.6,35.3,89.4,1.6,10.5,12.7,13.5,-0.6,49.3,,17.0,803.5,0.15,36.99,2026-09-11,81.8,60,Buy,Compounder,False
+TEAM,Enterprise_SaaS,Atlassian Corporation,179.7,27.47,6.92,25.2,12.3,85.6,2.8,23.0,27.6,16.8,-3.8,52.8,,49.7,494.1,-0.02,8.82,2026-09-11,75.4,60,Buy,Compounder,False
+SAP,Enterprise_SaaS,SAP  SE,206.36,26.02,6.19,23.8,27.6,73.7,0.1,7.6,9.4,5.6,6.7,33.2,,17.4,340.9,-0.14,23.9,2026-09-11,70.4,60,Buy,Exposed,False
+PAYC,Enterprise_SaaS,"Paycom Software, Inc.",218.91,25.14,4.98,19.8,31.7,88.1,-1.4,14.3,9.8,1.5,3.1,29.6,,13.2,371.0,1.07,216.21,2026-09-11,62.4,60,Buy,Neutral,False
+PCTY,Enterprise_SaaS,Paylocity Holding Corporation,141.66,21.41,4.35,20.3,19.1,69.3,0.4,14.7,11.0,4.3,5.8,31.3,,12.5,256.7,-0.32,,2026-09-11,66.2,60,Buy,Neutral,False
+NICE,Enterprise_SaaS,NICE Ltd,98.18,8.92,1.79,20.0,13.8,65.1,-2.2,10.5,7.6,7.5,2.9,27.6,,11.7,318.9,-0.33,,2026-09-11,65.0,100,Buy,Compounder,False
+ADP,Enterprise_SaaS,"Automatic Data Processing, Inc.",268.26,20.57,4.91,23.9,23.5,48.7,1.7,6.8,6.8,-12.9,1.6,30.7,,,327.6,0.2,13.96,2026-09-11,63.0,60,Buy,Neutral,False
+PAYX,Enterprise_SaaS,"Paychex, Inc.",115.8,,11.27,,38.3,67.2,3.3,9.2,12.5,-12.8,4.4,,,,225.5,2.17,5.97,2026-09-11,74.8,40,Watch,Neutral,False
+FIVN,Enterprise_SaaS,"Five9, Inc.",30.66,9.52,2.06,21.6,3.3,55.1,2.3,13.8,10.3,8.3,9.9,31.9,,12.7,413.7,1.25,10.76,2026-09-11,60.6,80,Buy,Exposed,False
+SSNC,Enterprise_SaaS,"SS&C Technologies Holdings, Inc",80.27,20.11,3.99,19.8,24.6,48.1,0.6,5.9,10.3,1.8,5.5,30.1,,7.7,227.9,3.48,4.85,2026-09-11,56.2,80,Avoid,Neutral,False
+MANH,Enterprise_SaaS,"Manhattan Associates, Inc.",201.82,36.23,10.33,28.5,25.0,55.8,3.0,12.1,9.3,14.1,12.0,37.8,,12.9,274.7,-0.46,,2026-09-11,72.4,40,Watch,Neutral,False
+GTLB,DevOps,GitLab Inc.,46.99,22.98,6.23,27.1,-11.5,85.9,-0.5,31.1,21.3,17.4,42.9,48.4,,26.0,409.0,,,2026-09-11,78.2,40,Watch,Compounder,False
+PD,DevOps,"PagerDuty, Inc.",14.09,8.98,2.12,23.6,8.2,85.0,3.9,9.9,0.8,25.1,18.6,24.4,,25.7,428.3,-1.25,7.23,2026-09-11,70.4,80,Buy,Neutral,False
+PLTR,Enterprise_AI,Palantir Technologies Inc.,167.23,181.87,63.79,35.1,47.1,84.8,3.8,32.9,92.8,23.8,37.3,127.9,,9.1,1398.8,-3.45,,2026-09-11,94.4,20,Watch,Disruptor,False
+SNOW,Enterprise_AI,Snowflake Inc.,328.99,66.96,21.43,32.0,-17.0,67.0,1.9,31.4,35.1,-5.4,-0.2,67.1,,36.2,578.5,,-124.88,2026-09-11,82.6,40,Watch,Disruptor,False
+DDOG,Enterprise_AI,"Datadog, Inc.",221.21,72.02,19.09,26.5,0.7,79.5,0.7,26.9,35.6,1.4,5.6,62.1,,39.0,489.7,-44.73,7.5,2026-09-11,79.2,60,Buy,Compounder,False
+MDB,Enterprise_AI,"MongoDB, Inc.",362.21,47.7,9.62,20.2,3.7,72.7,-1.0,24.3,30.5,10.9,21.9,50.7,,25.7,481.2,-170.08,4.43,2026-09-11,80.4,80,Buy,Compounder,False
+ZS,Enterprise_AI,"Zscaler, Inc.",164.54,23.46,7.52,32.1,-1.0,76.9,-0.8,27.5,24.9,8.3,2.6,57.0,,26.9,385.3,-36.63,12.09,2026-09-11,78.0,80,Buy,Compounder,False
