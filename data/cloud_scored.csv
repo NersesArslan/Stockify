@@ -1,13 +1,13 @@
 Ticker,Archetype,Name,Price,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,GM Trend (3Y),Rev CAGR (3Y),Rev Growth (YoY),ROIC Trend (3Y),FCF Margin Trend (3Y),Rule of 40,NRR,R&D Intensity,Revenue per Employee ($K),Net Debt/EBITDA,Interest Coverage,Last Updated,Quality Score,Valuation Score,Verdict,AI Exposure,Growth Stage
-AMZN,Hyperscaler,"Amazon.com, Inc.",253.71,890.07,3.69,0.4,13.7,50.8,6.5,11.7,19.6,8.9,4.4,20.0,,,486.3,0.76,74.28,2026-09-18,62.6,80,Buy,Enabler,False
-MSFT,Hyperscaler,Microsoft Corporation,493.78,224.75,11.21,5.0,45.1,67.9,-1.0,16.1,17.7,-2.4,-7.9,22.7,,10.7,1488.1,0.27,63.66,2026-09-18,70.4,40,Watch,Compounder,False
-GOOGL,Hyperscaler,Alphabet Inc.,349.54,183.24,9.31,5.1,34.0,60.9,4.3,12.5,24.2,-0.2,-3.0,29.3,,13.7,2241.3,-0.7,235.28,2026-09-18,67.4,60,Buy,Compounder,False
-ORCL,Hyperscaler,Oracle Corporation,147.61,,8.06,-63.9,35.6,64.0,-7.0,10.5,29.6,-2.3,-52.1,-34.3,,14.3,509.0,3.84,7.49,2026-09-18,52.4,60,Avoid,Compounder,False
-ANET,Network_Hardware,"Arista Networks, Inc.",199.39,61.19,22.59,36.9,45.4,63.0,3.0,27.1,37.7,-1.0,37.0,74.6,,11.7,2060.8,-2.88,,2026-09-18,93.0,40,Watch,Enabler,False
-VRT,Data_Center_Infra,"Vertiv Holdings, LLC",249.39,35.69,8.38,23.5,20.4,38.0,7.9,21.6,24.1,17.3,23.1,47.6,,,337.6,0.08,31.11,2026-09-18,80.0,60,Buy,Enabler,False
-SMCI,Data_Center_Infra,"Super Micro Computer, Inc.",39.09,,0.7,-21.1,13.4,10.8,-7.2,76.3,93.2,-17.0,-26.6,72.1,,2.0,5580.4,0.61,14.51,2026-09-18,52.4,100,Avoid,Enabler,False
-CLS,Data_Center_Infra,"Celestica, Inc.",332.63,58.15,2.72,4.7,9.8,12.0,3.1,19.6,62.4,20.6,2.3,67.1,,0.8,655.1,0.28,29.69,2026-09-18,58.4,60,Avoid,Enabler,False
-NBIS,Neocloud,Nebius Group N.V.,223.54,,46.43,-709.5,-0.2,74.3,179.0,239.8,454.0,-2.8,-5749.6,-255.5,,13.1,878.2,8.35,4.2,2026-09-18,63.2,20,Watch,Enabler,True
-CRWV,Neocloud,"CoreWeave, Inc.",81.36,,11.98,-119.7,-1.9,67.4,48.3,586.9,112.5,,310.3,-7.2,,,3467.3,12.16,3.08,2026-09-18,69.6,80,Buy,Enabler,True
-IREN,Power_Campus,IREN LIMITED,46.68,,28.77,-596.8,-102.5,68.9,34.4,110.8,-26.7,7.9,-186.3,-623.5,,,1032.1,50.69,0.65,2026-09-18,60.0,80,Buy,Enabler,True
-APLD,Power_Campus,Applied Digital Corporation,28.12,,18.82,-811.6,-48.2,25.9,5.9,122.6,406.6,29.6,-323.2,-405.0,,,2387.9,,-3.63,2026-09-18,59.5,80,Avoid,Enabler,True
+AMZN,Hyperscaler,"Amazon.com, Inc.",258.45,905.95,3.76,0.4,13.7,50.8,6.5,11.7,19.6,8.9,4.4,20.0,,,486.3,0.76,74.28,2026-09-22,62.6,80,Buy,Enabler,False
+MSFT,Hyperscaler,Microsoft Corporation,501.61,228.26,11.38,5.0,45.1,67.9,-1.0,16.1,17.7,-2.4,-7.9,22.7,,10.7,1488.1,0.27,63.66,2026-09-22,70.4,40,Watch,Compounder,False
+GOOGL,Hyperscaler,Alphabet Inc.,354.97,186.17,9.46,5.1,34.0,60.9,4.3,12.5,24.2,-0.2,-3.0,29.3,,13.7,2241.3,-0.7,235.28,2026-09-22,67.4,60,Buy,Compounder,False
+ORCL,Hyperscaler,Oracle Corporation,148.56,,8.1,-63.9,35.6,64.0,-7.0,10.5,29.6,-2.3,-52.1,-34.3,,14.3,509.0,3.84,7.49,2026-09-22,52.4,60,Avoid,Compounder,False
+ANET,Network_Hardware,"Arista Networks, Inc.",205.42,63.15,23.31,36.9,45.4,63.0,3.0,27.1,37.7,-1.0,37.0,74.6,,11.7,2060.8,-2.88,,2026-09-22,93.0,40,Watch,Enabler,False
+VRT,Data_Center_Infra,"Vertiv Holdings, LLC",250.86,35.9,8.43,23.5,20.4,38.0,7.9,21.6,24.1,17.3,23.1,47.6,,,337.6,0.08,31.11,2026-09-22,80.0,60,Buy,Enabler,False
+SMCI,Data_Center_Infra,"Super Micro Computer, Inc.",41.2,,0.73,-21.1,13.4,10.8,-7.2,76.3,93.2,-17.0,-26.6,72.1,,2.0,5580.4,0.61,14.51,2026-09-22,52.4,100,Avoid,Enabler,False
+CLS,Data_Center_Infra,"Celestica, Inc.",344.4,60.18,2.81,4.7,9.8,12.0,3.1,19.6,62.4,20.6,2.3,67.1,,0.8,655.1,0.28,29.69,2026-09-22,58.4,40,Pass,Enabler,False
+NBIS,Neocloud,Nebius Group N.V.,232.8,,45.21,-709.5,-0.2,74.3,179.0,239.8,454.0,-2.8,-5749.6,-255.5,,13.1,878.2,8.35,4.2,2026-09-22,63.2,20,Watch,Enabler,True
+CRWV,Neocloud,"CoreWeave, Inc.",85.43,,12.28,-119.7,-1.9,67.4,48.3,586.9,112.5,,310.3,-7.2,,,3467.3,12.16,3.08,2026-09-22,69.6,80,Buy,Enabler,True
+IREN,Power_Campus,IREN LIMITED,47.23,,29.07,-596.8,-102.5,68.9,34.4,110.8,-26.7,7.9,-186.3,-623.5,,,1032.1,50.69,0.65,2026-09-22,60.0,80,Buy,Enabler,True
+APLD,Power_Campus,Applied Digital Corporation,28.19,,18.85,-811.6,-48.2,25.9,5.9,122.6,406.6,29.6,-323.2,-405.0,,,2387.9,,-3.63,2026-09-22,59.5,80,Avoid,Enabler,True
