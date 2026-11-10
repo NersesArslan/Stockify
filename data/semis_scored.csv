@@ -1,36 +1,36 @@
 Ticker,Archetype,Name,Price,EV/FCF,EV/Revenue,FCF Margin,Op Margin,Gross Margin,GM Trend (3Y),Rev CAGR (3Y),Rev Growth (YoY),ROIC,ROIC Trend (3Y),FCF Margin Trend (3Y),R&D Intensity,Revenue per Employee ($K),Net Debt/EBITDA,Interest Coverage,Last Updated,Quality Score,Valuation Score,Verdict,AI Exposure,Growth Stage
-TSM,Foundry,Taiwan Semiconductor Manufactur,375.44,50.37,12.26,24.3,58.7,65.8,0.3,18.9,50.9,25.2,-0.7,3.0,5.0,1962.3,-0.89,,2026-11-07,82.4,60,Buy,Enabler,False
-UMC,Foundry,United Microelectronics Corpora,13.85,23.71,4.01,16.9,25.1,31.7,-16.1,-5.2,25.6,8.7,-14.9,-1.9,6.7,405.6,-0.6,77.88,2026-11-07,49.8,80,Avoid,Enabler,False
-NVDA,Fabless,NVIDIA Corporation,186.64,107.23,14.8,13.8,66.2,74.7,14.1,100.0,105.9,66.8,54.2,30.7,6.1,7213.6,-0.12,777.09,2026-11-07,91.2,20,Watch,Enabler,False
-AMD,Fabless,"Advanced Micro Devices, Inc.",449.04,99.21,16.06,16.2,21.2,56.0,4.6,13.6,44.7,4.2,2.5,6.2,17.8,1465.7,-0.59,85.06,2026-11-07,66.6,40,Watch,Enabler,False
-AVGO,Fabless,Broadcom Inc.,293.69,46.98,16.13,34.3,54.3,75.5,1.2,24.4,85.5,13.3,-8.0,-7.0,12.3,2700.1,0.68,16.28,2026-11-07,76.0,60,Buy,Compounder,False
-MRVL,Fabless,"Marvell Technology, Inc.",141.2,53.32,13.59,25.5,16.7,52.2,0.5,11.4,36.5,6.2,4.9,-1.1,22.0,1263.4,0.47,14.07,2026-11-07,69.2,60,Buy,Compounder,False
-MPWR,Fabless,"Monolithic Power Systems, Inc.",1190.44,112.54,15.24,13.5,29.7,55.3,-3.3,15.9,63.1,16.7,-9.6,13.3,10.2,830.6,-0.92,,2026-11-07,71.4,20,Watch,Compounder,False
-ARM,Fabless,Arm Holdings plc,174.62,161.55,33.62,20.8,13.9,97.4,1.5,22.5,27.1,8.6,-4.5,-4.8,50.8,570.1,-2.77,,2026-11-07,62.2,20,Watch,Enabler,False
-MTSI,Fabless,MACOM Technology Solutions Hold,210.98,150.71,13.51,9.0,31.7,56.5,-5.5,12.7,62.7,,-1.7,-6.4,,582.0,-1.4,,2026-11-07,57.8,20,Pass,Neutral,False
-SIMO,Fabless,Silicon Motion Technology Corpo,162.76,,3.55,-30.8,29.0,50.5,-1.0,-2.2,131.5,9.8,-14.0,-4.7,16.1,812.2,0.73,,2026-11-07,50.6,80,Avoid,Neutral,False
-RMBS,Fabless,"Rambus, Inc.",74.53,34.28,9.08,26.5,38.4,79.9,3.2,15.9,22.3,15.6,8.1,0.9,23.6,1006.5,-2.24,245.79,2026-11-07,82.8,80,Buy,Enabler,False
-SITM,Fabless,SiTime Corporation,416.915,,19.81,,10.9,56.7,-10.9,4.8,257.4,-3.9,-6.2,9.2,17.4,1548.7,10.15,,2026-11-07,53.7,20,Pass,Enabler,False
-AMBA,Fabless,"Ambarella, Inc.",58.55,70.81,5.56,7.9,-7.5,58.5,-2.7,5.0,13.2,-11.1,0.2,6.2,57.1,435.7,,,2026-11-07,44.3,40,Pass,Enabler,False
-ASML,Equipment,ASML Holding N.V. - New York Re,1424.75,46.46,12.21,26.3,44.4,54.3,2.3,15.6,55.2,38.7,-3.5,-0.1,11.9,984.5,-0.67,136.78,2026-11-07,81.0,60,Buy,Enabler,False
-LRCX,Equipment,Lam Research Corporation,200.44,54.33,9.46,17.4,40.0,51.1,5.8,10.1,54.4,44.5,9.5,-5.8,9.1,1075.2,-0.37,64.48,2026-11-07,83.4,60,Buy,Enabler,False
-KLAC,Equipment,KLA Corporation,138.49,64.5,12.53,19.4,45.0,61.5,1.5,9.0,28.9,39.9,-0.7,-4.0,10.6,853.3,0.19,23.13,2026-11-07,75.6,40,Watch,Enabler,False
-AMAT,Equipment,"Applied Materials, Inc.",332.715,85.24,8.5,10.0,33.7,49.4,2.2,3.2,24.8,23.7,-14.2,2.2,11.6,792.7,-0.19,37.75,2026-11-07,65.2,40,Watch,Enabler,False
-ENTG,Equipment,"Entegris, Inc.",127.98,45.25,6.38,14.1,22.3,47.0,1.9,-0.9,24.6,11.2,6.7,15.5,9.3,457.8,3.01,4.99,2026-11-07,63.6,60,Buy,Enabler,False
-MKSI,Equipment,MKS Inc.,192.27,31.41,3.42,10.9,23.4,47.3,3.1,3.5,43.0,8.0,2.5,2.4,6.3,467.8,2.68,5.44,2026-11-07,58.2,80,Avoid,Enabler,False
-ACLS,Equipment,"Axcelis Technologies, Inc.",99.24,65.0,3.15,4.9,9.4,43.0,1.2,-3.0,10.6,10.0,-18.4,-9.5,12.6,591.2,-3.34,18.53,2026-11-07,51.2,40,Pass,Neutral,False
-UCTT,Equipment,"Ultra Clean Holdings, Inc.",41.13,,1.03,-5.9,7.1,16.1,-3.9,-4.7,48.8,2.7,-7.7,3.0,1.3,351.8,2.95,4.77,2026-11-07,30.0,100,Avoid,Neutral,False
-ICHR,Equipment,Ichor Holdings,30.965,,1.0,-4.7,7.2,15.3,-7.3,-9.5,37.4,-4.1,-13.5,-0.8,2.1,583.4,-0.78,11.95,2026-11-07,29.0,100,Avoid,Neutral,False
-COHU,Equipment,"Cohu, Inc.",38.49,22.01,2.9,13.2,7.7,44.5,-4.4,-17.7,37.0,-4.1,-13.7,-9.7,16.2,205.0,-5.42,15.46,2026-11-07,46.8,80,Avoid,Neutral,False
-FORM,Equipment,"FormFactor, Inc.",81.12,37.24,6.11,16.4,30.1,50.2,-0.2,1.6,38.4,4.7,-1.2,-7.4,11.8,455.2,-1.46,483.56,2026-11-07,59.6,60,Avoid,Neutral,False
-ONTO,Equipment,Onto Innovation Inc.,173.28,39.88,7.23,18.1,23.0,55.5,-3.9,0.0,35.3,6.1,-7.6,18.1,11.8,600.0,-1.33,,2026-11-07,66.6,60,Buy,Neutral,False
-NVMI,Equipment,Nova Ltd.,313.18,83.38,10.39,12.5,29.9,57.1,1.8,15.6,15.9,10.6,-6.3,7.5,15.3,581.6,-0.73,,2026-11-07,68.2,40,Watch,Neutral,False
-CAMT,Equipment,Camtek Ltd.,97.05,,8.12,,24.7,50.7,0.6,15.6,28.0,10.9,-1.8,10.2,8.9,767.7,-0.82,85.95,2026-11-07,73.3,60,Buy,Neutral,False
-TER,Equipment,"Teradyne, Inc.",218.215,56.14,6.75,12.0,30.9,59.3,-1.0,0.4,69.8,20.2,-8.7,1.0,10.1,757.7,-0.19,257.79,2026-11-07,67.8,60,Buy,Neutral,False
-KEYS,Equipment,Keysight Technologies Inc.,272.13,24.9,7.06,28.4,25.7,63.3,-1.6,-0.3,36.5,8.3,-11.2,6.1,15.3,396.5,0.09,17.69,2026-11-07,63.0,80,Buy,Enabler,False
-INTC,IDM,Intel Corporation,56.28,366.1,4.93,1.3,15.6,40.2,-7.8,-5.7,20.9,-0.0,-1.2,5.6,23.0,738.5,-0.2,17.54,2026-11-07,52.0,20,Pass,Exposed,False
-MU,Memory,"Micron Technology, Inc.",690.0,25.48,5.57,21.9,80.7,80.7,89.8,104.6,379.3,60.0,67.1,83.6,4.2,2183.4,-0.35,1026.82,2026-11-07,94.4,80,Buy,Enabler,False
-WDC,Memory,Western Digital Corporation,263.78,36.03,6.79,18.8,47.7,52.6,26.6,27.4,55.5,44.1,45.7,46.8,8.0,362.0,-0.06,38.25,2026-11-07,88.2,60,Buy,Neutral,False
-STX,Memory,Seagate Technology Holdings PLC,460.99,46.69,7.77,16.6,48.9,50.4,27.3,18.2,61.0,63.6,62.6,17.0,5.5,460.0,0.24,20.66,2026-11-07,84.0,60,Buy,Neutral,False
-SNPS,EDA_IP,"Synopsys, Inc.",450.46,27.31,9.94,36.4,14.5,82.9,-3.6,15.2,42.4,2.1,-16.2,-15.5,26.3,336.3,3.49,4.65,2026-11-07,57.4,80,Avoid,Enabler,False
-CDNS,EDA_IP,"Cadence Design Systems, Inc.",319.92,50.99,14.52,28.5,28.9,85.7,-3.2,14.1,22.0,15.1,-9.8,-1.4,28.8,444.4,0.57,19.05,2026-11-07,66.2,60,Buy,Enabler,False
+TSM,Foundry,Taiwan Semiconductor Manufactur,388.62,52.41,12.75,24.3,58.7,65.8,0.3,18.9,50.9,25.2,-0.7,3.0,5.0,1956.0,-0.89,,2026-11-10,82.4,60,Buy,Enabler,False
+UMC,Foundry,United Microelectronics Corpora,14.89,25.7,4.35,16.9,25.1,31.7,-16.1,-5.2,25.6,8.7,-14.9,-1.9,6.7,404.3,-0.6,77.88,2026-11-10,49.8,80,Avoid,Enabler,False
+NVDA,Fabless,NVIDIA Corporation,178.67,102.62,14.16,13.8,66.2,74.7,14.1,100.0,105.9,66.8,54.2,30.7,6.1,7213.6,-0.12,777.09,2026-11-10,91.2,20,Watch,Enabler,False
+AMD,Fabless,"Advanced Micro Devices, Inc.",508.58,112.48,18.21,16.2,21.2,56.0,4.6,13.6,44.7,4.2,2.5,6.2,17.8,1465.7,-0.59,85.06,2026-11-10,66.6,20,Watch,Enabler,False
+AVGO,Fabless,Broadcom Inc.,319.48,51.0,17.51,34.3,54.3,75.5,1.2,24.4,85.5,13.3,-8.0,-7.0,12.3,2700.1,0.68,16.28,2026-11-10,76.0,60,Buy,Compounder,False
+MRVL,Fabless,"Marvell Technology, Inc.",154.6,58.33,14.86,25.5,16.7,52.2,0.5,11.4,36.5,6.2,4.9,-1.1,22.0,1263.4,0.47,14.07,2026-11-10,69.2,60,Buy,Compounder,False
+MPWR,Fabless,"Monolithic Power Systems, Inc.",1388.05,131.57,17.82,13.5,29.7,55.3,-3.3,15.9,63.1,16.7,-9.6,13.3,10.2,830.6,-0.92,,2026-11-10,71.4,20,Watch,Compounder,False
+ARM,Fabless,Arm Holdings plc,186.3,172.54,35.91,20.8,13.9,97.4,1.5,22.5,27.1,8.6,-4.5,-4.8,50.8,570.1,-2.77,,2026-11-10,62.2,20,Watch,Enabler,False
+MTSI,Fabless,MACOM Technology Solutions Hold,230.0,92.44,12.94,14.0,31.7,58.1,-5.5,12.7,62.7,,-1.7,-6.4,,,-1.04,,2026-11-10,61.8,40,Watch,Neutral,False
+SIMO,Fabless,Silicon Motion Technology Corpo,172.01,,3.75,-30.8,29.0,50.5,-1.0,-2.2,131.5,9.8,-14.0,-4.7,16.1,812.2,0.73,,2026-11-10,50.6,80,Avoid,Neutral,False
+RMBS,Fabless,"Rambus, Inc.",80.74,37.43,9.91,26.5,38.4,79.9,3.2,15.9,22.3,15.6,8.1,0.9,23.6,1006.5,-2.24,245.79,2026-11-10,82.8,60,Buy,Enabler,False
+SITM,Fabless,SiTime Corporation,457.05,,21.69,-0.9,9.9,56.2,-10.9,4.8,257.4,-3.9,-6.2,9.2,17.4,1548.7,6.66,,2026-11-10,47.0,20,Pass,Enabler,False
+AMBA,Fabless,"Ambarella, Inc.",61.64,74.96,5.89,7.9,-7.5,58.5,-2.7,5.0,13.2,-11.1,0.2,6.2,57.1,435.7,,,2026-11-10,44.3,40,Pass,Enabler,False
+ASML,Equipment,ASML Holding N.V. - New York Re,1513.25,49.05,12.89,26.3,44.4,54.3,2.3,15.6,55.2,38.7,-3.5,-0.1,11.9,991.6,-0.67,136.78,2026-11-10,81.0,60,Buy,Enabler,False
+LRCX,Equipment,Lam Research Corporation,221.31,59.96,10.44,17.4,40.0,51.1,5.8,10.1,54.4,44.5,9.5,-5.8,9.1,1075.2,-0.37,64.48,2026-11-10,83.4,60,Buy,Enabler,False
+KLAC,Equipment,KLA Corporation,151.38,70.47,13.68,19.4,45.0,61.5,1.5,9.0,28.9,39.9,-0.7,-4.0,10.6,853.3,0.19,23.13,2026-11-10,75.6,40,Watch,Enabler,False
+AMAT,Equipment,"Applied Materials, Inc.",370.55,95.01,9.47,10.0,33.7,49.4,2.2,3.2,24.8,23.7,-14.2,2.2,11.6,792.7,-0.19,37.75,2026-11-10,65.2,40,Watch,Enabler,False
+ENTG,Equipment,"Entegris, Inc.",140.06,49.09,6.92,14.1,22.3,47.0,1.9,-0.9,24.6,11.2,6.7,15.5,9.3,457.8,3.01,4.99,2026-11-10,63.6,60,Buy,Enabler,False
+MKSI,Equipment,MKS Inc.,211.59,33.8,3.7,10.9,23.2,47.3,3.1,3.5,43.0,8.0,2.5,2.4,6.3,467.8,2.67,5.45,2026-11-10,58.2,80,Avoid,Enabler,False
+ACLS,Equipment,"Axcelis Technologies, Inc.",107.64,72.15,3.28,4.5,11.5,42.8,1.2,-3.0,11.3,10.0,-18.4,-9.5,12.2,607.7,-3.95,18.99,2026-11-10,54.4,40,Pass,Neutral,False
+UCTT,Equipment,"Ultra Clean Holdings, Inc.",45.89,,1.12,-5.9,7.1,16.1,-3.9,-4.7,48.8,2.7,-7.7,3.0,1.3,351.8,2.95,4.77,2026-11-10,30.0,100,Avoid,Neutral,False
+ICHR,Equipment,Ichor Holdings,34.45,,1.12,-4.7,7.2,15.3,-7.3,-9.5,37.4,-4.1,-13.5,-0.8,2.1,583.4,-0.78,11.95,2026-11-10,29.0,100,Avoid,Neutral,False
+COHU,Equipment,"Cohu, Inc.",43.4,25.11,3.31,13.2,7.7,44.5,-4.4,-17.7,37.0,-4.1,-13.7,-9.7,16.2,205.0,-5.42,15.46,2026-11-10,46.8,80,Avoid,Neutral,False
+FORM,Equipment,"FormFactor, Inc.",85.2,39.23,6.44,16.4,30.1,50.2,-0.2,1.6,38.4,4.7,-1.2,-7.4,11.8,455.2,-1.46,483.56,2026-11-10,59.6,60,Avoid,Neutral,False
+ONTO,Equipment,Onto Innovation Inc.,194.04,44.9,8.13,18.1,23.0,55.5,-3.9,0.0,35.3,6.1,-7.6,18.1,11.8,600.0,-1.33,,2026-11-10,66.6,60,Buy,Neutral,False
+NVMI,Equipment,Nova Ltd.,333.24,67.69,10.32,15.2,32.3,57.4,1.8,15.6,28.2,10.6,-6.3,7.5,14.3,620.8,-0.85,,2026-11-10,69.2,40,Watch,Neutral,False
+CAMT,Equipment,Camtek Ltd.,105.04,,8.8,,25.6,50.8,0.6,15.6,28.0,10.9,-1.8,10.2,8.9,767.7,-0.81,87.53,2026-11-10,73.3,60,Buy,Neutral,False
+TER,Equipment,"Teradyne, Inc.",246.0,63.36,7.61,12.0,30.9,59.3,-1.0,0.4,69.8,20.2,-8.7,1.0,10.1,757.7,-0.19,257.79,2026-11-10,67.8,40,Watch,Neutral,False
+KEYS,Equipment,Keysight Technologies Inc.,288.97,26.43,7.5,28.4,25.7,63.3,-1.6,-0.3,36.5,8.3,-11.2,6.1,15.3,396.5,0.09,17.69,2026-11-10,63.0,80,Buy,Enabler,False
+INTC,IDM,Intel Corporation,59.37,386.46,5.2,1.3,15.6,40.2,-7.8,-5.7,20.9,-0.0,-1.2,5.6,23.0,738.5,-0.2,17.54,2026-11-10,52.0,20,Pass,Exposed,False
+MU,Memory,"Micron Technology, Inc.",733.15,27.15,5.94,21.9,80.7,80.7,89.8,104.6,379.3,60.0,67.1,83.6,4.2,2183.4,-0.35,1026.82,2026-11-10,94.4,80,Buy,Enabler,False
+WDC,Memory,Western Digital Corporation,289.78,39.6,7.46,18.8,47.7,52.6,26.6,27.4,55.5,44.1,45.7,46.8,8.0,362.0,-0.06,38.25,2026-11-10,88.2,60,Buy,Neutral,False
+STX,Memory,Seagate Technology Holdings PLC,506.14,51.2,8.52,16.6,48.9,50.4,27.3,18.2,61.0,63.6,62.6,17.0,5.5,460.0,0.24,20.66,2026-11-10,84.0,60,Buy,Neutral,False
+SNPS,EDA_IP,"Synopsys, Inc.",466.97,28.24,10.27,36.4,14.5,82.9,-3.6,15.2,42.4,2.1,-16.2,-15.5,26.3,336.3,3.49,4.65,2026-11-10,57.4,80,Avoid,Enabler,False
+CDNS,EDA_IP,"Cadence Design Systems, Inc.",336.53,53.6,15.26,28.5,28.9,85.7,-3.2,14.1,22.0,15.1,-9.8,-1.4,28.8,444.4,0.57,19.05,2026-11-10,66.2,60,Buy,Enabler,False
